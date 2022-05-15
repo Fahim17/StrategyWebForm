@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 
-class Page2 extends StatefulWidget {
-  Page2({Key? key}) : super(key: key);
+class Page3 extends StatefulWidget {
+  Page3({Key? key}) : super(key: key);
 
   @override
-  State<Page2> createState() => _Page2State();
+  State<Page3> createState() => _Page3State();
 }
 
-class _Page2State extends State<Page2> {
+class _Page3State extends State<Page3> {
   TextEditingController nameController = TextEditingController();
   TextEditingController contractController = TextEditingController();
   @override
@@ -54,43 +54,15 @@ class _Page2State extends State<Page2> {
                   padding: EdgeInsets.fromLTRB(
                       screensize.width * 0.1, 0, screensize.width * 0.1, 0),
                   child: Text(
-                    'What is your NinjaTrader Strategy name, Trader?',
+                    'Select the features you want to use in your strategy.',
                     style: _textTheme.headline6,
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(
-                      screensize.width * 0.1, 0, screensize.width * 0.1, 0),
-                  child: TextField(
-                    controller: nameController,
-                    decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Type Answer Here...'),
-                    style: _textTheme.subtitle1,
-                  ),
-                ),
+
                 SizedBox(
                   height: screensize.height * 0.08,
                 ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(
-                      screensize.width * 0.1, 0, screensize.width * 0.1, 0),
-                  child: Text(
-                    'What is the number of contracts with which you will trade in each entry?',
-                    style: _textTheme.headline6,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(
-                      screensize.width * 0.1, 0, screensize.width * 0.1, 0),
-                  child: TextField(
-                    controller: contractController,
-                    decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Type Answer Here...'),
-                    style: _textTheme.subtitle1,
-                  ),
-                ),
+//
                 SizedBox(
                   height: screensize.height * 0.05,
                 ),
