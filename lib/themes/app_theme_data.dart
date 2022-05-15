@@ -15,8 +15,8 @@ const titleText = 'STRATEGY GENERATOR';
 BoxDecoration bxDecorations = BoxDecoration(
     color: BX_COLOR,
     borderRadius: BorderRadius.circular(bxBorderRadius),
-    boxShadow: [
-      const BoxShadow(
+    boxShadow: const [
+      BoxShadow(
         color: COLOR_Grey1,
         offset: Offset(20, 20),
         blurRadius: 30,
@@ -32,6 +32,7 @@ ThemeData defalutTheme = ThemeData(
     headline4: TextStyle(
       color: COLOR_PRIMARY,
     ),
+    subtitle1: TextStyle(fontWeight: FontWeight.bold),
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(primary: COLOR_PRIMARY, elevation: 10),

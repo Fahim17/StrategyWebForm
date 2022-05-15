@@ -9,8 +9,8 @@ class Page3 extends StatefulWidget {
 }
 
 class _Page3State extends State<Page3> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController contractController = TextEditingController();
+  List<bool> features = [false, false, false, false];
+
   @override
   void initState() {
     super.initState();
@@ -18,11 +18,11 @@ class _Page3State extends State<Page3> {
 
   @override
   void dispose() {
-    nameController.dispose();
-    contractController.dispose();
     super.dispose();
   }
 
+  final double optionHPadding = 200;
+  final double optionVPadding = 10;
   @override
   Widget build(BuildContext context) {
     Size screensize = MediaQuery.of(context).size;
@@ -37,9 +37,7 @@ class _Page3State extends State<Page3> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(
-                  height: screensize.height * 0.05,
-                ),
+                SizedBox(height: screensize.height * 0.05),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Text(
@@ -47,9 +45,7 @@ class _Page3State extends State<Page3> {
                     style: _textTheme.headline4,
                   ),
                 ),
-                SizedBox(
-                  height: screensize.height * 0.10,
-                ),
+                SizedBox(height: screensize.height * 0.10),
                 Padding(
                   padding: EdgeInsets.fromLTRB(
                       screensize.width * 0.1, 0, screensize.width * 0.1, 0),
@@ -58,14 +54,125 @@ class _Page3State extends State<Page3> {
                     style: _textTheme.headline6,
                   ),
                 ),
-
-                SizedBox(
-                  height: screensize.height * 0.08,
+                SizedBox(height: screensize.height * 0.08),
+                Row(
+                  children: [
+                    SizedBox(width: screensize.width * 0.2),
+                    InkWell(
+                      onTap: () {
+                        features[0] = !features[0];
+                        setState(() {});
+                      },
+                      child: Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: COLOR_PRIMARY),
+                            borderRadius: BorderRadius.circular(5),
+                            color: (features[0])
+                                ? COLOR_PRIMARY
+                                : Colors.transparent),
+                      ),
+                    ),
+                    const SizedBox(width: 5),
+                    Text(
+                      'Profit Target',
+                      style: _textTheme.subtitle1,
+                    ),
+                    const Expanded(flex: 1, child: SizedBox.shrink()),
+                  ],
                 ),
-//
-                SizedBox(
-                  height: screensize.height * 0.05,
+                SizedBox(height: optionVPadding),
+                Row(
+                  children: [
+                    SizedBox(width: screensize.width * 0.2),
+                    InkWell(
+                      onTap: () {
+                        features[1] = !features[1];
+                        setState(() {});
+                      },
+                      child: Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: COLOR_PRIMARY),
+                            borderRadius: BorderRadius.circular(5),
+                            color: (features[1])
+                                ? COLOR_PRIMARY
+                                : Colors.transparent),
+                      ),
+                    ),
+                    const SizedBox(width: 5),
+                    Text(
+                      'Stop Loss',
+                      style: _textTheme.subtitle1,
+                    ),
+                    const Expanded(flex: 1, child: SizedBox.shrink()),
+                  ],
                 ),
+                SizedBox(height: optionVPadding),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: screensize.width * 0.2,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        features[2] = !features[2];
+                        setState(() {});
+                      },
+                      child: Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: COLOR_PRIMARY),
+                            borderRadius: BorderRadius.circular(5),
+                            color: (features[2])
+                                ? COLOR_PRIMARY
+                                : Colors.transparent),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      'Take LONG Trades',
+                      style: _textTheme.subtitle1,
+                    ),
+                    const Expanded(flex: 1, child: SizedBox.shrink()),
+                  ],
+                ),
+                SizedBox(height: optionVPadding),
+                Row(
+                  children: [
+                    SizedBox(width: screensize.width * 0.2),
+                    InkWell(
+                      onTap: () {
+                        features[3] = !features[3];
+                        setState(() {});
+                      },
+                      child: Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: COLOR_PRIMARY),
+                            borderRadius: BorderRadius.circular(5),
+                            color: (features[3])
+                                ? COLOR_PRIMARY
+                                : Colors.transparent),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      'Take SHORT Trades',
+                      style: _textTheme.subtitle1,
+                    ),
+                    const Expanded(flex: 1, child: SizedBox.shrink()),
+                  ],
+                ),
+                SizedBox(height: screensize.height * 0.05),
                 ElevatedButton(
                     onPressed: () {},
                     child: const Padding(
