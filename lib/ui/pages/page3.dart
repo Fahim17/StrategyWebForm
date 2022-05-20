@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
+import 'package:ninjastrategy2/ui/pages/page4.dart';
 
 class Page3 extends StatefulWidget {
   Page3({Key? key}) : super(key: key);
@@ -23,6 +24,7 @@ class _Page3State extends State<Page3> {
 
   final double optionHPadding = 200;
   final double optionVPadding = 10;
+  final double optionLV = 0.09;
   @override
   Widget build(BuildContext context) {
     Size screensize = MediaQuery.of(context).size;
@@ -48,16 +50,16 @@ class _Page3State extends State<Page3> {
                 SizedBox(height: screensize.height * 0.10),
                 Padding(
                   padding: EdgeInsets.fromLTRB(
-                      screensize.width * 0.1, 0, screensize.width * 0.1, 0),
+                      screensize.width * 0.05, 0, screensize.width * 0.05, 0),
                   child: Text(
                     'Select the features you want to use in your strategy.',
                     style: _textTheme.headline6,
                   ),
                 ),
-                SizedBox(height: screensize.height * 0.08),
+                SizedBox(height: screensize.height * 0.05),
                 Row(
                   children: [
-                    SizedBox(width: screensize.width * 0.2),
+                    SizedBox(width: screensize.width * optionLV),
                     InkWell(
                       onTap: () {
                         features[0] = !features[0];
@@ -85,7 +87,7 @@ class _Page3State extends State<Page3> {
                 SizedBox(height: optionVPadding),
                 Row(
                   children: [
-                    SizedBox(width: screensize.width * 0.2),
+                    SizedBox(width: screensize.width * optionLV),
                     InkWell(
                       onTap: () {
                         features[1] = !features[1];
@@ -113,9 +115,7 @@ class _Page3State extends State<Page3> {
                 SizedBox(height: optionVPadding),
                 Row(
                   children: [
-                    SizedBox(
-                      width: screensize.width * 0.2,
-                    ),
+                    SizedBox(width: screensize.width * optionLV),
                     InkWell(
                       onTap: () {
                         features[2] = !features[2];
@@ -145,7 +145,7 @@ class _Page3State extends State<Page3> {
                 SizedBox(height: optionVPadding),
                 Row(
                   children: [
-                    SizedBox(width: screensize.width * 0.2),
+                    SizedBox(width: screensize.width * optionLV),
                     InkWell(
                       onTap: () {
                         features[3] = !features[3];
@@ -172,9 +172,12 @@ class _Page3State extends State<Page3> {
                     const Expanded(flex: 1, child: SizedBox.shrink()),
                   ],
                 ),
-                SizedBox(height: screensize.height * 0.05),
+                SizedBox(height: screensize.height * 0.15),
                 ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Page4()));
+                    },
                     child: const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       child: Text('Next'),

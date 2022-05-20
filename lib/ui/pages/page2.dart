@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
+import 'package:ninjastrategy2/ui/pages/page3.dart';
 
 class Page2 extends StatefulWidget {
   Page2({Key? key}) : super(key: key);
@@ -95,7 +96,10 @@ class _Page2State extends State<Page2> {
                   height: screensize.height * 0.05,
                 ),
                 ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Page3()));
+                    },
                     child: const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       child: Text('Next'),
