@@ -9,6 +9,8 @@ const BACKGROUND_COLOR = Color(0xffC2C2C2);
 const COLOR_PRIMARY = Color(0xff7A6BD8);
 const COLOR_White = Colors.white;
 const COLOR_Grey1 = Color(0xff545454);
+const COLOR_Grey2 = Color(0xffD0D0D0);
+const COLOR_Green1 = Color(0xff78A55A);
 
 const titleText = 'STRATEGY GENERATOR';
 
@@ -32,10 +34,11 @@ ThemeData defalutTheme = ThemeData(
     headline4: TextStyle(
       color: COLOR_PRIMARY,
     ),
+    headline5: TextStyle(fontWeight: FontWeight.bold),
     subtitle1: TextStyle(fontWeight: FontWeight.bold),
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ElevatedButton.styleFrom(primary: COLOR_PRIMARY, elevation: 10),
+    style: ElevatedButton.styleFrom(primary: COLOR_PRIMARY, elevation: 5),
   ),
   inputDecorationTheme: InputDecorationTheme(
     filled: true,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ninjastrategy2/ui/pages/condition_form.dart';
+import 'package:ninjastrategy2/ui/pages/condition_list.dart';
 import 'package:ninjastrategy2/ui/pages/page1.dart';
 import 'package:ninjastrategy2/ui/pages/page2.dart';
 import 'package:ninjastrategy2/ui/pages/page3.dart';
@@ -15,6 +17,6 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
-    return Page1();
+    return ConditionFormPage();
   }
 }
