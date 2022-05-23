@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
+import 'package:ninjastrategy2/ui/pages/components/adl.dart';
+import 'package:ninjastrategy2/ui/pages/components/adx.dart';
+import 'package:ninjastrategy2/ui/pages/components/bollinger.dart';
+import 'package:ninjastrategy2/ui/pages/components/bop.dart';
 import 'package:ninjastrategy2/ui/pages/page2.dart';
 
 class ConditionFormPage extends StatefulWidget {
@@ -10,6 +14,13 @@ class ConditionFormPage extends StatefulWidget {
 }
 
 class _ConditionFormPageState extends State<ConditionFormPage> {
+  var x = Bollinger();
+  var y = BOP();
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size screensize = MediaQuery.of(context).size;
@@ -96,29 +107,13 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                   padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                   child: Row(
                     children: [
-                      Expanded(
-                        flex: 1,
-                        child: Center(
-                          child: Container(
-                            height: 450,
-                            color: Colors.blue,
-                          ),
-                        ),
-                      ),
+                      Expanded(flex: 1, child: x),
                       Container(
                         color: COLOR_Grey1,
-                        width: 5,
+                        width: 2,
                         height: 400,
                       ),
-                      Expanded(
-                        flex: 1,
-                        child: Center(
-                          child: Container(
-                            height: 450,
-                            color: Colors.purple,
-                          ),
-                        ),
-                      ),
+                      Expanded(flex: 1, child: y),
                     ],
                   ),
                 ),

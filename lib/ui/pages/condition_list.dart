@@ -207,8 +207,8 @@ class _ConditionListPageState extends State<ConditionListPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: Container(
                     color: Colors.blueGrey,
-                    width: 10,
-                    height: 10,
+                    width: 50,
+                    height: 50,
                   ),
                 ),
                 SizedBox(height: screensize.height * 0.15),
