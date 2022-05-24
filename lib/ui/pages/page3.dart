@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
-import 'package:ninjastrategy2/ui/pages/page4.dart';
+import 'package:ninjastrategy2/ui/featurenav.dart';
+import 'package:ninjastrategy2/ui/pages/profit_target.dart';
 
 class Page3 extends StatefulWidget {
   Page3({Key? key}) : super(key: key);
@@ -175,8 +176,12 @@ class _Page3State extends State<Page3> {
                 SizedBox(height: screensize.height * 0.15),
                 ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Page4()));
+                      FeatureNav.profitTarget = features[0];
+                      FeatureNav.stopLoss = features[1];
+                      FeatureNav.longTrade = features[2];
+                      FeatureNav.shortTrade = features[3];
+
+                      FeatureNav.runPageRouting(context);
                     },
                     child: const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10),

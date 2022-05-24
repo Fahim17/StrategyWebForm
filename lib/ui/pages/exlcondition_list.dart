@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
+import 'package:ninjastrategy2/ui/featurenav.dart';
 
-class ConditionListPage extends StatefulWidget {
-  ConditionListPage({Key? key}) : super(key: key);
+class ExLConditionListPage extends StatefulWidget {
+  ExLConditionListPage({Key? key}) : super(key: key);
 
   @override
-  State<ConditionListPage> createState() => _ConditionListPageState();
+  State<ExLConditionListPage> createState() => _ExLConditionListPageState();
 }
 
-class _ConditionListPageState extends State<ConditionListPage> {
+class _ExLConditionListPageState extends State<ExLConditionListPage> {
   List<bool> features = [false, false, false, false];
 
   TextEditingController ptController = TextEditingController();
@@ -51,7 +52,7 @@ class _ConditionListPageState extends State<ConditionListPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'Entry Long Conditions',
+                      'Exit Long Conditions',
                       style: _textTheme.headline6,
                     ),
                     const SizedBox(height: 10),
@@ -213,7 +214,10 @@ class _ConditionListPageState extends State<ConditionListPage> {
                 ),
                 SizedBox(height: screensize.height * 0.15),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    FeatureNav.finishedLongTrade = true;
+                    FeatureNav.runPageRouting(context);
+                  },
                   child: const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Text('Next'),

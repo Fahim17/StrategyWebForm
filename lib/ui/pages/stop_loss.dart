@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
-import 'package:ninjastrategy2/ui/pages/page5.dart';
+import 'package:ninjastrategy2/ui/featurenav.dart';
 
-class Page4 extends StatefulWidget {
-  Page4({Key? key}) : super(key: key);
+class StopLoss extends StatefulWidget {
+  StopLoss({Key? key}) : super(key: key);
 
   @override
-  State<Page4> createState() => _Page4State();
+  State<StopLoss> createState() => _StopLossState();
 }
 
-class _Page4State extends State<Page4> {
+class _StopLossState extends State<StopLoss> {
   List<bool> features = [false, false, false, false];
 
   TextEditingController ptController = TextEditingController();
@@ -57,7 +57,7 @@ class _Page4State extends State<Page4> {
                     children: [
                       SizedBox(height: screensize.height * 0.02),
                       Text(
-                        'How Do you measure the Profit of the Strategy?',
+                        'How Do you measure the Stop Loss of the Strategy?',
                         style: _textTheme.headline6,
                       ),
                       SizedBox(height: screensize.height * 0.05),
@@ -154,7 +154,7 @@ class _Page4State extends State<Page4> {
                       ),
                       SizedBox(height: screensize.height * 0.05),
                       Text(
-                        'Enter Profit Target',
+                        'Enter Stop Loss Value',
                         style: _textTheme.headline6,
                       ),
                       SizedBox(height: screensize.height * 0.02),
@@ -175,8 +175,8 @@ class _Page4State extends State<Page4> {
                 SizedBox(height: screensize.height * 0.15),
                 ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Page5()));
+                      FeatureNav.finishedStopLoss = true;
+                      FeatureNav.runPageRouting(context);
                     },
                     child: const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10),

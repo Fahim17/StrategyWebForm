@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
+import 'package:ninjastrategy2/ui/featurenav.dart';
+import 'package:ninjastrategy2/ui/pages/stop_loss.dart';
 
-class Page5 extends StatefulWidget {
-  Page5({Key? key}) : super(key: key);
+class ProfitTarget extends StatefulWidget {
+  ProfitTarget({Key? key}) : super(key: key);
 
   @override
-  State<Page5> createState() => _Page5State();
+  State<ProfitTarget> createState() => _ProfitTargetState();
 }
 
-class _Page5State extends State<Page5> {
+class _ProfitTargetState extends State<ProfitTarget> {
   List<bool> features = [false, false, false, false];
 
   TextEditingController ptController = TextEditingController();
@@ -56,7 +58,7 @@ class _Page5State extends State<Page5> {
                     children: [
                       SizedBox(height: screensize.height * 0.02),
                       Text(
-                        'How Do you measure the Stop Loss of the Strategy?',
+                        'How Do you measure the Profit of the Strategy?',
                         style: _textTheme.headline6,
                       ),
                       SizedBox(height: screensize.height * 0.05),
@@ -153,7 +155,7 @@ class _Page5State extends State<Page5> {
                       ),
                       SizedBox(height: screensize.height * 0.05),
                       Text(
-                        'Enter Stop Loss Value',
+                        'Enter Profit Target',
                         style: _textTheme.headline6,
                       ),
                       SizedBox(height: screensize.height * 0.02),
@@ -173,7 +175,16 @@ class _Page5State extends State<Page5> {
                 ),
                 SizedBox(height: screensize.height * 0.15),
                 ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // Navigator.push(context,
+                      //     MaterialPageRoute(builder: (context) => Page5()));
+                      // print(FeatureNav.profitTarget);
+                      // print(FeatureNav.stopLoss);
+                      // print(FeatureNav.longTrade);
+                      // print(FeatureNav.shortTrade);
+                      FeatureNav.finishedProfitTarget = true;
+                      FeatureNav.runPageRouting(context);
+                    },
                     child: const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       child: Text('Next'),
