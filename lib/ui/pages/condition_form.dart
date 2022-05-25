@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/pages/components/adl.dart';
 import 'package:ninjastrategy2/ui/pages/components/adx.dart';
+import 'package:ninjastrategy2/ui/pages/widgets/basic_component_layout.dart';
 import 'package:ninjastrategy2/ui/pages/components/bollinger.dart';
 import 'package:ninjastrategy2/ui/pages/components/bop.dart';
 import 'package:ninjastrategy2/ui/pages/page2.dart';
+import 'package:ninjastrategy2/ui/pages/widgets/popup_components.dart';
 
 class ConditionFormPage extends StatefulWidget {
   ConditionFormPage({Key? key}) : super(key: key);
@@ -25,12 +27,12 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
   Widget build(BuildContext context) {
     Size screensize = MediaQuery.of(context).size;
     TextTheme _textTheme = Theme.of(context).textTheme;
-    // print(screensize.toString());
+    // print(screensize.height * bxHeightRatio);
     return Scaffold(
       body: Center(
         child: Container(
-          height: screensize.height * bxHeightRatio,
-          width: screensize.width * bxWidthRatio,
+          height: bxHeight,
+          width: bxWidth,
           decoration: bxDecorations,
           child: SingleChildScrollView(
             child: Column(
@@ -79,7 +81,12 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                         flex: 1,
                         child: Center(
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      ComponentsPopUp());
+                            },
                             child: const Padding(
                               padding: EdgeInsets.symmetric(horizontal: 10),
                               child: Text('Select'),

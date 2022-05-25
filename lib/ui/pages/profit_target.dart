@@ -36,8 +36,8 @@ class _ProfitTargetState extends State<ProfitTarget> {
     return Scaffold(
       body: Center(
         child: Container(
-          height: screensize.height * bxHeightRatio,
-          width: screensize.width * bxWidthRatio,
+          height: bxHeight,
+          width: bxWidth,
           decoration: bxDecorations,
           child: SingleChildScrollView(
             child: Column(

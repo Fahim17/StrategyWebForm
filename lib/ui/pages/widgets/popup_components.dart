@@ -1,0 +1,263 @@
+import 'package:flutter/material.dart';
+import 'package:ninjastrategy2/themes/app_theme_data.dart';
+
+class ComponentsPopUp extends StatefulWidget {
+  ComponentsPopUp({Key? key}) : super(key: key);
+
+  @override
+  State<ComponentsPopUp> createState() => _ComponentsPopUpState();
+}
+
+class _ComponentsPopUpState extends State<ComponentsPopUp>
+    with TickerProviderStateMixin {
+  TextEditingController searchController = TextEditingController();
+  List allIndicators = [
+    'ADL',
+    'ADX',
+    'Bollinger',
+    'BOP',
+    // 'Drinks',
+    // 'FastFood',
+    // 'Vegan',
+    // 'Vietnamese',
+    // 'German',
+    // 'Moroccan',
+    // 'Gambian',
+    // 'Philadelphia',
+    // 'Texan',
+  ];
+  List allPrice = [
+    'Ask',
+    'Bid',
+    'Close',
+    'High',
+    // 'Drinks',
+    // 'FastFood',
+    // 'Vegan',
+    // 'Vietnamese',
+    // 'German',
+    // 'Moroccan',
+    // 'Gambian',
+    // 'Philadelphia',
+    // 'Texan',
+  ];
+  late TabController _tabController;
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 4, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _tabController.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    TextTheme _textTheme = Theme.of(context).textTheme;
+
+    final Size screenSize = MediaQuery.of(context).size;
+    return AlertDialog(
+      // actions: [
+      //   Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: ElevatedButton(
+      //       style: ElevatedButton.styleFrom(
+      //         primary: Colors.green,
+      //         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+      //         shape: RoundedRectangleBorder(
+      //           borderRadius: BorderRadius.circular(5),
+      //         ),
+      //       ),
+      //       onPressed: () {
+      //         // Navigator.pop(context);
+      //       },
+      //       child: Text('OK', style: _textTheme.headline6),
+      //     ),
+      //   ),
+      // ],
+      actions: [
+        TabBar(
+          controller: _tabController,
+          tabs: [
+            Tab(
+              child: Text(
+                'Indicators',
+                style: _textTheme.subtitle2,
+              ),
+            ),
+            Tab(
+              child: Text(
+                'Price',
+                style: _textTheme.subtitle2,
+              ),
+            ),
+            Tab(
+              child: Text(
+                'Volumn',
+                style: _textTheme.subtitle2,
+              ),
+            ),
+            Tab(
+              child: Text(
+                'Time',
+                style: _textTheme.subtitle2,
+              ),
+            ),
+          ],
+        ),
+      ],
+      title: Center(
+        child: Text(
+          "Elements",
+          style: _textTheme.headline5?.copyWith(fontWeight: FontWeight.normal),
+        ),
+      ),
+      content: SizedBox(
+        width: bxWidth * 0.8,
+        height: bxHeight * 0.5,
+        child: TabBarView(
+          controller: _tabController,
+          children: [
+            Column(
+              children: [
+                // Padding(
+                //   padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                //   child: TextField(
+                //     controller: widget.searchController,
+                //     decoration: const InputDecoration(hintText: 'Search')
+                //         .applyDefaults(_inputDecorTheme),
+                //     keyboardType: TextInputType.name,
+                //     style: _textTheme.headline6?.copyWith(color: Colors.black),
+                //   ),
+                // ),
+                Expanded(
+                  child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      mainAxisSpacing: 0.0,
+                      crossAxisSpacing: 10.0,
+                      childAspectRatio: (screenSize.width / screenSize.height),
+                    ),
+                    shrinkWrap: true,
+                    itemCount: allIndicators.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: const EdgeInsets.all(10),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: COLOR_PRIMARY,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                          ),
+                          onPressed: () {},
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: FittedBox(
+                                child: Text(allIndicators[index],
+                                    style: _textTheme.subtitle1
+                                        ?.copyWith(color: Colors.white))),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),
+            Column(
+              children: [
+                // Padding(
+                //   padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                //   child: TextField(
+                //     controller: widget.searchController,
+                //     decoration: const InputDecoration(hintText: 'Search')
+                //         .applyDefaults(_inputDecorTheme),
+                //     keyboardType: TextInputType.name,
+                //     style: _textTheme.headline6?.copyWith(color: Colors.black),
+                //   ),
+                // ),
+                Expanded(
+                  child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      mainAxisSpacing: 0.0,
+                      crossAxisSpacing: 10.0,
+                      childAspectRatio: (screenSize.width / screenSize.height),
+                    ),
+                    shrinkWrap: true,
+                    itemCount: allPrice.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: const EdgeInsets.all(10),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: COLOR_PRIMARY,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                          ),
+                          onPressed: () {},
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: FittedBox(
+                                child: Text(allPrice[index],
+                                    style: _textTheme.subtitle1
+                                        ?.copyWith(color: Colors.white))),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),
+            SizedBox.shrink(),
+            SizedBox.shrink(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// class CusItem extends StatefulWidget {
+//   ComponentsModel item;
+//   bool marked;
+//   CusItem({Key? key, required this.item, required this.marked}) : super(key: key);
+
+//   @override
+//   State<CusItem> createState() => _CusItemState();
+// }
+
+// class _CusItemState extends State<CusItem> {
+//   @override
+//   void dispose() {
+//     super.dispose();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     TextTheme _textTheme = Theme.of(context).textTheme;
+
+//     return Container(
+//       margin: const EdgeInsets.all(10),
+//       child: ElevatedButton(
+//         style: ElevatedButton.styleFrom(
+//           primary: (widget.marked) ? COLOR_Amber1 : COLOR_Grey1,
+//           shape: RoundedRectangleBorder(
+//             borderRadius: BorderRadius.circular(5),
+//           ),
+//         ),
+//         onPressed: () {},
+//         child: Padding(
+//           padding: const EdgeInsets.all(10),
+//           child: FittedBox(child: Text(widget.item.name, style: _textTheme.subtitle1)),
+//         ),
+//       ),
+//     );
+//   }
+// }

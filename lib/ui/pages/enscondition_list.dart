@@ -35,8 +35,8 @@ class _EnSConditionListPageState extends State<EnSConditionListPage> {
     return Scaffold(
       body: Center(
         child: Container(
-          height: screensize.height * bxHeightRatio,
-          width: screensize.width * bxWidthRatio,
+          height: bxHeight,
+          width: bxWidth,
           decoration: bxDecorations,
           child: SingleChildScrollView(
             child: Column(

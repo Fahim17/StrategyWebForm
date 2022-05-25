@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 
 const double bxHeightRatio = 0.97;
 const double bxWidthRatio = 0.5;
+const double bxWidth = 650;
+const double bxHeight = 637;
 const double bxBorderRadius = 20;
+const double compontHeight = 300;
+const double compontPaddingLeft = 20;
+const double compontPaddingRignt = 20;
 
 const BX_COLOR = Color(0xffE0E0E0);
 const BACKGROUND_COLOR = Color(0xffC2C2C2);
@@ -39,6 +44,14 @@ ThemeData defalutTheme = ThemeData(
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(primary: COLOR_PRIMARY, elevation: 5),
+  ),
+  dialogTheme: DialogTheme(
+    backgroundColor: BX_COLOR,
+    shape: RoundedRectangleBorder(
+      side: const BorderSide(color: COLOR_White, width: 3),
+      borderRadius: BorderRadius.circular(15),
+    ),
+    // titleTextStyle: TEXTSTYLE_Headline5,
   ),
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
