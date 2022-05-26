@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/featurenav.dart';
+import 'package:ninjastrategy2/ui/pages/condition_form.dart';
 import 'package:ninjastrategy2/ui/pages/exlcondition_list.dart';
 
 class EnLConditionListPage extends StatefulWidget {
@@ -134,7 +135,12 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                         style: _textTheme.subtitle1,
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ConditionFormPage()));
+                        },
                         color: COLOR_Green1,
                         icon: const Icon(Icons.add_circle_rounded),
                       )
@@ -208,23 +214,38 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: Container(
-                    color: Colors.blueGrey,
+                    color: Colors.transparent,
                     width: 50,
                     height: 50,
                   ),
                 ),
                 SizedBox(height: screensize.height * 0.15),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ExLConditionListPage()));
-                  },
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: Text('Next'),
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        FeatureNav.finishedLongTrade = false;
+                        Navigator.pop(context);
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: Text('Back'),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ExLConditionListPage()));
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: Text('Next'),
+                      ),
+                    ),
+                  ],
                 )
               ],
             ),

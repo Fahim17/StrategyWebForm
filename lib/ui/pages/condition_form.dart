@@ -99,7 +99,12 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                         flex: 1,
                         child: Center(
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      ComponentsPopUp());
+                            },
                             child: const Padding(
                               padding: EdgeInsets.symmetric(horizontal: 10),
                               child: Text('Select'),
@@ -132,7 +137,9 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                         flex: 1,
                         child: Center(
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
                             child: const Padding(
                               padding: EdgeInsets.symmetric(horizontal: 10),
                               child: Text('Back'),
@@ -145,7 +152,9 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                         flex: 1,
                         child: Center(
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
                             child: const Padding(
                               padding: EdgeInsets.symmetric(horizontal: 10),
                               child: Text('Done'),

@@ -19,39 +19,41 @@ class Page1 extends StatelessWidget {
           height: bxHeight,
           width: bxWidth,
           decoration: bxDecorations,
-          child: Column(
-            children: [
-              SizedBox(
-                height: screensize.height * 0.05,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Text(
-                  titleText,
-                  style: _textTheme.headline4,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: screensize.height * 0.05,
                 ),
-              ),
-              SizedBox(
-                height: screensize.height * 0.15,
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(
-                    screensize.width * 0.1, 0, screensize.width * 0.1, 0),
-                child: Text(
-                  description,
-                  style: _textTheme.headline6,
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Text(
+                    titleText,
+                    style: _textTheme.headline4,
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: screensize.height * 0.15,
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Page2()));
-                  },
-                  child: const Text('Let\'s Get Started'))
-            ],
+                SizedBox(
+                  height: screensize.height * 0.15,
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(
+                      screensize.width * 0.1, 0, screensize.width * 0.1, 0),
+                  child: Text(
+                    description,
+                    style: _textTheme.headline6,
+                  ),
+                ),
+                SizedBox(
+                  height: screensize.height * 0.15,
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Page2()));
+                    },
+                    child: const Text('Let\'s Get Started'))
+              ],
+            ),
           ),
         ),
       ),

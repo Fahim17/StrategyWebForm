@@ -174,19 +174,34 @@ class _Page3State extends State<Page3> {
                   ],
                 ),
                 SizedBox(height: screensize.height * 0.15),
-                ElevatedButton(
-                    onPressed: () {
-                      FeatureNav.profitTarget = features[0];
-                      FeatureNav.stopLoss = features[1];
-                      FeatureNav.longTrade = features[2];
-                      FeatureNav.shortTrade = features[3];
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: Text('Back'),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        FeatureNav.profitTarget = features[0];
+                        FeatureNav.stopLoss = features[1];
+                        FeatureNav.longTrade = features[2];
+                        FeatureNav.shortTrade = features[3];
 
-                      FeatureNav.runPageRouting(context);
-                    },
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Text('Next'),
-                    ))
+                        FeatureNav.runPageRouting(context);
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: Text('Next'),
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
           ),

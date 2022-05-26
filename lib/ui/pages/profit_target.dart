@@ -11,7 +11,7 @@ class ProfitTarget extends StatefulWidget {
 }
 
 class _ProfitTargetState extends State<ProfitTarget> {
-  List<bool> features = [false, false, false, false];
+  List<bool> features = [false, false, false];
 
   TextEditingController ptController = TextEditingController();
 
@@ -68,7 +68,10 @@ class _ProfitTargetState extends State<ProfitTarget> {
                           children: [
                             InkWell(
                               onTap: () {
-                                features[0] = !features[0];
+                                features[0] = true;
+                                features[1] = false;
+                                features[2] = false;
+
                                 setState(() {});
                               },
                               child: Container(
@@ -98,7 +101,9 @@ class _ProfitTargetState extends State<ProfitTarget> {
                           children: [
                             InkWell(
                               onTap: () {
-                                features[1] = !features[1];
+                                features[0] = false;
+                                features[1] = true;
+                                features[2] = false;
                                 setState(() {});
                               },
                               child: Container(
@@ -128,7 +133,9 @@ class _ProfitTargetState extends State<ProfitTarget> {
                           children: [
                             InkWell(
                               onTap: () {
-                                features[2] = !features[2];
+                                features[0] = false;
+                                features[1] = false;
+                                features[2] = true;
                                 setState(() {});
                               },
                               child: Container(
@@ -174,21 +181,37 @@ class _ProfitTargetState extends State<ProfitTarget> {
                   ),
                 ),
                 SizedBox(height: screensize.height * 0.15),
-                ElevatedButton(
-                    onPressed: () {
-                      // Navigator.push(context,
-                      //     MaterialPageRoute(builder: (context) => Page5()));
-                      // print(FeatureNav.profitTarget);
-                      // print(FeatureNav.stopLoss);
-                      // print(FeatureNav.longTrade);
-                      // print(FeatureNav.shortTrade);
-                      FeatureNav.finishedProfitTarget = true;
-                      FeatureNav.runPageRouting(context);
-                    },
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Text('Next'),
-                    ))
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        FeatureNav.finishedProfitTarget = false;
+                        Navigator.pop(context);
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: Text('Back'),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Navigator.push(context,
+                        //     MaterialPageRoute(builder: (context) => Page5()));
+                        // print(FeatureNav.profitTarget);
+                        // print(FeatureNav.stopLoss);
+                        // print(FeatureNav.longTrade);
+                        // print(FeatureNav.shortTrade);
+                        FeatureNav.finishedProfitTarget = true;
+                        FeatureNav.runPageRouting(context);
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: Text('Next'),
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
           ),

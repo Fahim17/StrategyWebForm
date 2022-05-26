@@ -67,7 +67,9 @@ class _StopLossState extends State<StopLoss> {
                           children: [
                             InkWell(
                               onTap: () {
-                                features[0] = !features[0];
+                                features[0] = true;
+                                features[1] = false;
+                                features[2] = false;
                                 setState(() {});
                               },
                               child: Container(
@@ -97,7 +99,9 @@ class _StopLossState extends State<StopLoss> {
                           children: [
                             InkWell(
                               onTap: () {
-                                features[1] = !features[1];
+                                features[0] = false;
+                                features[1] = true;
+                                features[2] = false;
                                 setState(() {});
                               },
                               child: Container(
@@ -127,7 +131,9 @@ class _StopLossState extends State<StopLoss> {
                           children: [
                             InkWell(
                               onTap: () {
-                                features[2] = !features[2];
+                                features[0] = false;
+                                features[1] = false;
+                                features[2] = true;
                                 setState(() {});
                               },
                               child: Container(
@@ -173,15 +179,31 @@ class _StopLossState extends State<StopLoss> {
                   ),
                 ),
                 SizedBox(height: screensize.height * 0.15),
-                ElevatedButton(
-                    onPressed: () {
-                      FeatureNav.finishedStopLoss = true;
-                      FeatureNav.runPageRouting(context);
-                    },
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Text('Next'),
-                    ))
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        FeatureNav.finishedStopLoss = false;
+                        Navigator.pop(context);
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: Text('Back'),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        FeatureNav.finishedStopLoss = true;
+                        FeatureNav.runPageRouting(context);
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: Text('Next'),
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
           ),
