@@ -36,8 +36,8 @@ class _ExSConditionListPageState extends State<ExSConditionListPage> {
     return Scaffold(
       body: Center(
         child: Container(
-          height: bxHeight,
-          width: bxWidth,
+          height: screensize.height * bxHeightRatio,
+          width: screensize.width * bxWidthRatio,
           decoration: bxDecorations,
           child: SingleChildScrollView(
             child: Column(

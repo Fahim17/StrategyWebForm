@@ -16,8 +16,8 @@ class EndPage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Container(
-          height: bxHeight,
-          width: bxWidth,
+          height: screensize.height * bxHeightRatio,
+          width: screensize.width * bxWidthRatio,
           decoration: bxDecorations,
           child: SingleChildScrollView(
             child: Column(
