@@ -69,7 +69,8 @@ class _EnSConditionListPageState extends State<EnSConditionListPage> {
                         children: [
                           InkWell(
                             onTap: () {
-                              features[1] = !features[1];
+                              features[0] = true;
+                              features[1] = false;
                               setState(() {});
                             },
                             child: Container(
@@ -78,7 +79,7 @@ class _EnSConditionListPageState extends State<EnSConditionListPage> {
                               decoration: BoxDecoration(
                                   border: Border.all(color: COLOR_PRIMARY),
                                   borderRadius: BorderRadius.circular(15),
-                                  color: (features[1])
+                                  color: (features[0])
                                       ? COLOR_PRIMARY
                                       : Colors.transparent),
                             ),
@@ -98,7 +99,8 @@ class _EnSConditionListPageState extends State<EnSConditionListPage> {
                         children: [
                           InkWell(
                             onTap: () {
-                              features[2] = !features[2];
+                              features[0] = false;
+                              features[1] = true;
                               setState(() {});
                             },
                             child: Container(
@@ -107,7 +109,7 @@ class _EnSConditionListPageState extends State<EnSConditionListPage> {
                               decoration: BoxDecoration(
                                   border: Border.all(color: COLOR_PRIMARY),
                                   borderRadius: BorderRadius.circular(15),
-                                  color: (features[2])
+                                  color: (features[1])
                                       ? COLOR_PRIMARY
                                       : Colors.transparent),
                             ),

@@ -1,4 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:ninjastrategy2/datamodel/compare_data_model.dart';
+import 'package:ninjastrategy2/datamodel/enlcondition_data_model.dart';
+import 'package:ninjastrategy2/datamodel/indicators/adl_datamodel.dart';
+import 'package:ninjastrategy2/datamodel/indicators/adx_datamodel.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/featurenav.dart';
 import 'package:ninjastrategy2/ui/pages/condition_form.dart';
@@ -12,13 +18,24 @@ class EnLConditionListPage extends StatefulWidget {
 }
 
 class _EnLConditionListPageState extends State<EnLConditionListPage> {
-  List<bool> features = [false, false, false, false];
+  List<bool> features = [false, false];
 
   TextEditingController ptController = TextEditingController();
+
+  void demoDataModelrun() {
+    Compare x = Compare();
+    x.firstObject = ADLdatamodel();
+    x.secondObject = ADXdatamodel();
+
+    enlConditionDataModel ulala = enlConditionDataModel();
+    ulala.compares.add(x);
+    print(jsonEncode(ulala.toJson()));
+  }
 
   @override
   void initState() {
     super.initState();
+    demoDataModelrun();
   }
 
   @override
@@ -69,7 +86,9 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                         children: [
                           InkWell(
                             onTap: () {
-                              features[1] = !features[1];
+                              features[0] = true;
+                              features[1] = false;
+
                               setState(() {});
                             },
                             child: Container(
@@ -78,7 +97,7 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                               decoration: BoxDecoration(
                                   border: Border.all(color: COLOR_PRIMARY),
                                   borderRadius: BorderRadius.circular(15),
-                                  color: (features[1])
+                                  color: (features[0])
                                       ? COLOR_PRIMARY
                                       : Colors.transparent),
                             ),
@@ -98,7 +117,8 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                         children: [
                           InkWell(
                             onTap: () {
-                              features[2] = !features[2];
+                              features[0] = false;
+                              features[1] = true;
                               setState(() {});
                             },
                             child: Container(
@@ -107,7 +127,7 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                               decoration: BoxDecoration(
                                   border: Border.all(color: COLOR_PRIMARY),
                                   borderRadius: BorderRadius.circular(15),
-                                  color: (features[2])
+                                  color: (features[1])
                                       ? COLOR_PRIMARY
                                       : Colors.transparent),
                             ),

@@ -11,7 +11,7 @@ class ExSConditionListPage extends StatefulWidget {
 }
 
 class _ExSConditionListPageState extends State<ExSConditionListPage> {
-  List<bool> features = [false, false, false, false];
+  List<bool> features = [false, false];
 
   TextEditingController ptController = TextEditingController();
 
@@ -68,7 +68,8 @@ class _ExSConditionListPageState extends State<ExSConditionListPage> {
                         children: [
                           InkWell(
                             onTap: () {
-                              features[1] = !features[1];
+                              features[0] = true;
+                              features[1] = false;
                               setState(() {});
                             },
                             child: Container(
@@ -77,7 +78,7 @@ class _ExSConditionListPageState extends State<ExSConditionListPage> {
                               decoration: BoxDecoration(
                                   border: Border.all(color: COLOR_PRIMARY),
                                   borderRadius: BorderRadius.circular(15),
-                                  color: (features[1])
+                                  color: (features[0])
                                       ? COLOR_PRIMARY
                                       : Colors.transparent),
                             ),
@@ -97,7 +98,8 @@ class _ExSConditionListPageState extends State<ExSConditionListPage> {
                         children: [
                           InkWell(
                             onTap: () {
-                              features[2] = !features[2];
+                              features[0] = false;
+                              features[1] = true;
                               setState(() {});
                             },
                             child: Container(
@@ -106,7 +108,7 @@ class _ExSConditionListPageState extends State<ExSConditionListPage> {
                               decoration: BoxDecoration(
                                   border: Border.all(color: COLOR_PRIMARY),
                                   borderRadius: BorderRadius.circular(15),
-                                  color: (features[2])
+                                  color: (features[1])
                                       ? COLOR_PRIMARY
                                       : Colors.transparent),
                             ),

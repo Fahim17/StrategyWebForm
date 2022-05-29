@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ninjastrategy2/datamodel/indicators/adl_datamodel.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/pages/page2.dart';
 
