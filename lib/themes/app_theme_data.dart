@@ -15,6 +15,7 @@ const COLOR_PRIMARY = Color(0xff7A6BD8);
 const COLOR_White = Colors.white;
 const COLOR_Grey1 = Color(0xff545454);
 const COLOR_Grey2 = Color(0xffD0D0D0);
+const COLOR_Grey3 = Color(0xffb5b5b5);
 const COLOR_Green1 = Color(0xff78A55A);
 
 const titleText = 'STRATEGY GENERATOR';

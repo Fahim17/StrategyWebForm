@@ -16,15 +16,15 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
     'ADX',
     'Bollinger',
     'BOP',
-    // 'Drinks',
-    // 'FastFood',
-    // 'Vegan',
-    // 'Vietnamese',
-    // 'German',
-    // 'Moroccan',
-    // 'Gambian',
-    // 'Philadelphia',
-    // 'Texan',
+    'Drinks',
+    'FastFood',
+    'Vegan',
+    'Vietnamese',
+    'German',
+    'Moroccan',
+    'Gambian',
+    'Philadelphia',
+    'Texan',
   ];
   List allPrice = [
     'Ask',
@@ -54,6 +54,16 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
     _tabController.dispose();
   }
 
+  Widget _tabOptions(String title) {
+    TextTheme _textTheme = Theme.of(context).textTheme;
+    return Tab(
+      child: Text(
+        title,
+        style: _textTheme.subtitle1?.copyWith(fontWeight: FontWeight.normal),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     TextTheme _textTheme = Theme.of(context).textTheme;
@@ -79,34 +89,21 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
       //   ),
       // ],
       actions: [
-        TabBar(
-          controller: _tabController,
-          tabs: [
-            Tab(
-              child: Text(
-                'Indicators',
-                style: _textTheme.subtitle2,
-              ),
-            ),
-            Tab(
-              child: Text(
-                'Price',
-                style: _textTheme.subtitle2,
-              ),
-            ),
-            Tab(
-              child: Text(
-                'Volumn',
-                style: _textTheme.subtitle2,
-              ),
-            ),
-            Tab(
-              child: Text(
-                'Time',
-                style: _textTheme.subtitle2,
-              ),
-            ),
-          ],
+        Container(
+          decoration: BoxDecoration(
+            color: COLOR_Grey3,
+            borderRadius: BorderRadius.circular(5),
+          ),
+          child: TabBar(
+            indicatorWeight: 5,
+            controller: _tabController,
+            tabs: [
+              _tabOptions('Indicators'),
+              _tabOptions('Price'),
+              _tabOptions('Volumn'),
+              _tabOptions('Time'),
+            ],
+          ),
         ),
       ],
       title: Center(

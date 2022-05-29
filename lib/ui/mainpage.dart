@@ -12,6 +12,6 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Page1();
+    return ConditionFormPage();
   }
 }

@@ -62,9 +62,8 @@ class _ExSConditionListPageState extends State<ExSConditionListPage> {
                       style: _textTheme.subtitle1,
                     ),
                     SizedBox(height: optionVPadding),
-                    Padding(
-                      padding:
-                          EdgeInsets.fromLTRB(screensize.width * 0.22, 0, 0, 0),
+                    SizedBox(
+                      width: 100,
                       child: Row(
                         children: [
                           InkWell(
@@ -92,9 +91,8 @@ class _ExSConditionListPageState extends State<ExSConditionListPage> {
                       ),
                     ),
                     SizedBox(height: optionVPadding),
-                    Padding(
-                      padding:
-                          EdgeInsets.fromLTRB(screensize.width * 0.22, 0, 0, 0),
+                    SizedBox(
+                      width: 100,
                       child: Row(
                         children: [
                           InkWell(

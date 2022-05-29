@@ -41,8 +41,7 @@ class _Page2State extends State<Page2> {
                 SizedBox(
                   height: screensize.height * 0.05,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
+                Center(
                   child: Text(
                     titleText,
                     style: _textTheme.headline4,
@@ -51,47 +50,107 @@ class _Page2State extends State<Page2> {
                 SizedBox(
                   height: screensize.height * 0.10,
                 ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(
-                      screensize.width * 0.1, 0, screensize.width * 0.1, 0),
-                  child: Text(
-                    'What is your NinjaTrader Strategy name, Trader?',
-                    style: _textTheme.headline6,
-                  ),
+                Row(
+                  children: [
+                    const Expanded(flex: 1, child: SizedBox.shrink()),
+                    Expanded(
+                      flex: 4,
+                      child: Text(
+                        'What is your NinjaTrader Strategy name, Trader?',
+                        style: _textTheme.headline6,
+                        textAlign: TextAlign.justify,
+                      ),
+                    ),
+                    const Expanded(flex: 1, child: SizedBox.shrink()),
+                  ],
                 ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(
-                      screensize.width * 0.1, 0, screensize.width * 0.1, 0),
-                  child: TextField(
-                    controller: nameController,
-                    decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Type Answer Here...'),
-                    style: _textTheme.subtitle1,
-                  ),
+                // Padding(
+                //   padding: EdgeInsets.fromLTRB(
+                //       screensize.width * 0.1, 0, screensize.width * 0.1, 0),
+                //   child: Text(
+                //     'What is your NinjaTrader Strategy name, Trader?',
+                //     style: _textTheme.headline6,
+                //   ),
+                // ),
+                Row(
+                  children: [
+                    const Expanded(flex: 1, child: SizedBox.shrink()),
+                    Expanded(
+                      flex: 4,
+                      child: TextField(
+                        controller: nameController,
+                        decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'Type Answer Here...'),
+                        style: _textTheme.subtitle1,
+                      ),
+                    ),
+                    const Expanded(flex: 1, child: SizedBox.shrink()),
+                  ],
                 ),
+                // Padding(
+                //   padding: EdgeInsets.fromLTRB(
+                //       screensize.width * 0.1, 0, screensize.width * 0.1, 0),
+                //   child: TextField(
+                //     controller: nameController,
+                //     decoration: const InputDecoration(
+                //         border: InputBorder.none,
+                //         hintText: 'Type Answer Here...'),
+                //     style: _textTheme.subtitle1,
+                //   ),
+                // ),
                 SizedBox(
                   height: screensize.height * 0.08,
                 ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(
-                      screensize.width * 0.1, 0, screensize.width * 0.1, 0),
-                  child: Text(
-                    'What is the number of contracts with which you will trade in each entry?',
-                    style: _textTheme.headline6,
-                  ),
+                Row(
+                  children: [
+                    const Expanded(flex: 1, child: SizedBox.shrink()),
+                    Expanded(
+                      flex: 4,
+                      child: Text(
+                        'What is the number of contracts with which you will trade in each entry?',
+                        style: _textTheme.headline6,
+                        textAlign: TextAlign.justify,
+                      ),
+                    ),
+                    const Expanded(flex: 1, child: SizedBox.shrink()),
+                  ],
                 ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(
-                      screensize.width * 0.1, 0, screensize.width * 0.1, 0),
-                  child: TextField(
-                    controller: contractController,
-                    decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Type Answer Here...'),
-                    style: _textTheme.subtitle1,
-                  ),
+                // Padding(
+                //   padding: EdgeInsets.fromLTRB(
+                //       screensize.width * 0.1, 0, screensize.width * 0.1, 0),
+                //   child: Text(
+                //     'What is the number of contracts with which you will trade in each entry?',
+                //     style: _textTheme.headline6,
+                //   ),
+                // ),
+                Row(
+                  children: [
+                    const Expanded(flex: 1, child: SizedBox.shrink()),
+                    Expanded(
+                      flex: 4,
+                      child: TextField(
+                        controller: contractController,
+                        decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'Type Answer Here...'),
+                        style: _textTheme.subtitle1,
+                      ),
+                    ),
+                    const Expanded(flex: 1, child: SizedBox.shrink()),
+                  ],
                 ),
+                // Padding(
+                //   padding: EdgeInsets.fromLTRB(
+                //       screensize.width * 0.1, 0, screensize.width * 0.1, 0),
+                //   child: TextField(
+                //     controller: contractController,
+                //     decoration: const InputDecoration(
+                //         border: InputBorder.none,
+                //         hintText: 'Type Answer Here...'),
+                //     style: _textTheme.subtitle1,
+                //   ),
+                // ),
                 SizedBox(
                   height: screensize.height * 0.05,
                 ),

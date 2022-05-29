@@ -6,7 +6,7 @@ class Page1 extends StatelessWidget {
   Page1({Key? key}) : super(key: key);
 
   String description =
-      'The GS-1931 algorithm will accompany you during the process of creating your strategy and will generate the code thanks to its AI.';
+      'The GS-1931 algorithm will accompany you during the process of creating ur strategy and will generate the code thanks to its AI.';
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +35,19 @@ class Page1 extends StatelessWidget {
                 SizedBox(
                   height: screensize.height * 0.15,
                 ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(
-                      screensize.width * 0.1, 0, screensize.width * 0.1, 0),
-                  child: Text(
-                    description,
-                    style: _textTheme.headline6,
-                  ),
+                Row(
+                  children: [
+                    const Expanded(flex: 1, child: SizedBox.shrink()),
+                    Expanded(
+                      flex: 4,
+                      child: Text(
+                        description,
+                        style: _textTheme.headline6,
+                        textAlign: TextAlign.justify,
+                      ),
+                    ),
+                    const Expanded(flex: 1, child: SizedBox.shrink()),
+                  ],
                 ),
                 SizedBox(
                   height: screensize.height * 0.15,

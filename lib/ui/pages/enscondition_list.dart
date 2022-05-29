@@ -63,9 +63,8 @@ class _EnSConditionListPageState extends State<EnSConditionListPage> {
                       style: _textTheme.subtitle1,
                     ),
                     SizedBox(height: optionVPadding),
-                    Padding(
-                      padding:
-                          EdgeInsets.fromLTRB(screensize.width * 0.22, 0, 0, 0),
+                    SizedBox(
+                      width: 100,
                       child: Row(
                         children: [
                           InkWell(
@@ -93,9 +92,8 @@ class _EnSConditionListPageState extends State<EnSConditionListPage> {
                       ),
                     ),
                     SizedBox(height: optionVPadding),
-                    Padding(
-                      padding:
-                          EdgeInsets.fromLTRB(screensize.width * 0.22, 0, 0, 0),
+                    SizedBox(
+                      width: 100,
                       child: Row(
                         children: [
                           InkWell(
