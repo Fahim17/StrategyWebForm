@@ -5,6 +5,7 @@ import 'package:ninjastrategy2/datamodel/compare_data_model.dart';
 import 'package:ninjastrategy2/datamodel/enlcondition_data_model.dart';
 import 'package:ninjastrategy2/datamodel/indicators/adl_datamodel.dart';
 import 'package:ninjastrategy2/datamodel/indicators/adx_datamodel.dart';
+import 'package:ninjastrategy2/datamodel/main_data_model.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/featurenav.dart';
 import 'package:ninjastrategy2/ui/pages/condition_form.dart';
@@ -27,8 +28,10 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
     x.firstObject = ADLdatamodel();
     x.secondObject = ADXdatamodel();
 
-    enlConditionDataModel ulala = enlConditionDataModel();
-    ulala.compares.add(x);
+    // enlConditionDataModel ulala = enlConditionDataModel();
+    MainDataModel ulala = MainDataModel();
+    ulala.enlC.compares.add(x);
+    ulala.prepareFinalData();
     print(jsonEncode(ulala.toJson()));
   }
 

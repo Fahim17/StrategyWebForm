@@ -3,13 +3,13 @@ import 'compare_data_model.dart';
 import 'package:meta/meta.dart';
 import 'dart:convert';
 
-class enlConditionDataModel {
-  enlConditionDataModel() {
-    operations.add(enlOperation());
+class exsConditionDataModel {
+  exsConditionDataModel() {
+    operations.add(exsOperation());
   }
 
   List<Compare> compares = [];
-  List<enlOperation> operations = [];
+  List<exsOperation> operations = [];
   String conditionType = "12";
 
   Map<String, dynamic> toJson() => {
@@ -19,10 +19,10 @@ class enlConditionDataModel {
       };
 }
 
-class enlOperation {
-  enlOperation({
-    this.type = "NinjaScriptGenerator.Long, NinjaScriptGenerator",
-    this.action = 0,
+class exsOperation {
+  exsOperation({
+    this.type = "NinjaScriptGenerator.Short, NinjaScriptGenerator",
+    this.action = 1,
     this.quantity = 0,
   });
 
