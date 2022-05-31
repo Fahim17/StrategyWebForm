@@ -138,7 +138,9 @@ class _ExLConditionListPageState extends State<ExLConditionListPage> {
                           await Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ConditionFormPage()));
+                                  builder: (context) => ConditionFormPage(
+                                        frompage: 'exl',
+                                      )));
                         },
                         color: COLOR_Green1,
                         icon: const Icon(Icons.add_circle_rounded),

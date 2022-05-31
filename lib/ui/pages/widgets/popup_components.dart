@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 
 class ComponentsPopUp extends StatefulWidget {
-  ComponentsPopUp({Key? key}) : super(key: key);
+  Function selection;
+  ComponentsPopUp({Key? key, required this.selection}) : super(key: key);
 
   @override
   State<ComponentsPopUp> createState() => _ComponentsPopUpState();
@@ -16,21 +17,6 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
     'ADX',
     'Bollinger',
     'BOP',
-    'Drinks',
-    'FastFood',
-    'Vegan',
-    'Vietnamese',
-    'German',
-    'Moroccan',
-    'Gambian',
-    'Philadelphia',
-    'Texan',
-  ];
-  List allPrice = [
-    'Ask',
-    'Bid',
-    'Close',
-    'High',
     // 'Drinks',
     // 'FastFood',
     // 'Vegan',
@@ -40,6 +26,12 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
     // 'Gambian',
     // 'Philadelphia',
     // 'Texan',
+  ];
+  List allPrice = [
+    'Ask',
+    'Bid',
+    'Close',
+    'High',
   ];
   late TabController _tabController;
   @override
@@ -150,7 +142,10 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
                               borderRadius: BorderRadius.circular(5),
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            widget.selection(allIndicators[index]);
+                            Navigator.pop(context);
+                          },
                           child: Padding(
                             padding: const EdgeInsets.all(10),
                             child: FittedBox(

@@ -139,7 +139,9 @@ class _EnSConditionListPageState extends State<EnSConditionListPage> {
                           await Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ConditionFormPage()));
+                                  builder: (context) => ConditionFormPage(
+                                        frompage: 'ens',
+                                      )));
                         },
                         color: COLOR_Green1,
                         icon: const Icon(Icons.add_circle_rounded),

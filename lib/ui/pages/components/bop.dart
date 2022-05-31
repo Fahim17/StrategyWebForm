@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ninjastrategy2/datamodel/indicators/bop_datamodel.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 
 class BOP extends StatefulWidget {
-  bool plotOfChart = false;
+  BOPdatamodel dataModel = BOPdatamodel();
   BOP({Key? key}) : super(key: key);
 
   @override
@@ -13,6 +14,7 @@ class _BOPState extends State<BOP> {
   TextEditingController tx1 = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    bool plotOfChart = false;
     Size screensize = MediaQuery.of(context).size;
     TextTheme _textTheme = Theme.of(context).textTheme;
     return SizedBox(
@@ -30,7 +32,7 @@ class _BOPState extends State<BOP> {
                   Text('Plot of Chart', style: _textTheme.subtitle1),
                   InkWell(
                     onTap: () {
-                      widget.plotOfChart = !widget.plotOfChart;
+                      plotOfChart = !plotOfChart;
                       setState(() {});
                     },
                     child: Container(
@@ -39,7 +41,7 @@ class _BOPState extends State<BOP> {
                       decoration: BoxDecoration(
                           border: Border.all(color: COLOR_PRIMARY, width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: (widget.plotOfChart)
+                          color: (plotOfChart)
                               ? COLOR_PRIMARY
                               : Colors.transparent),
                     ),

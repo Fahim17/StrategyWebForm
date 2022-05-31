@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:ninjastrategy2/datamodel/indicators/adl_datamodel.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 
 class ADL extends StatefulWidget {
-  bool plotOfChart = false;
+  ADLdatamodel dataModel = ADLdatamodel();
+
   ADL({Key? key}) : super(key: key);
 
   @override
@@ -10,6 +12,7 @@ class ADL extends StatefulWidget {
 }
 
 class _ADLState extends State<ADL> {
+  bool plotOfChart = false;
   @override
   Widget build(BuildContext context) {
     Size screensize = MediaQuery.of(context).size;
@@ -29,7 +32,8 @@ class _ADLState extends State<ADL> {
                   Text('Plot of Chart', style: _textTheme.subtitle1),
                   InkWell(
                     onTap: () {
-                      widget.plotOfChart = !widget.plotOfChart;
+                      plotOfChart = !plotOfChart;
+                      widget.dataModel.plotOnChart = plotOfChart.toString();
                       setState(() {});
                     },
                     child: Container(
@@ -38,7 +42,7 @@ class _ADLState extends State<ADL> {
                       decoration: BoxDecoration(
                           border: Border.all(color: COLOR_PRIMARY, width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: (widget.plotOfChart)
+                          color: (plotOfChart)
                               ? COLOR_PRIMARY
                               : Colors.transparent),
                     ),

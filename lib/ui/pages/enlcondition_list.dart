@@ -38,7 +38,7 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
   @override
   void initState() {
     super.initState();
-    demoDataModelrun();
+    // demoDataModelrun();
   }
 
   @override
@@ -160,7 +160,9 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                           await Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ConditionFormPage()));
+                                  builder: (context) => ConditionFormPage(
+                                        frompage: 'enl',
+                                      )));
                         },
                         color: COLOR_Green1,
                         icon: const Icon(Icons.add_circle_rounded),

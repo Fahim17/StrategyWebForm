@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ninjastrategy2/datamodel/indicators/adx_datamodel.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 
 class ADX extends StatefulWidget {
-  bool plotOfChart = false;
+  ADXdatamodel dataModel = ADXdatamodel();
   ADX({Key? key}) : super(key: key);
 
   @override
@@ -10,6 +11,7 @@ class ADX extends StatefulWidget {
 }
 
 class _ADXState extends State<ADX> {
+  bool plotOfChart = false;
   TextEditingController tx1 = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class _ADXState extends State<ADX> {
                   Text('Plot of Chart', style: _textTheme.subtitle1),
                   InkWell(
                     onTap: () {
-                      widget.plotOfChart = !widget.plotOfChart;
+                      plotOfChart = !plotOfChart;
                       setState(() {});
                     },
                     child: Container(
@@ -39,7 +41,7 @@ class _ADXState extends State<ADX> {
                       decoration: BoxDecoration(
                           border: Border.all(color: COLOR_PRIMARY, width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: (widget.plotOfChart)
+                          color: (plotOfChart)
                               ? COLOR_PRIMARY
                               : Colors.transparent),
                     ),

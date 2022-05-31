@@ -9,15 +9,60 @@ import 'package:ninjastrategy2/ui/pages/page2.dart';
 import 'package:ninjastrategy2/ui/pages/widgets/popup_components.dart';
 
 class ConditionFormPage extends StatefulWidget {
-  ConditionFormPage({Key? key}) : super(key: key);
+  String frompage;
+  ConditionFormPage({Key? key, required this.frompage}) : super(key: key);
 
   @override
   State<ConditionFormPage> createState() => _ConditionFormPageState();
 }
 
 class _ConditionFormPageState extends State<ConditionFormPage> {
-  var x = Bollinger();
-  var y = BOP();
+  Widget e1 = const Center(child: Text('Select an Element'));
+  Widget e2 = const Center(child: Text('Select an Element'));
+
+  String e1Title = 'Select';
+  String e2Title = 'Select';
+
+  void selectElement1(String elm1) {
+    e1Title = elm1;
+    switch (elm1) {
+      case 'ADL':
+        e1 = ADL();
+        break;
+      case 'ADX':
+        e1 = ADX();
+        break;
+      case 'Bollinger':
+        e1 = Bollinger();
+        break;
+      case 'BOP':
+        e1 = BOP();
+        break;
+      default:
+        e1 = const Center(child: Text('Select an Element'));
+    }
+  }
+
+  void selectElement2(String elm2) {
+    e2Title = elm2;
+    switch (elm2) {
+      case 'ADL':
+        e2 = ADL();
+        break;
+      case 'ADX':
+        e2 = ADX();
+        break;
+      case 'Bollinger':
+        e2 = Bollinger();
+        break;
+      case 'BOP':
+        e2 = BOP();
+        break;
+      default:
+        e2 = const Center(child: Text('Select an Element'));
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -81,15 +126,18 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                         flex: 1,
                         child: Center(
                           child: ElevatedButton(
-                            onPressed: () {
-                              showDialog(
+                            onPressed: () async {
+                              await showDialog(
                                   context: context,
                                   builder: (BuildContext context) =>
-                                      ComponentsPopUp());
+                                      ComponentsPopUp(
+                                          selection: selectElement1));
+                              setState(() {});
                             },
-                            child: const Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 10),
-                              child: Text('Select'),
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
+                              child: Text(e1Title),
                             ),
                           ),
                         ),
@@ -99,15 +147,18 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                         flex: 1,
                         child: Center(
                           child: ElevatedButton(
-                            onPressed: () {
-                              showDialog(
+                            onPressed: () async {
+                              await showDialog(
                                   context: context,
                                   builder: (BuildContext context) =>
-                                      ComponentsPopUp());
+                                      ComponentsPopUp(
+                                          selection: selectElement2));
+                              setState(() {});
                             },
-                            child: const Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 10),
-                              child: Text('Select'),
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
+                              child: Text(e2Title),
                             ),
                           ),
                         ),
@@ -119,13 +170,13 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                   padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                   child: Row(
                     children: [
-                      Expanded(flex: 1, child: x),
+                      Expanded(flex: 1, child: e1),
                       Container(
                         color: COLOR_Grey1,
                         width: 2,
                         height: 400,
                       ),
-                      Expanded(flex: 1, child: y),
+                      Expanded(flex: 1, child: e2),
                     ],
                   ),
                 ),

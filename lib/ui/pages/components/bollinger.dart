@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ninjastrategy2/datamodel/indicators/bollinger_datamodel.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 
 class Bollinger extends StatefulWidget {
-  bool plotOfChart = false;
+  Bollingerdatamodel dataModel = Bollingerdatamodel();
   Bollinger({Key? key}) : super(key: key);
 
   @override
@@ -10,6 +11,7 @@ class Bollinger extends StatefulWidget {
 }
 
 class _BollingerState extends State<Bollinger> {
+  bool plotOfChart = false;
   TextEditingController tx1 = TextEditingController();
   TextEditingController tx2 = TextEditingController();
 
@@ -32,7 +34,7 @@ class _BollingerState extends State<Bollinger> {
                   Text('Plot of Chart', style: _textTheme.subtitle1),
                   InkWell(
                     onTap: () {
-                      widget.plotOfChart = !widget.plotOfChart;
+                      plotOfChart = !plotOfChart;
                       setState(() {});
                     },
                     child: Container(
@@ -41,7 +43,7 @@ class _BollingerState extends State<Bollinger> {
                       decoration: BoxDecoration(
                           border: Border.all(color: COLOR_PRIMARY, width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: (widget.plotOfChart)
+                          color: (plotOfChart)
                               ? COLOR_PRIMARY
                               : Colors.transparent),
                     ),
@@ -55,17 +57,11 @@ class _BollingerState extends State<Bollinger> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('Value Plot', style: _textTheme.subtitle1),
-                  InkWell(
-                    onTap: () {
-                      widget.plotOfChart = !widget.plotOfChart;
-                      setState(() {});
-                    },
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: Text('Select'),
-                      ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Text('Select'),
                     ),
                   ),
                 ],
