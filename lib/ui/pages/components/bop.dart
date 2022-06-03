@@ -11,10 +11,22 @@ class BOP extends StatefulWidget {
 }
 
 class _BOPState extends State<BOP> {
-  TextEditingController tx1 = TextEditingController();
+  bool plotOfChart = false;
+  TextEditingController smt = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    smt.text = widget.dataModel.period;
+  }
+
+  @override
+  void dispose() {
+    smt.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    bool plotOfChart = false;
     Size screensize = MediaQuery.of(context).size;
     TextTheme _textTheme = Theme.of(context).textTheme;
     return SizedBox(
@@ -33,6 +45,7 @@ class _BOPState extends State<BOP> {
                   InkWell(
                     onTap: () {
                       plotOfChart = !plotOfChart;
+                      widget.dataModel.plotOnChart = plotOfChart.toString();
                       setState(() {});
                     },
                     child: Container(
@@ -64,10 +77,13 @@ class _BOPState extends State<BOP> {
                     width: screensize.width * 0.1,
                     color: Colors.transparent,
                     child: TextField(
-                      controller: tx1,
+                      controller: smt,
                       decoration: const InputDecoration(
                           isDense: true, hintText: 'Enter Period'),
                       style: _textTheme.subtitle1,
+                      onChanged: (val) {
+                        widget.dataModel.period = val;
+                      },
                     ),
                   ),
                 ],

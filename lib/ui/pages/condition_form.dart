@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ninjastrategy2/datamodel/compare_data_model.dart';
+import 'package:ninjastrategy2/datamodel/main_datamodel_instance.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/pages/components/adl.dart';
 import 'package:ninjastrategy2/ui/pages/components/adx.dart';
@@ -17,8 +19,8 @@ class ConditionFormPage extends StatefulWidget {
 }
 
 class _ConditionFormPageState extends State<ConditionFormPage> {
-  Widget e1 = const Center(child: Text('Select an Element'));
-  Widget e2 = const Center(child: Text('Select an Element'));
+  dynamic e1 = const Center(child: Text('Select an Element'));
+  dynamic e2 = const Center(child: Text('Select an Element'));
 
   String e1Title = 'Select';
   String e2Title = 'Select';
@@ -60,6 +62,29 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
         break;
       default:
         e2 = const Center(child: Text('Select an Element'));
+    }
+  }
+
+  void finalizeDataModels() {
+    Compare x = Compare();
+    x.firstObject = e1.dataModel;
+    x.secondObject = e2.dataModel;
+
+    switch (widget.frompage) {
+      case 'enl':
+        MainDataModelInstance.mainData.enlC.compares.add(x);
+        break;
+      case 'ens':
+        MainDataModelInstance.mainData.ensC.compares.add(x);
+        break;
+      case 'exl':
+        MainDataModelInstance.mainData.exlC.compares.add(x);
+        break;
+      case 'exs':
+        MainDataModelInstance.mainData.exsC.compares.add(x);
+        break;
+      default:
+        break;
     }
   }
 
@@ -204,6 +229,7 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                         child: Center(
                           child: ElevatedButton(
                             onPressed: () {
+                              finalizeDataModels();
                               Navigator.pop(context);
                             },
                             child: const Padding(

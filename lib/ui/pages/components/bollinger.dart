@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:ninjastrategy2/datamodel/indicators/bollinger_datamodel.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
+import 'package:ninjastrategy2/ui/pages/widgets/popup_value_plot.dart';
 
 class Bollinger extends StatefulWidget {
   Bollingerdatamodel dataModel = Bollingerdatamodel();
@@ -12,8 +14,40 @@ class Bollinger extends StatefulWidget {
 
 class _BollingerState extends State<Bollinger> {
   bool plotOfChart = false;
-  TextEditingController tx1 = TextEditingController();
-  TextEditingController tx2 = TextEditingController();
+  String VPTitle = 'Select';
+
+  void selectValuePlot(String elm) {
+    VPTitle = elm;
+    switch (elm) {
+      case 'Lower':
+        widget.dataModel.valuePlot = '2';
+        break;
+      case 'Middle':
+        widget.dataModel.valuePlot = '1';
+        break;
+      case 'Upper':
+        widget.dataModel.valuePlot = '0';
+        break;
+      default:
+        widget.dataModel.valuePlot = '2';
+    }
+  }
+
+  TextEditingController nSD = TextEditingController();
+  TextEditingController prd = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    nSD.text = widget.dataModel.numStdDev;
+    prd.text = widget.dataModel.period;
+  }
+
+  @override
+  void dispose() {
+    nSD.dispose();
+    prd.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +69,7 @@ class _BollingerState extends State<Bollinger> {
                   InkWell(
                     onTap: () {
                       plotOfChart = !plotOfChart;
+                      widget.dataModel.plotOnChart = plotOfChart.toString();
                       setState(() {});
                     },
                     child: Container(
@@ -58,10 +93,16 @@ class _BollingerState extends State<Bollinger> {
                 children: [
                   Text('Value Plot', style: _textTheme.subtitle1),
                   ElevatedButton(
-                    onPressed: () {},
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Text('Select'),
+                    onPressed: () async {
+                      await showDialog(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              ValuePlotPopUp(selection: selectValuePlot));
+                      setState(() {});
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(VPTitle),
                     ),
                   ),
                 ],
@@ -84,10 +125,16 @@ class _BollingerState extends State<Bollinger> {
                     width: screensize.width * 0.1,
                     color: Colors.transparent,
                     child: TextField(
-                      controller: tx1,
+                      controller: nSD,
                       decoration: const InputDecoration(
                           isDense: true, hintText: 'Enter No. of S.D.'),
                       style: _textTheme.subtitle1,
+                      // inputFormatters: <TextInputFormatter>[
+                      //   FilteringTextInputFormatter.digitsOnly
+                      // ],
+                      onChanged: (val) {
+                        widget.dataModel.numStdDev = val;
+                      },
                     ),
                   ),
                 ],
@@ -103,10 +150,16 @@ class _BollingerState extends State<Bollinger> {
                     width: screensize.width * 0.1,
                     color: Colors.transparent,
                     child: TextField(
-                      controller: tx2,
+                      controller: prd,
                       decoration: const InputDecoration(
                           isDense: true, hintText: 'Enter Period'),
                       style: _textTheme.subtitle1,
+                      // inputFormatters: <TextInputFormatter>[
+                      //   FilteringTextInputFormatter.digitsOnly
+                      // ],
+                      onChanged: (val) {
+                        widget.dataModel.period = val;
+                      },
                     ),
                   ),
                 ],
@@ -123,101 +176,3 @@ class _BollingerState extends State<Bollinger> {
     );
   }
 }
-
-
-//  Padding(
-//       padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-//       child: Column(
-//         children: [
-//           Row(
-//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//             children: [
-//               Text('Plot of Chart', style: _textTheme.subtitle1),
-//               InkWell(
-//                 onTap: () {
-//                   widget.plotOfChart = !widget.plotOfChart;
-//                   setState(() {});
-//                 },
-//                 child: Container(
-//                   height: 30,
-//                   width: 30,
-//                   decoration: BoxDecoration(
-//                       border: Border.all(color: COLOR_PRIMARY, width: 2),
-//                       borderRadius: BorderRadius.circular(10),
-//                       color: (widget.plotOfChart)
-//                           ? COLOR_PRIMARY
-//                           : Colors.transparent),
-//                 ),
-//               ),
-//             ],
-//           ),
-//           const SizedBox(height: 20),
-//           Row(
-//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//             children: [
-//               Text('Value Plot', style: _textTheme.subtitle1),
-//               InkWell(
-//                 onTap: () {
-//                   widget.plotOfChart = !widget.plotOfChart;
-//                   setState(() {});
-//                 },
-//                 child: ElevatedButton(
-//                   onPressed: () {},
-//                   child: const Padding(
-//                     padding: EdgeInsets.symmetric(horizontal: 10),
-//                     child: Text('Select'),
-//                   ),
-//                 ),
-//               ),
-//             ],
-//           ),
-//           Container(
-//             margin: const EdgeInsets.symmetric(vertical: 20),
-//             color: COLOR_Grey1,
-//             // width: screensize.width * 0.2,
-//             height: 2,
-//           ),
-//           Row(
-//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//             children: [
-//               Expanded(
-//                 child: Text('No. of Standard Deviations',
-//                     maxLines: 2, style: _textTheme.subtitle1),
-//               ),
-//               Container(
-//                 width: screensize.width * 0.1,
-//                 color: Colors.transparent,
-//                 child: TextField(
-//                   controller: tx1,
-//                   decoration: const InputDecoration(
-//                       isDense: true, hintText: 'Enter No. of S.D.'),
-//                   style: _textTheme.subtitle1,
-//                 ),
-//               ),
-//             ],
-//           ),
-//           const SizedBox(height: 20),
-//           Row(
-//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//             children: [
-//               Text('Period', style: _textTheme.subtitle1),
-//               Container(
-//                 width: screensize.width * 0.1,
-//                 color: Colors.transparent,
-//                 child: TextField(
-//                   controller: tx2,
-//                   decoration: const InputDecoration(
-//                       isDense: true, hintText: 'Enter Period'),
-//                   style: _textTheme.subtitle1,
-//                 ),
-//               ),
-//             ],
-//           ),
-//           Container(
-//             margin: const EdgeInsets.symmetric(vertical: 20),
-//             color: COLOR_Grey1,
-//             height: 2,
-//           ),
-//         ],
-//       ),
-//     );

@@ -6,6 +6,7 @@ import 'package:ninjastrategy2/datamodel/enlcondition_data_model.dart';
 import 'package:ninjastrategy2/datamodel/indicators/adl_datamodel.dart';
 import 'package:ninjastrategy2/datamodel/indicators/adx_datamodel.dart';
 import 'package:ninjastrategy2/datamodel/main_data_model.dart';
+import 'package:ninjastrategy2/datamodel/main_datamodel_instance.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/featurenav.dart';
 import 'package:ninjastrategy2/ui/pages/condition_form.dart';
@@ -24,15 +25,17 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
   TextEditingController ptController = TextEditingController();
 
   void demoDataModelrun() {
-    Compare x = Compare();
-    x.firstObject = ADLdatamodel();
-    x.secondObject = ADXdatamodel();
+    // Compare x = Compare();
+    // x.firstObject = ADLdatamodel();
+    // x.secondObject = ADXdatamodel();
 
-    // enlConditionDataModel ulala = enlConditionDataModel();
-    MainDataModel ulala = MainDataModel();
-    ulala.enlC.compares.add(x);
-    ulala.prepareFinalData();
-    print(jsonEncode(ulala.toJson()));
+    // // enlConditionDataModel ulala = enlConditionDataModel();
+    // MainDataModel ulala = MainDataModel();
+    // ulala.enlC.compares.add(x);
+    // ulala.prepareFinalData();
+    // print(jsonEncode(ulala.toJson()));
+    MainDataModelInstance.mainData.prepareFinalData();
+    print(MainDataModelInstance.mainData.toJson());
   }
 
   @override
@@ -163,6 +166,7 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                                   builder: (context) => ConditionFormPage(
                                         frompage: 'enl',
                                       )));
+                          // demoDataModelrun();
                         },
                         color: COLOR_Green1,
                         icon: const Icon(Icons.add_circle_rounded),
@@ -258,10 +262,11 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ExLConditionListPage()));
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => ExLConditionListPage()));
+                        demoDataModelrun();
                       },
                       child: const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 10),

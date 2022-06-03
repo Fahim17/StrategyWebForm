@@ -11,7 +11,7 @@ String datamodelToJson(BOPdatamodel data) => json.encode(data.toJson());
 
 class BOPdatamodel {
   BOPdatamodel({
-    this.type = 'NinjaScriptGenerator.Bollinger, NinjaScriptGenerator',
+    this.type = 'NinjaScriptGenerator.BOP, NinjaScriptGenerator',
     this.price = '4',
     this.barsAgo = '1',
     this.plotOnChart = 'false',

@@ -12,7 +12,19 @@ class ADX extends StatefulWidget {
 
 class _ADXState extends State<ADX> {
   bool plotOfChart = false;
-  TextEditingController tx1 = TextEditingController();
+  TextEditingController prd = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    prd.text = widget.dataModel.period;
+  }
+
+  @override
+  void dispose() {
+    prd.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size screensize = MediaQuery.of(context).size;
@@ -33,6 +45,7 @@ class _ADXState extends State<ADX> {
                   InkWell(
                     onTap: () {
                       plotOfChart = !plotOfChart;
+                      widget.dataModel.plotOnChart = plotOfChart.toString();
                       setState(() {});
                     },
                     child: Container(
@@ -65,7 +78,7 @@ class _ADXState extends State<ADX> {
                     child: TextField(
                       decoration: const InputDecoration(
                           isDense: true, hintText: 'Enter Period'),
-                      controller: tx1,
+                      controller: prd,
                       style: _textTheme.subtitle1,
                     ),
                   ),
