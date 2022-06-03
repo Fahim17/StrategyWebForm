@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ninjastrategy2/datamodel/main_datamodel_instance.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/featurenav.dart';
 
@@ -21,6 +22,7 @@ class _StopLossState extends State<StopLoss> {
 
   @override
   void dispose() {
+    ptController.dispose();
     super.dispose();
   }
 
@@ -194,8 +196,32 @@ class _StopLossState extends State<StopLoss> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        FeatureNav.finishedStopLoss = true;
-                        FeatureNav.runPageRouting(context);
+                        if ((features[0] || features[1] || features[2]) &&
+                            ptController.text.isNotEmpty) {
+                          if (features[0]) {
+                            MainDataModelInstance.mainData.ta_stop_loss.type =
+                                '1';
+                          } else if (features[1]) {
+                            MainDataModelInstance.mainData.ta_stop_loss.type =
+                                '2';
+                          } else if (features[2]) {
+                            MainDataModelInstance.mainData.ta_stop_loss.type =
+                                '0';
+                          } else {
+                            MainDataModelInstance.mainData.ta_stop_loss.type =
+                                '3';
+                          }
+                          MainDataModelInstance.mainData.ta_stop_loss.value =
+                              ptController.text;
+                          FeatureNav.finishedStopLoss = true;
+                          FeatureNav.runPageRouting(context);
+                        } else {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            content: Text('Answer all the Questions'),
+                            backgroundColor: COLOR_Grey1,
+                          ));
+                        }
                       },
                       child: const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 10),

@@ -12,6 +12,6 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return EnLConditionListPage();
+    return Page1();
   }
 }

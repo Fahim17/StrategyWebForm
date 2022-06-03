@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ninjastrategy2/datamodel/main_datamodel_instance.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/featurenav.dart';
 import 'package:ninjastrategy2/ui/pages/stop_loss.dart';
@@ -22,6 +23,7 @@ class _ProfitTargetState extends State<ProfitTarget> {
 
   @override
   void dispose() {
+    ptController.dispose();
     super.dispose();
   }
 
@@ -202,8 +204,32 @@ class _ProfitTargetState extends State<ProfitTarget> {
                         // print(FeatureNav.stopLoss);
                         // print(FeatureNav.longTrade);
                         // print(FeatureNav.shortTrade);
-                        FeatureNav.finishedProfitTarget = true;
-                        FeatureNav.runPageRouting(context);
+                        if ((features[0] || features[1] || features[2]) &&
+                            ptController.text.isNotEmpty) {
+                          if (features[0]) {
+                            MainDataModelInstance
+                                .mainData.ta_profit_margin.type = '1';
+                          } else if (features[1]) {
+                            MainDataModelInstance
+                                .mainData.ta_profit_margin.type = '2';
+                          } else if (features[2]) {
+                            MainDataModelInstance
+                                .mainData.ta_profit_margin.type = '0';
+                          } else {
+                            MainDataModelInstance
+                                .mainData.ta_profit_margin.type = '3';
+                          }
+                          MainDataModelInstance.mainData.ta_profit_margin
+                              .value = ptController.text;
+                          FeatureNav.finishedProfitTarget = true;
+                          FeatureNav.runPageRouting(context);
+                        } else {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            content: Text('Answer all the Questions'),
+                            backgroundColor: COLOR_Grey1,
+                          ));
+                        }
                       },
                       child: const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 10),

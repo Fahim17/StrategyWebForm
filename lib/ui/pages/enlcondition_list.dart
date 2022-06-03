@@ -262,11 +262,10 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => ExLConditionListPage()));
-                        demoDataModelrun();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ExLConditionListPage()));
                       },
                       child: const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 10),

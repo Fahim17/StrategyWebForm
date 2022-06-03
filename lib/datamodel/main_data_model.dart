@@ -75,11 +75,11 @@ class Defaults {
   Defaults({
     this.calculate = 0,
     this.exitOnSessionClose = false,
-    this.contractsPerEntry = 1,
+    this.contractsPerEntry = "1",
   });
   int calculate;
   bool exitOnSessionClose;
-  int contractsPerEntry;
+  String contractsPerEntry;
 
   // factory Defaults.fromJson(Map<String, dynamic> json) => Defaults(
   //     calculate: json["Calculate"],
