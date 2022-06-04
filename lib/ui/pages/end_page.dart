@@ -54,6 +54,7 @@ class EndPage extends StatelessWidget {
                       MainDataModelInstance.mainData.prepareFinalData();
                       print(
                           jsonEncode(MainDataModelInstance.mainData.toJson()));
+                      MainDataModelInstance.newMainData();
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(

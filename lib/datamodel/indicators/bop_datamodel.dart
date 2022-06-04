@@ -15,9 +15,7 @@ class BOPdatamodel {
     this.price = '4',
     this.barsAgo = '1',
     this.plotOnChart = 'false',
-    this.period = '0',
-    this.numStdDev = '0',
-    this.valuePlot = '0',
+    this.smooth = '0',
     this.offsetType = '0',
     this.datamodelOperator = '0',
     this.offset = '2',
@@ -26,11 +24,9 @@ class BOPdatamodel {
   String elementName = 'BOP';
   String type;
   String price;
-  String numStdDev;
-  String valuePlot;
   String barsAgo;
   String plotOnChart;
-  String period;
+  String smooth;
   String offsetType;
   String datamodelOperator;
   String offset;
@@ -47,14 +43,12 @@ class BOPdatamodel {
 
   Map<String, dynamic> toJson() => {
         "\u0024type": type,
-        "Period": period,
-        "NumStdDev": numStdDev,
+        "Smooth": smooth,
         "Price": price,
         "OffsetType": offsetType,
         "Operator": datamodelOperator,
         "BarsAgo": barsAgo,
         "Offset": offset,
         "PlotOnChart": plotOnChart,
-        "ValuePlot": valuePlot,
       };
 }

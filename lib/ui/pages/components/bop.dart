@@ -16,7 +16,7 @@ class _BOPState extends State<BOP> {
   @override
   void initState() {
     super.initState();
-    smt.text = widget.dataModel.period;
+    smt.text = widget.dataModel.smooth;
   }
 
   @override
@@ -82,7 +82,7 @@ class _BOPState extends State<BOP> {
                           isDense: true, hintText: 'Enter Period'),
                       style: _textTheme.subtitle1,
                       onChanged: (val) {
-                        widget.dataModel.period = val;
+                        widget.dataModel.smooth = val;
                       },
                     ),
                   ),
