@@ -23,6 +23,7 @@ class BOPdatamodel {
     this.offset = '2',
   });
 
+  String elementName = 'BOP';
   String type;
   String price;
   String numStdDev;

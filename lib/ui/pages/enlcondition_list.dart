@@ -5,6 +5,7 @@ import 'package:ninjastrategy2/datamodel/compare_data_model.dart';
 import 'package:ninjastrategy2/datamodel/enlcondition_data_model.dart';
 import 'package:ninjastrategy2/datamodel/indicators/adl_datamodel.dart';
 import 'package:ninjastrategy2/datamodel/indicators/adx_datamodel.dart';
+import 'package:ninjastrategy2/datamodel/indicators/bollinger_datamodel.dart';
 import 'package:ninjastrategy2/datamodel/main_data_model.dart';
 import 'package:ninjastrategy2/datamodel/main_datamodel_instance.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
@@ -25,17 +26,56 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
   TextEditingController ptController = TextEditingController();
 
   void demoDataModelrun() {
-    // Compare x = Compare();
-    // x.firstObject = ADLdatamodel();
-    // x.secondObject = ADXdatamodel();
+    Compare x = Compare();
+    x.firstObject = ADLdatamodel();
+    x.secondObject = ADXdatamodel();
+    MainDataModelInstance.mainData.enlC.compares.add(x);
 
-    // // enlConditionDataModel ulala = enlConditionDataModel();
+    x.firstObject = Bollingerdatamodel();
+    x.secondObject = ADXdatamodel();
+    MainDataModelInstance.mainData.enlC.compares.add(x);
+
+    x.firstObject = Bollingerdatamodel();
+    x.secondObject = ADXdatamodel();
+    MainDataModelInstance.mainData.enlC.compares.add(x);
+
+    x.firstObject = Bollingerdatamodel();
+    x.secondObject = ADXdatamodel();
+    MainDataModelInstance.mainData.enlC.compares.add(x);
+
+    x.firstObject = Bollingerdatamodel();
+    x.secondObject = ADXdatamodel();
+    MainDataModelInstance.mainData.enlC.compares.add(x);
+
+    x.firstObject = Bollingerdatamodel();
+    x.secondObject = ADXdatamodel();
+    MainDataModelInstance.mainData.enlC.compares.add(x);
+
+    x.firstObject = Bollingerdatamodel();
+    x.secondObject = ADXdatamodel();
+    MainDataModelInstance.mainData.enlC.compares.add(x);
+
+    x.firstObject = Bollingerdatamodel();
+    x.secondObject = ADXdatamodel();
+    MainDataModelInstance.mainData.enlC.compares.add(x);
+
+    x.firstObject = Bollingerdatamodel();
+    x.secondObject = ADXdatamodel();
+    MainDataModelInstance.mainData.enlC.compares.add(x);
+
+    x.firstObject = Bollingerdatamodel();
+    x.secondObject = ADXdatamodel();
+    MainDataModelInstance.mainData.enlC.compares.add(x);
+
+    x.firstObject = Bollingerdatamodel();
+    x.secondObject = ADXdatamodel();
+    MainDataModelInstance.mainData.enlC.compares.add(x);
+    // enlConditionDataModel ulala = enlConditionDataModel();
     // MainDataModel ulala = MainDataModel();
-    // ulala.enlC.compares.add(x);
     // ulala.prepareFinalData();
     // print(jsonEncode(ulala.toJson()));
-    MainDataModelInstance.mainData.prepareFinalData();
-    print(MainDataModelInstance.mainData.toJson());
+    // MainDataModelInstance.mainData.prepareFinalData();
+    // print(MainDataModelInstance.mainData.toJson());
   }
 
   @override
@@ -166,6 +206,7 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                                   builder: (context) => ConditionFormPage(
                                         frompage: 'enl',
                                       )));
+                          setState(() {});
                           // demoDataModelrun();
                         },
                         color: COLOR_Green1,
@@ -238,15 +279,17 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: Container(
-                    color: Colors.transparent,
-                    width: 50,
-                    height: 50,
+                SizedBox(
+                  width: double.infinity,
+                  height: 270,
+                  child: SingleChildScrollView(
+                    child: Column(
+                        children: MainDataModelInstance.mainData.enlC.compares
+                            .map((e) => ConditionRow(e: e))
+                            .toList()),
                   ),
                 ),
-                SizedBox(height: screensize.height * 0.15),
+                // SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -278,6 +321,84 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class ConditionRow extends StatelessWidget {
+  Compare e;
+  ConditionRow({Key? key, required this.e}) : super(key: key);
+
+  double rowTextPadding = 10;
+  @override
+  Widget build(BuildContext context) {
+    TextTheme _textTheme = Theme.of(context).textTheme;
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 3),
+      child: Row(
+        children: [
+          Expanded(
+            flex: 1,
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: rowTextPadding),
+              decoration: BoxDecoration(
+                color: COLOR_White1,
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(5),
+                  bottomLeft: Radius.circular(5),
+                ),
+                border: Border.all(width: 1, color: Colors.white),
+              ),
+              child: Center(
+                child: Text(
+                  e.firstObject.elementName,
+                  style: _textTheme.subtitle2,
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: rowTextPadding),
+              decoration: BoxDecoration(
+                color: COLOR_White1,
+                // borderRadius: const BorderRadius.only(
+                //   topLeft: Radius.circular(5),
+                //   bottomLeft: Radius.circular(5),
+                // ),
+                border: Border.all(width: 1, color: Colors.white),
+              ),
+              child: Center(
+                child: Text(
+                  e.operationName,
+                  style: _textTheme.subtitle2,
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: rowTextPadding),
+              decoration: BoxDecoration(
+                color: COLOR_White1,
+                borderRadius: const BorderRadius.only(
+                  topRight: Radius.circular(5),
+                  bottomRight: Radius.circular(5),
+                ),
+                border: Border.all(width: 1, color: Colors.white),
+              ),
+              child: Center(
+                child: Text(
+                  e.secondObject.elementName,
+                  style: _textTheme.subtitle2,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

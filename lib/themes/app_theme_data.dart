@@ -13,6 +13,7 @@ const BX_COLOR = Color(0xffE0E0E0);
 const BACKGROUND_COLOR = Color(0xffC2C2C2);
 const COLOR_PRIMARY = Color(0xff7A6BD8);
 const COLOR_White = Colors.white;
+const COLOR_White1 = Color(0xffF4F4F4);
 const COLOR_Grey1 = Color(0xff545454);
 const COLOR_Grey2 = Color(0xffD0D0D0);
 const COLOR_Grey3 = Color(0xffb5b5b5);

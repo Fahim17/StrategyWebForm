@@ -21,6 +21,7 @@ class ADXdatamodel {
     this.offset = '2',
   });
 
+  String elementName = 'ADX';
   String type;
   String price;
   String barsAgo;

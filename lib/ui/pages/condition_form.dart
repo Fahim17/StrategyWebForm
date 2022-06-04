@@ -8,6 +8,7 @@ import 'package:ninjastrategy2/ui/pages/widgets/basic_component_layout.dart';
 import 'package:ninjastrategy2/ui/pages/components/bollinger.dart';
 import 'package:ninjastrategy2/ui/pages/components/bop.dart';
 import 'package:ninjastrategy2/ui/pages/page2.dart';
+import 'package:ninjastrategy2/ui/pages/widgets/popup_compare_operation.dart';
 import 'package:ninjastrategy2/ui/pages/widgets/popup_components.dart';
 
 class ConditionFormPage extends StatefulWidget {
@@ -21,9 +22,11 @@ class ConditionFormPage extends StatefulWidget {
 class _ConditionFormPageState extends State<ConditionFormPage> {
   dynamic e1 = const Center(child: Text('Select an Element'));
   dynamic e2 = const Center(child: Text('Select an Element'));
+  String compareOperation = '7';
 
   String e1Title = 'Select';
   String e2Title = 'Select';
+  String operationTitle = 'Select';
 
   void selectElement1(String elm1) {
     e1Title = elm1;
@@ -65,10 +68,44 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
     }
   }
 
+  void selectCompareOperation(String comOp) {
+    operationTitle = comOp;
+    switch (comOp) {
+      case 'Equals':
+        compareOperation = "7";
+        break;
+      case 'Greater':
+        compareOperation = "15";
+        break;
+      case 'Greater Equal':
+        compareOperation = "16";
+        break;
+      case 'Less':
+        compareOperation = "13";
+        break;
+      case 'Less Equal':
+        compareOperation = "14";
+        break;
+      case 'Not Equal':
+        compareOperation = "6";
+        break;
+      case 'Cross Above':
+        compareOperation = "22";
+        break;
+      case 'Cross Below':
+        compareOperation = "23";
+        break;
+      default:
+        compareOperation = "7";
+    }
+  }
+
   void finalizeDataModels() {
     Compare x = Compare();
     x.firstObject = e1.dataModel;
     x.secondObject = e2.dataModel;
+    x.operation = compareOperation;
+    x.operationName = operationTitle;
 
     switch (widget.frompage) {
       case 'enl':
@@ -124,10 +161,17 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                         flex: 1,
                         child: Center(
                             child: ElevatedButton(
-                          onPressed: () {},
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: Text('Select'),
+                          onPressed: () async {
+                            await showDialog(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    CompareOperationPopUp(
+                                        selection: selectCompareOperation));
+                            setState(() {});
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Text(operationTitle),
                           ),
                         )),
                       ),

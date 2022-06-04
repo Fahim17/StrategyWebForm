@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:ninjastrategy2/datamodel/main_datamodel_instance.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/pages/page1.dart';
 import 'package:ninjastrategy2/ui/pages/page2.dart';
@@ -48,6 +51,9 @@ class EndPage extends StatelessWidget {
                 ),
                 ElevatedButton(
                     onPressed: () {
+                      MainDataModelInstance.mainData.prepareFinalData();
+                      print(
+                          jsonEncode(MainDataModelInstance.mainData.toJson()));
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(

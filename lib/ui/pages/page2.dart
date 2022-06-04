@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ninjastrategy2/datamodel/main_datamodel_instance.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/pages/page3.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
 
 class Page2 extends StatefulWidget {
   Page2({Key? key}) : super(key: key);

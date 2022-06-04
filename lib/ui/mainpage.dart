@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ninjastrategy2/datamodel/enlcondition_data_model.dart';
 import 'package:ninjastrategy2/ui/pages/condition_form.dart';
 import 'package:ninjastrategy2/ui/pages/enlcondition_list.dart';
 import 'package:ninjastrategy2/ui/pages/page1.dart';

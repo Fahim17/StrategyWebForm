@@ -23,6 +23,7 @@ class Bollingerdatamodel {
     this.offset = '2',
   });
 
+  String elementName = 'Bollinger';
   String type;
   String price;
   String numStdDev;
