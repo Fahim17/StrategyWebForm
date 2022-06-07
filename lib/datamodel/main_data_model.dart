@@ -6,7 +6,7 @@ import 'package:ninjastrategy2/datamodel/exlcondition_data_model.dart';
 import 'package:ninjastrategy2/datamodel/exscondition_data_model.dart';
 
 class MainDataModel {
-  String name = '';
+  String name = 'Default';
   String desc = '';
   Defaults defaults = Defaults();
   List instruments = [];
@@ -74,7 +74,7 @@ class Instruments {
 class Defaults {
   Defaults({
     this.calculate = 0,
-    this.exitOnSessionClose = false,
+    this.exitOnSessionClose = true,
     this.contractsPerEntry = "1",
   });
   int calculate;

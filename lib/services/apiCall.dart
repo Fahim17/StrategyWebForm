@@ -4,9 +4,10 @@ import 'package:http/http.dart' as http;
 import 'package:ninjastrategy2/datamodel/main_datamodel_instance.dart';
 
 class ApiCall {
-  Future addCategory(String name) async {
+  Future submitForm() async {
     final response;
     MainDataModelInstance.mainData.prepareFinalData();
+    //print(jsonEncode(MainDataModelInstance.mainData.toJson()));
     response = await http.post(
       Uri.parse(ApiList.formPost),
       headers: <String, String>{

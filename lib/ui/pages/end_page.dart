@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:ninjastrategy2/datamodel/main_datamodel_instance.dart';
+import 'package:ninjastrategy2/services/apiCall.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/pages/page1.dart';
 import 'package:ninjastrategy2/ui/pages/page2.dart';
@@ -9,7 +10,7 @@ import 'package:ninjastrategy2/ui/pages/page2.dart';
 class EndPage extends StatelessWidget {
   EndPage({Key? key}) : super(key: key);
 
-  String description = 'Thank You';
+  String description = 'Summary';
 
   @override
   Widget build(BuildContext context) {
@@ -28,46 +29,80 @@ class EndPage extends StatelessWidget {
                 SizedBox(
                   height: screensize.height * 0.05,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Text(
-                    titleText,
-                    style: _textTheme.headline4,
-                  ),
+                Text(
+                  titleText,
+                  style: _textTheme.headline4,
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  description,
+                  style: _textTheme.headline6,
                 ),
                 SizedBox(
                   height: screensize.height * 0.15,
                 ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(
-                      screensize.width * 0.1, 0, screensize.width * 0.1, 0),
-                  child: Text(
-                    description,
-                    style: _textTheme.headline6,
-                  ),
-                ),
-                SizedBox(
-                  height: screensize.height * 0.15,
-                ),
+                // SummarizedInfo(),
                 ElevatedButton(
-                    onPressed: () {
-                      MainDataModelInstance.mainData.prepareFinalData();
-                      print(
-                          jsonEncode(MainDataModelInstance.mainData.toJson()));
-                      MainDataModelInstance.newMainData();
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Page1(),
-                          ),
-                          (route) => false);
+                    onPressed: () async {
+                      // MainDataModelInstance.mainData.prepareFinalData();
+                      // print(
+                      //     jsonEncode(MainDataModelInstance.mainData.toJson()));
+                      // MainDataModelInstance.newMainData();
+                      var res = await ApiCall().submitForm();
+                      // Navigator.pushAndRemoveUntil(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //       builder: (context) => Page1(),
+                      //     ),
+                      //     (route) => false);
+                      print(res.body.toString());
                     },
-                    child: const Text('Do It Again'))
+                    child: const Text('Confirm & Submit'))
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class SummarizedInfo extends StatelessWidget {
+  SummarizedInfo({Key? key}) : super(key: key) {
+    MainDataModelInstance.mainData.name = 'Bishal naam  ';
+    MainDataModelInstance.mainData.desc =
+        '''But it’s often appropriate to summarize a whole article or chapter 
+        if it is especially relevant to your own research, or to provide an 
+        overview of a source before you analyze or critique it. In any case, 
+        the goal of summarizing is to give your reader a clear understanding of 
+        the original source. Follow the five steps outlined below to write a 
+        good summary.''';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    TextTheme _textTheme = Theme.of(context).textTheme;
+    return Row(
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Name: ${MainDataModelInstance.mainData.name}',
+              style: _textTheme.subtitle1,
+            ),
+            SizedBox(
+              height: 20,
+              child: FittedBox(
+                child: Text(
+                  'Description: ${MainDataModelInstance.mainData.desc}',
+                  style: _textTheme.subtitle1,
+                ),
+              ),
+            ),
+          ],
+        )
+      ],
     );
   }
 }
