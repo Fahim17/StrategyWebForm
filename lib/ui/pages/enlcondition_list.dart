@@ -23,7 +23,7 @@ class EnLConditionListPage extends StatefulWidget {
 class _EnLConditionListPageState extends State<EnLConditionListPage> {
   List<bool> features = [false, false];
 
-  TextEditingController ptController = TextEditingController();
+  //TextEditingController ptController = TextEditingController();
 
   void demoDataModelrun() {
     Compare x = Compare();
@@ -31,45 +31,6 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
     x.secondObject = ADXdatamodel();
     MainDataModelInstance.mainData.enlC.compares.add(x);
 
-    x.firstObject = Bollingerdatamodel();
-    x.secondObject = ADXdatamodel();
-    MainDataModelInstance.mainData.enlC.compares.add(x);
-
-    x.firstObject = Bollingerdatamodel();
-    x.secondObject = ADXdatamodel();
-    MainDataModelInstance.mainData.enlC.compares.add(x);
-
-    x.firstObject = Bollingerdatamodel();
-    x.secondObject = ADXdatamodel();
-    MainDataModelInstance.mainData.enlC.compares.add(x);
-
-    x.firstObject = Bollingerdatamodel();
-    x.secondObject = ADXdatamodel();
-    MainDataModelInstance.mainData.enlC.compares.add(x);
-
-    x.firstObject = Bollingerdatamodel();
-    x.secondObject = ADXdatamodel();
-    MainDataModelInstance.mainData.enlC.compares.add(x);
-
-    x.firstObject = Bollingerdatamodel();
-    x.secondObject = ADXdatamodel();
-    MainDataModelInstance.mainData.enlC.compares.add(x);
-
-    x.firstObject = Bollingerdatamodel();
-    x.secondObject = ADXdatamodel();
-    MainDataModelInstance.mainData.enlC.compares.add(x);
-
-    x.firstObject = Bollingerdatamodel();
-    x.secondObject = ADXdatamodel();
-    MainDataModelInstance.mainData.enlC.compares.add(x);
-
-    x.firstObject = Bollingerdatamodel();
-    x.secondObject = ADXdatamodel();
-    MainDataModelInstance.mainData.enlC.compares.add(x);
-
-    x.firstObject = Bollingerdatamodel();
-    x.secondObject = ADXdatamodel();
-    MainDataModelInstance.mainData.enlC.compares.add(x);
     // enlConditionDataModel ulala = enlConditionDataModel();
     // MainDataModel ulala = MainDataModel();
     // ulala.prepareFinalData();
@@ -134,7 +95,8 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                             onTap: () {
                               features[0] = true;
                               features[1] = false;
-
+                              MainDataModelInstance
+                                  .mainData.enlC.conditionType = '11';
                               setState(() {});
                             },
                             child: Container(
@@ -165,6 +127,8 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                             onTap: () {
                               features[0] = false;
                               features[1] = true;
+                              MainDataModelInstance
+                                  .mainData.enlC.conditionType = '12';
                               setState(() {});
                             },
                             child: Container(
@@ -281,15 +245,15 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                 ),
                 SizedBox(
                   width: double.infinity,
-                  height: 270,
+                  height: screensize.height * 0.45,
                   child: SingleChildScrollView(
                     child: Column(
                         children: MainDataModelInstance.mainData.enlC.compares
-                            .map((e) => ConditionRow(e: e))
+                            .map((e) => enlConditionRow(e: e))
                             .toList()),
                   ),
                 ),
-                // SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -305,10 +269,19 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ExLConditionListPage()));
+                        if (features[0] || features[1]) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      ExLConditionListPage()));
+                        } else {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            content: Text('Select Condition Type'),
+                            backgroundColor: COLOR_PRIMARY,
+                          ));
+                        }
                       },
                       child: const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 10),
@@ -326,9 +299,9 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
   }
 }
 
-class ConditionRow extends StatelessWidget {
+class enlConditionRow extends StatelessWidget {
   Compare e;
-  ConditionRow({Key? key, required this.e}) : super(key: key);
+  enlConditionRow({Key? key, required this.e}) : super(key: key);
 
   double rowTextPadding = 10;
   @override

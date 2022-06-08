@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ninjastrategy2/datamodel/compare_data_model.dart';
+import 'package:ninjastrategy2/datamodel/main_datamodel_instance.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/featurenav.dart';
 import 'package:ninjastrategy2/ui/pages/condition_form.dart';
@@ -12,9 +14,9 @@ class EnSConditionListPage extends StatefulWidget {
 }
 
 class _EnSConditionListPageState extends State<EnSConditionListPage> {
-  List<bool> features = [false, false, false, false];
+  List<bool> features = [false, false];
 
-  TextEditingController ptController = TextEditingController();
+  // TextEditingController ptController = TextEditingController();
 
   @override
   void initState() {
@@ -71,6 +73,8 @@ class _EnSConditionListPageState extends State<EnSConditionListPage> {
                             onTap: () {
                               features[0] = true;
                               features[1] = false;
+                              MainDataModelInstance
+                                  .mainData.ensC.conditionType = '11';
                               setState(() {});
                             },
                             child: Container(
@@ -101,6 +105,8 @@ class _EnSConditionListPageState extends State<EnSConditionListPage> {
                             onTap: () {
                               features[0] = false;
                               features[1] = true;
+                              MainDataModelInstance
+                                  .mainData.ensC.conditionType = '12';
                               setState(() {});
                             },
                             child: Container(
@@ -142,6 +148,7 @@ class _EnSConditionListPageState extends State<EnSConditionListPage> {
                                   builder: (context) => ConditionFormPage(
                                         frompage: 'ens',
                                       )));
+                          setState(() {});
                         },
                         color: COLOR_Green1,
                         icon: const Icon(Icons.add_circle_rounded),
@@ -213,15 +220,17 @@ class _EnSConditionListPageState extends State<EnSConditionListPage> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: Container(
-                    color: Colors.transparent,
-                    width: 50,
-                    height: 50,
+                SizedBox(
+                  width: double.infinity,
+                  height: screensize.height * 0.45,
+                  child: SingleChildScrollView(
+                    child: Column(
+                        children: MainDataModelInstance.mainData.ensC.compares
+                            .map((e) => ensConditionRow(e: e))
+                            .toList()),
                   ),
                 ),
-                SizedBox(height: screensize.height * 0.15),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -253,6 +262,84 @@ class _EnSConditionListPageState extends State<EnSConditionListPage> {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class ensConditionRow extends StatelessWidget {
+  Compare e;
+  ensConditionRow({Key? key, required this.e}) : super(key: key);
+
+  double rowTextPadding = 10;
+  @override
+  Widget build(BuildContext context) {
+    TextTheme _textTheme = Theme.of(context).textTheme;
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 3),
+      child: Row(
+        children: [
+          Expanded(
+            flex: 1,
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: rowTextPadding),
+              decoration: BoxDecoration(
+                color: COLOR_White1,
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(5),
+                  bottomLeft: Radius.circular(5),
+                ),
+                border: Border.all(width: 1, color: Colors.white),
+              ),
+              child: Center(
+                child: Text(
+                  e.firstObject.elementName,
+                  style: _textTheme.subtitle2,
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: rowTextPadding),
+              decoration: BoxDecoration(
+                color: COLOR_White1,
+                // borderRadius: const BorderRadius.only(
+                //   topLeft: Radius.circular(5),
+                //   bottomLeft: Radius.circular(5),
+                // ),
+                border: Border.all(width: 1, color: Colors.white),
+              ),
+              child: Center(
+                child: Text(
+                  e.operationName,
+                  style: _textTheme.subtitle2,
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: rowTextPadding),
+              decoration: BoxDecoration(
+                color: COLOR_White1,
+                borderRadius: const BorderRadius.only(
+                  topRight: Radius.circular(5),
+                  bottomRight: Radius.circular(5),
+                ),
+                border: Border.all(width: 1, color: Colors.white),
+              ),
+              child: Center(
+                child: Text(
+                  e.secondObject.elementName,
+                  style: _textTheme.subtitle2,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

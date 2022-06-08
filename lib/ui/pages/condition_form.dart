@@ -273,8 +273,18 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                         child: Center(
                           child: ElevatedButton(
                             onPressed: () {
-                              finalizeDataModels();
-                              Navigator.pop(context);
+                              if (e1Title != 'Select' &&
+                                  e2Title != 'Select' &&
+                                  operationTitle != 'Select') {
+                                finalizeDataModels();
+                                Navigator.pop(context);
+                              } else {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  content: Text('Provide All Conditions'),
+                                  backgroundColor: COLOR_PRIMARY,
+                                ));
+                              }
                             },
                             child: const Padding(
                               padding: EdgeInsets.symmetric(horizontal: 10),

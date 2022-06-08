@@ -10,7 +10,7 @@ import 'package:ninjastrategy2/ui/pages/page2.dart';
 class EndPage extends StatelessWidget {
   EndPage({Key? key}) : super(key: key);
 
-  String description = 'Summary';
+  String description = 'Strategy Generation Complete!!';
 
   @override
   Widget build(BuildContext context) {
@@ -42,22 +42,26 @@ class EndPage extends StatelessWidget {
                   height: screensize.height * 0.15,
                 ),
                 // SummarizedInfo(),
-                ElevatedButton(
-                    onPressed: () async {
-                      // MainDataModelInstance.mainData.prepareFinalData();
-                      // print(
-                      //     jsonEncode(MainDataModelInstance.mainData.toJson()));
-                      // MainDataModelInstance.newMainData();
-                      var res = await ApiCall().submitForm();
-                      // Navigator.pushAndRemoveUntil(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //       builder: (context) => Page1(),
-                      //     ),
-                      //     (route) => false);
-                      print(res.body.toString());
-                    },
-                    child: const Text('Confirm & Submit'))
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                        onPressed: () async {
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Page1(),
+                              ),
+                              (route) => false);
+                        },
+                        child: const Text('Do It Again')),
+                    ElevatedButton(
+                        onPressed: () async {
+                          var res = await ApiCall().submitForm();
+                        },
+                        child: const Text('Submit & Download')),
+                  ],
+                )
               ],
             ),
           ),

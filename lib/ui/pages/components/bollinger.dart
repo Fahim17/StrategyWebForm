@@ -14,7 +14,7 @@ class Bollinger extends StatefulWidget {
 
 class _BollingerState extends State<Bollinger> {
   bool plotOfChart = false;
-  String VPTitle = 'Select';
+  String VPTitle = 'Upper';
 
   void selectValuePlot(String elm) {
     VPTitle = elm;
