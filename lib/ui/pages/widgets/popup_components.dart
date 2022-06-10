@@ -17,6 +17,23 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
     'ADX',
     'Bollinger',
     'BOP',
+    'Chaikin Oscillator',
+    'Chaikin Volatility',
+    'Current Day OHL',
+    'DEMA',
+    'Double Stochastics',
+    'EMA',
+    // 'Philadelphia',
+    // 'Texan',
+    // 'Drinks',
+    // 'FastFood',
+    // 'Vegan',
+    // 'Vietnamese',
+    // 'German',
+    // 'Moroccan',
+    // 'Gambian',
+    // 'Philadelphia',
+    // 'Texan',
     // 'Drinks',
     // 'FastFood',
     // 'Vegan',
@@ -148,10 +165,10 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(10),
-                            child: FittedBox(
-                                child: Text(allIndicators[index],
-                                    style: _textTheme.subtitle1
-                                        ?.copyWith(color: Colors.white))),
+                            child: Text(allIndicators[index],
+                                textAlign: TextAlign.center,
+                                style: _textTheme.subtitle1
+                                    ?.copyWith(color: Colors.white)),
                           ),
                         ),
                       );

@@ -19,6 +19,8 @@ const COLOR_Grey2 = Color(0xffD0D0D0);
 const COLOR_Grey3 = Color(0xffb5b5b5);
 const COLOR_Green1 = Color(0xff78A55A);
 
+const COLOR_Divider = Color(0xff8d8d8d);
+
 const titleText = 'STRATEGY GENERATOR';
 
 BoxDecoration bxDecorations = BoxDecoration(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/mainpage.dart';
+import 'package:ninjastrategy2/ui/pages/condition_form.dart';
 import 'package:ninjastrategy2/ui/pages/end_page.dart';
 import 'package:ninjastrategy2/ui/pages/enlcondition_list.dart';
 import 'package:ninjastrategy2/ui/pages/enscondition_list.dart';
@@ -18,7 +19,9 @@ class MyApp extends StatelessWidget {
       title: 'Ninja Strategy Generator',
       debugShowCheckedModeBanner: false,
       theme: defalutTheme,
-      home: MainPage(),
+      home: ConditionFormPage(
+        frompage: 'enl',
+      ),
     );
   }
 }

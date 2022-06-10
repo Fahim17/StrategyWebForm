@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:ninjastrategy2/datamodel/indicators/bop_datamodel.dart';
+import 'package:ninjastrategy2/datamodel/indicators/dema_datamodel.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 
-class BOP extends StatefulWidget {
-  BOPdatamodel dataModel = BOPdatamodel();
-  BOP({Key? key}) : super(key: key);
+class DEMA extends StatefulWidget {
+  DEMAdatamodel dataModel = DEMAdatamodel();
+  DEMA({Key? key}) : super(key: key);
 
   @override
-  State<BOP> createState() => _BOPState();
+  State<DEMA> createState() => _DEMAState();
 }
 
-class _BOPState extends State<BOP> {
+class _DEMAState extends State<DEMA> {
   bool plotOfChart = false;
-  TextEditingController smt = TextEditingController();
+  TextEditingController prd = TextEditingController();
   @override
   void initState() {
     super.initState();
-    smt.text = widget.dataModel.smooth;
+    prd.text = widget.dataModel.period;
   }
 
   @override
   void dispose() {
-    smt.dispose();
+    prd.dispose();
     super.dispose();
   }
 
@@ -72,18 +72,14 @@ class _BOPState extends State<BOP> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Smooth', style: _textTheme.subtitle1),
-                  Container(
+                  Text('Period', style: _textTheme.subtitle1),
+                  SizedBox(
                     width: screensize.width * 0.1,
-                    color: Colors.transparent,
                     child: TextField(
-                      controller: smt,
                       decoration: const InputDecoration(
                           isDense: true, hintText: 'Enter Period'),
+                      controller: prd,
                       style: _textTheme.subtitle1,
-                      onChanged: (val) {
-                        widget.dataModel.smooth = val;
-                      },
                     ),
                   ),
                 ],
@@ -135,22 +131,21 @@ class _BOPState extends State<BOP> {
 //             // width: screensize.width * 0.2,
 //             height: 2,
 //           ),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //   children: [
-          //     Text('Smooth', style: _textTheme.subtitle1),
-          //     Container(
-          //       width: screensize.width * 0.1,
-          //       color: Colors.transparent,
-          //       child: TextField(
-          //         controller: tx1,
-          //         decoration: const InputDecoration(
-          //             isDense: true, hintText: 'Enter Period'),
-          //         style: _textTheme.subtitle1,
-          //       ),
-          //     ),
-          //   ],
-          // ),
+//           Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: [
+//               Text('Period', style: _textTheme.subtitle1),
+//               SizedBox(
+//                 width: screensize.width * 0.1,
+//                 child: TextField(
+//                   decoration: const InputDecoration(
+//                       isDense: true, hintText: 'Enter Period'),
+//                   controller: tx1,
+//                   style: _textTheme.subtitle1,
+//                 ),
+//               ),
+//             ],
+//           ),
 //           Container(
 //             margin: const EdgeInsets.symmetric(vertical: 20),
 //             color: COLOR_Grey1,

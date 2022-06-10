@@ -4,6 +4,12 @@ import 'package:ninjastrategy2/datamodel/main_datamodel_instance.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/pages/components/adl.dart';
 import 'package:ninjastrategy2/ui/pages/components/adx.dart';
+import 'package:ninjastrategy2/ui/pages/components/chaikin_oscillator.dart';
+import 'package:ninjastrategy2/ui/pages/components/chaikin_volatility.dart';
+import 'package:ninjastrategy2/ui/pages/components/current_day_OHL.dart';
+import 'package:ninjastrategy2/ui/pages/components/dema.dart';
+import 'package:ninjastrategy2/ui/pages/components/double_stochastics.dart';
+import 'package:ninjastrategy2/ui/pages/components/ema.dart';
 import 'package:ninjastrategy2/ui/pages/widgets/basic_component_layout.dart';
 import 'package:ninjastrategy2/ui/pages/components/bollinger.dart';
 import 'package:ninjastrategy2/ui/pages/components/bop.dart';
@@ -43,6 +49,24 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
       case 'BOP':
         e1 = BOP();
         break;
+      case 'Chaikin Oscillator':
+        e1 = ChaikinOscillator();
+        break;
+      case 'Chaikin Volatility':
+        e1 = ChaikinVolatility();
+        break;
+      case 'Current Day OHL':
+        e1 = CurrentDayOHL();
+        break;
+      case 'DEMA':
+        e1 = DEMA();
+        break;
+      case 'Double Stochastics':
+        e1 = DoubleStochastics();
+        break;
+      case 'EMA':
+        e1 = EMA();
+        break;
       default:
         e1 = const Center(child: Text('Select an Element'));
     }
@@ -62,6 +86,24 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
         break;
       case 'BOP':
         e2 = BOP();
+        break;
+      case 'Chaikin Oscillator':
+        e2 = ChaikinOscillator();
+        break;
+      case 'Chaikin Volatility':
+        e2 = ChaikinVolatility();
+        break;
+      case 'Current Day OHL':
+        e2 = CurrentDayOHL();
+        break;
+      case 'DEMA':
+        e2 = DEMA();
+        break;
+      case 'Double Stochastics':
+        e2 = DoubleStochastics();
+        break;
+      case 'EMA':
+        e2 = EMA();
         break;
       default:
         e2 = const Center(child: Text('Select an Element'));
@@ -241,7 +283,7 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                     children: [
                       Expanded(flex: 1, child: e1),
                       Container(
-                        color: COLOR_Grey1,
+                        color: COLOR_Divider,
                         width: 2,
                         height: 400,
                       ),

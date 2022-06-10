@@ -52,14 +52,14 @@ class _ADLState extends State<ADL> {
             ),
             const Expanded(flex: 1, child: SizedBox.shrink()),
             Container(
-              color: COLOR_Grey1,
+              color: COLOR_Divider,
               height: 2,
             ),
             const Expanded(flex: 1, child: SizedBox.shrink()),
             const Expanded(flex: 1, child: SizedBox.shrink()),
             const Expanded(flex: 1, child: SizedBox.shrink()),
             Container(
-              color: COLOR_Grey1,
+              color: COLOR_Divider,
               height: 2,
             ),
           ],

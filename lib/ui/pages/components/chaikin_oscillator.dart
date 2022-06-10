@@ -1,51 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ninjastrategy2/datamodel/indicators/bollinger_datamodel.dart';
+import 'package:ninjastrategy2/datamodel/indicators/chaikin_oscillator_datamodel.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
-import 'package:ninjastrategy2/ui/pages/components/valueplots/popup_bollinger_value_plot.dart';
 
-class Bollinger extends StatefulWidget {
-  Bollingerdatamodel dataModel = Bollingerdatamodel();
-  Bollinger({Key? key}) : super(key: key);
+class ChaikinOscillator extends StatefulWidget {
+  ChaikinOscillatordatamodel dataModel = ChaikinOscillatordatamodel();
+  ChaikinOscillator({Key? key}) : super(key: key);
 
   @override
-  State<Bollinger> createState() => _BollingerState();
+  State<ChaikinOscillator> createState() => _ChaikinOscillatorState();
 }
 
-class _BollingerState extends State<Bollinger> {
+class _ChaikinOscillatorState extends State<ChaikinOscillator> {
   bool plotOfChart = false;
-  String VPTitle = 'Upper';
 
-  void selectValuePlot(String elm) {
-    VPTitle = elm;
-    switch (elm) {
-      case 'Lower':
-        widget.dataModel.valuePlot = '2';
-        break;
-      case 'Middle':
-        widget.dataModel.valuePlot = '1';
-        break;
-      case 'Upper':
-        widget.dataModel.valuePlot = '0';
-        break;
-      default:
-        widget.dataModel.valuePlot = '2';
-    }
-  }
-
-  TextEditingController nSD = TextEditingController();
-  TextEditingController prd = TextEditingController();
+  TextEditingController fast = TextEditingController();
+  TextEditingController slow = TextEditingController();
   @override
   void initState() {
     super.initState();
-    nSD.text = widget.dataModel.numStdDev;
-    prd.text = widget.dataModel.period;
+    fast.text = widget.dataModel.fast;
+    slow.text = widget.dataModel.slow;
   }
 
   @override
   void dispose() {
-    nSD.dispose();
-    prd.dispose();
+    fast.dispose();
+    slow.dispose();
     super.dispose();
   }
 
@@ -86,29 +67,7 @@ class _BollingerState extends State<Bollinger> {
                 ],
               ),
             ),
-            Expanded(
-              flex: 1,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Value Plot', style: _textTheme.subtitle1),
-                  ElevatedButton(
-                    onPressed: () async {
-                      await showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              BollingerValuePlotPopUp(
-                                  selection: selectValuePlot));
-                      setState(() {});
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Text(VPTitle),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            const Expanded(flex: 1, child: SizedBox.shrink()),
             Container(
               color: COLOR_Divider,
               height: 2,
@@ -119,22 +78,22 @@ class _BollingerState extends State<Bollinger> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child: Text('No. of Standard Deviations',
-                        maxLines: 2, style: _textTheme.subtitle1),
+                    child:
+                        Text('Fast', maxLines: 2, style: _textTheme.subtitle1),
                   ),
                   Container(
                     width: screensize.width * 0.1,
                     color: Colors.transparent,
                     child: TextField(
-                      controller: nSD,
+                      controller: fast,
                       decoration: const InputDecoration(
-                          isDense: true, hintText: 'Enter No. of S.D.'),
+                          isDense: true, hintText: 'Enter Fast.'),
                       style: _textTheme.subtitle1,
                       // inputFormatters: <TextInputFormatter>[
                       //   FilteringTextInputFormatter.digitsOnly
                       // ],
                       onChanged: (val) {
-                        widget.dataModel.numStdDev = val;
+                        widget.dataModel.fast = val;
                       },
                     ),
                   ),
@@ -146,20 +105,20 @@ class _BollingerState extends State<Bollinger> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Period', style: _textTheme.subtitle1),
+                  Text('Slow', style: _textTheme.subtitle1),
                   Container(
                     width: screensize.width * 0.1,
                     color: Colors.transparent,
                     child: TextField(
-                      controller: prd,
+                      controller: slow,
                       decoration: const InputDecoration(
-                          isDense: true, hintText: 'Enter Period'),
+                          isDense: true, hintText: 'Enter Slow'),
                       style: _textTheme.subtitle1,
                       // inputFormatters: <TextInputFormatter>[
                       //   FilteringTextInputFormatter.digitsOnly
                       // ],
                       onChanged: (val) {
-                        widget.dataModel.period = val;
+                        widget.dataModel.slow = val;
                       },
                     ),
                   ),

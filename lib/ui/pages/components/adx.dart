@@ -64,7 +64,7 @@ class _ADXState extends State<ADX> {
             ),
             const Expanded(flex: 1, child: SizedBox.shrink()),
             Container(
-              color: COLOR_Grey1,
+              color: COLOR_Divider,
               height: 2,
             ),
             Expanded(
@@ -88,7 +88,7 @@ class _ADXState extends State<ADX> {
             const Expanded(flex: 1, child: SizedBox.shrink()),
             const Expanded(flex: 1, child: SizedBox.shrink()),
             Container(
-              color: COLOR_Grey1,
+              color: COLOR_Divider,
               height: 2,
             ),
           ],

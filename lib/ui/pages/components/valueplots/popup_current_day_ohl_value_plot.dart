@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 
-class ValuePlotPopUp extends StatefulWidget {
+class CurrentDayOHLValuePlotPopUp extends StatefulWidget {
   Function selection;
-  ValuePlotPopUp({Key? key, required this.selection}) : super(key: key);
+  CurrentDayOHLValuePlotPopUp({Key? key, required this.selection})
+      : super(key: key);
 
   @override
-  State<ValuePlotPopUp> createState() => _ValuePlotPopUpState();
+  State<CurrentDayOHLValuePlotPopUp> createState() =>
+      _CurrentDayOHLValuePlotPopUpState();
 }
 
-class _ValuePlotPopUpState extends State<ValuePlotPopUp> {
+class _CurrentDayOHLValuePlotPopUpState
+    extends State<CurrentDayOHLValuePlotPopUp> {
   List allValuePlots = [
-    'Lower',
-    'Middle',
-    'Upper',
+    'Current Open',
+    'Current High',
+    'Current Low',
   ];
 
   @override
@@ -43,16 +46,6 @@ class _ValuePlotPopUpState extends State<ValuePlotPopUp> {
         height: bxHeight * 0.5,
         child: Column(
           children: [
-            // Padding(
-            //   padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-            //   child: TextField(
-            //     controller: widget.searchController,
-            //     decoration: const InputDecoration(hintText: 'Search')
-            //         .applyDefaults(_inputDecorTheme),
-            //     keyboardType: TextInputType.name,
-            //     style: _textTheme.headline6?.copyWith(color: Colors.black),
-            //   ),
-            // ),
             Expanded(
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
