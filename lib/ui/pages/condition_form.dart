@@ -12,6 +12,20 @@ import 'package:ninjastrategy2/ui/pages/components/double_stochastics.dart';
 import 'package:ninjastrategy2/ui/pages/components/ema.dart';
 import 'package:ninjastrategy2/ui/pages/components/fibbonacci_pivots.dart';
 import 'package:ninjastrategy2/ui/pages/components/keltner_channel.dart';
+import 'package:ninjastrategy2/ui/pages/components/macd.dart';
+import 'package:ninjastrategy2/ui/pages/components/max.dart';
+import 'package:ninjastrategy2/ui/pages/components/min.dart';
+import 'package:ninjastrategy2/ui/pages/components/pivots.dart';
+import 'package:ninjastrategy2/ui/pages/components/prior_day_ohlc.dart';
+import 'package:ninjastrategy2/ui/pages/components/rsi.dart';
+import 'package:ninjastrategy2/ui/pages/components/sma.dart';
+import 'package:ninjastrategy2/ui/pages/components/std_dev.dart';
+import 'package:ninjastrategy2/ui/pages/components/stochastics.dart';
+import 'package:ninjastrategy2/ui/pages/components/stochastics_fast.dart';
+import 'package:ninjastrategy2/ui/pages/components/swing.dart';
+import 'package:ninjastrategy2/ui/pages/components/ultimate_oscillator.dart';
+import 'package:ninjastrategy2/ui/pages/components/vol.dart';
+import 'package:ninjastrategy2/ui/pages/components/zigzag.dart';
 import 'package:ninjastrategy2/ui/pages/widgets/basic_component_layout.dart';
 import 'package:ninjastrategy2/ui/pages/components/bollinger.dart';
 import 'package:ninjastrategy2/ui/pages/components/bop.dart';
@@ -75,7 +89,48 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
       case 'Keltner Channel':
         e1 = KeltnerChannel();
         break;
-
+      case 'MACD':
+        e1 = MACD();
+        break;
+      case 'MAX':
+        e1 = MAX();
+        break;
+      case 'MIN':
+        e1 = MIN();
+        break;
+      case 'Pivots':
+        e1 = Pivots();
+        break;
+      case 'Prior Day OHLC':
+        e1 = PriorDayOHLC();
+        break;
+      case 'RSI':
+        e1 = RSI();
+        break;
+      case 'SMA':
+        e1 = SMA();
+        break;
+      case 'Standard Deviation':
+        e1 = StandardDeviation();
+        break;
+      case 'Stochastic':
+        e1 = Stochastics();
+        break;
+      case 'Stochastic Fast':
+        e1 = StochasticsFast();
+        break;
+      case 'Swing':
+        e1 = Swing();
+        break;
+      case 'Ultimate Oscillator':
+        e1 = UltimateOscillator();
+        break;
+      case 'VOL':
+        e1 = VOL();
+        break;
+      case 'ZigZag':
+        e1 = ZigZag();
+        break;
       default:
         e1 = const Center(child: Text('Select an Element'));
     }
@@ -113,6 +168,54 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
         break;
       case 'EMA':
         e2 = EMA();
+        break;
+      case 'Fibbonacci Pivots':
+        e2 = FibbonacciPivots();
+        break;
+      case 'Keltner Channel':
+        e2 = KeltnerChannel();
+        break;
+      case 'MACD':
+        e2 = MACD();
+        break;
+      case 'MAX':
+        e2 = MAX();
+        break;
+      case 'MIN':
+        e2 = MIN();
+        break;
+      case 'Pivots':
+        e2 = Pivots();
+        break;
+      case 'Prior Day OHLC':
+        e2 = PriorDayOHLC();
+        break;
+      case 'RSI':
+        e2 = RSI();
+        break;
+      case 'SMA':
+        e2 = SMA();
+        break;
+      case 'Standard Deviation':
+        e2 = StandardDeviation();
+        break;
+      case 'Stochastic':
+        e2 = Stochastics();
+        break;
+      case 'Stochastic Fast':
+        e2 = StochasticsFast();
+        break;
+      case 'Swing':
+        e2 = Swing();
+        break;
+      case 'Ultimate Oscillator':
+        e2 = UltimateOscillator();
+        break;
+      case 'VOL':
+        e2 = VOL();
+        break;
+      case 'ZigZag':
+        e2 = ZigZag();
         break;
       default:
         e2 = const Center(child: Text('Select an Element'));
@@ -215,7 +318,9 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                           onPressed: () async {
                             await showDialog(
                                 context: context,
-                                builder: (BuildContext context) => CompareOperationPopUp(selection: selectCompareOperation));
+                                builder: (BuildContext context) =>
+                                    CompareOperationPopUp(
+                                        selection: selectCompareOperation));
                             setState(() {});
                           },
                           child: Padding(
@@ -246,11 +351,15 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                           child: ElevatedButton(
                             onPressed: () async {
                               await showDialog(
-                                  context: context, builder: (BuildContext context) => ComponentsPopUp(selection: selectElement1));
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      ComponentsPopUp(
+                                          selection: selectElement1));
                               setState(() {});
                             },
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(e1Title),
                             ),
                           ),
@@ -263,11 +372,15 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                           child: ElevatedButton(
                             onPressed: () async {
                               await showDialog(
-                                  context: context, builder: (BuildContext context) => ComponentsPopUp(selection: selectElement2));
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      ComponentsPopUp(
+                                          selection: selectElement2));
                               setState(() {});
                             },
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(e2Title),
                             ),
                           ),
@@ -314,11 +427,14 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                         child: Center(
                           child: ElevatedButton(
                             onPressed: () {
-                              if (e1Title != 'Select' && e2Title != 'Select' && operationTitle != 'Select') {
+                              if (e1Title != 'Select' &&
+                                  e2Title != 'Select' &&
+                                  operationTitle != 'Select') {
                                 finalizeDataModels();
                                 Navigator.pop(context);
                               } else {
-                                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
                                   content: Text('Provide All Conditions'),
                                   backgroundColor: COLOR_PRIMARY,
                                 ));

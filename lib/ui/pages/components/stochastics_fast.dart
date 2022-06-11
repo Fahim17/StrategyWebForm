@@ -1,51 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ninjastrategy2/datamodel/indicators/keltner_channel_datamodel.dart';
+import 'package:ninjastrategy2/datamodel/indicators/stochastics_fast_datamodel.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
-import 'package:ninjastrategy2/ui/pages/components/valueplots/popup_keltnerchannel_value_plot.dart';
+import 'package:ninjastrategy2/ui/pages/components/valueplots/popup_macd_value_plot.dart';
+import 'package:ninjastrategy2/ui/pages/components/valueplots/popup_stochastics_value_plot.dart';
 
-class KeltnerChannel extends StatefulWidget {
-  KeltnerChanneldatamodel dataModel = KeltnerChanneldatamodel();
-  KeltnerChannel({Key? key}) : super(key: key);
+class StochasticsFast extends StatefulWidget {
+  StochasticsFastdatamodel dataModel = StochasticsFastdatamodel();
+  StochasticsFast({Key? key}) : super(key: key);
 
   @override
-  State<KeltnerChannel> createState() => _KeltnerChannelState();
+  State<StochasticsFast> createState() => _StochasticsFastState();
 }
 
-class _KeltnerChannelState extends State<KeltnerChannel> {
+class _StochasticsFastState extends State<StochasticsFast> {
   bool plotOfChart = false;
-  String VPTitle = 'Upper';
+  String VPTitle = 'D';
 
   void selectValuePlot(String elm) {
     VPTitle = elm;
     switch (elm) {
-      case 'Lower':
-        widget.dataModel.valuePlot = '2';
-        break;
-      case 'Midline':
-        widget.dataModel.valuePlot = '1';
-        break;
-      case 'Upper':
+      case 'D':
         widget.dataModel.valuePlot = '0';
         break;
+      case 'K':
+        widget.dataModel.valuePlot = '1';
+        break;
       default:
-        widget.dataModel.valuePlot = '2';
+        widget.dataModel.valuePlot = '0';
     }
   }
 
-  TextEditingController offsetMulti = TextEditingController();
-  TextEditingController prd = TextEditingController();
+  TextEditingController pD = TextEditingController();
+  TextEditingController pK = TextEditingController();
+
   @override
   void initState() {
     super.initState();
-    offsetMulti.text = widget.dataModel.offsetMultiplier;
-    prd.text = widget.dataModel.period;
+    pD.text = widget.dataModel.periodD;
+    pK.text = widget.dataModel.periodK;
   }
 
   @override
   void dispose() {
-    offsetMulti.dispose();
-    prd.dispose();
+    pD.dispose();
+    pK.dispose();
+
     super.dispose();
   }
 
@@ -97,7 +97,7 @@ class _KeltnerChannelState extends State<KeltnerChannel> {
                       await showDialog(
                           context: context,
                           builder: (BuildContext context) =>
-                              KeltnerChannelValuePlotPopUp(
+                              StochasticsValuePlotPopUp(
                                   selection: selectValuePlot));
                       setState(() {});
                     },
@@ -119,22 +119,22 @@ class _KeltnerChannelState extends State<KeltnerChannel> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child: Text('Offset Multiplier',
+                    child: Text('Period D',
                         maxLines: 2, style: _textTheme.subtitle1),
                   ),
                   Container(
                     width: screensize.width * 0.1,
                     color: Colors.transparent,
                     child: TextField(
-                      controller: offsetMulti,
+                      controller: pD,
                       decoration: const InputDecoration(
-                          isDense: true, hintText: 'Enter No. of S.D.'),
+                          isDense: true, hintText: 'Enter Period D'),
                       style: _textTheme.subtitle1,
                       // inputFormatters: <TextInputFormatter>[
                       //   FilteringTextInputFormatter.digitsOnly
                       // ],
                       onChanged: (val) {
-                        widget.dataModel.offsetMultiplier = val;
+                        widget.dataModel.periodD = val;
                       },
                     ),
                   ),
@@ -146,20 +146,20 @@ class _KeltnerChannelState extends State<KeltnerChannel> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Period', style: _textTheme.subtitle1),
+                  Text('Period K', style: _textTheme.subtitle1),
                   Container(
                     width: screensize.width * 0.1,
                     color: Colors.transparent,
                     child: TextField(
-                      controller: prd,
+                      controller: pK,
                       decoration: const InputDecoration(
-                          isDense: true, hintText: 'Enter Period'),
+                          isDense: true, hintText: 'Enter Period K'),
                       style: _textTheme.subtitle1,
                       // inputFormatters: <TextInputFormatter>[
                       //   FilteringTextInputFormatter.digitsOnly
                       // ],
                       onChanged: (val) {
-                        widget.dataModel.period = val;
+                        widget.dataModel.periodK = val;
                       },
                     ),
                   ),

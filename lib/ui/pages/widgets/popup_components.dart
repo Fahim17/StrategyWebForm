@@ -9,7 +9,8 @@ class ComponentsPopUp extends StatefulWidget {
   State<ComponentsPopUp> createState() => _ComponentsPopUpState();
 }
 
-class _ComponentsPopUpState extends State<ComponentsPopUp> with TickerProviderStateMixin {
+class _ComponentsPopUpState extends State<ComponentsPopUp>
+    with TickerProviderStateMixin {
   TextEditingController searchController = TextEditingController();
   List allIndicators = [
     'ADL',
@@ -24,20 +25,20 @@ class _ComponentsPopUpState extends State<ComponentsPopUp> with TickerProviderSt
     'EMA',
     'Fibbonacci Pivots',
     'Keltner Channel',
-    // 'Drinks',
-    // 'FastFood',
-    // 'Vegan',
-    // 'Vietnamese',
-    // 'German',
-    // 'Moroccan',
-    // 'Gambian',
-    // 'Philadelphia',
-    // 'Texan',
-    // 'Drinks',
-    // 'FastFood',
-    // 'Vegan',
-    // 'Vietnamese',
-    // 'German',
+    'MACD',
+    'MAX',
+    'MIN',
+    'Pivots',
+    'Prior Day OHLC',
+    'RSI',
+    'SMA',
+    'Standard Deviation',
+    'Stochastic',
+    'Stochastic Fast',
+    'Swing',
+    'Ultimate Oscillator',
+    'VOL',
+    'ZigZag',
     // 'Moroccan',
     // 'Gambian',
     // 'Philadelphia',
@@ -165,7 +166,9 @@ class _ComponentsPopUpState extends State<ComponentsPopUp> with TickerProviderSt
                           child: Padding(
                             padding: const EdgeInsets.all(10),
                             child: Text(allIndicators[index],
-                                textAlign: TextAlign.center, style: _textTheme.subtitle1?.copyWith(color: Colors.white)),
+                                textAlign: TextAlign.center,
+                                style: _textTheme.subtitle1
+                                    ?.copyWith(color: Colors.white)),
                           ),
                         ),
                       );
@@ -209,7 +212,10 @@ class _ComponentsPopUpState extends State<ComponentsPopUp> with TickerProviderSt
                           onPressed: () {},
                           child: Padding(
                             padding: const EdgeInsets.all(10),
-                            child: FittedBox(child: Text(allPrice[index], style: _textTheme.subtitle1?.copyWith(color: Colors.white))),
+                            child: FittedBox(
+                                child: Text(allPrice[index],
+                                    style: _textTheme.subtitle1
+                                        ?.copyWith(color: Colors.white))),
                           ),
                         ),
                       );

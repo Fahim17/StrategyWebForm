@@ -24,16 +24,16 @@ class _FibbonacciPivotsState extends State<FibbonacciPivots> {
     PRTitle = elm;
     switch (elm) {
       case 'Daily':
-        widget.dataModel.pivotRange = '2';
+        widget.dataModel.pivotRange = '0';
         break;
       case 'Weekly':
         widget.dataModel.pivotRange = '1';
         break;
       case 'Monthly':
-        widget.dataModel.pivotRange = '0';
+        widget.dataModel.pivotRange = '2';
         break;
       default:
-        widget.dataModel.pivotRange = '2';
+        widget.dataModel.pivotRange = '0';
     }
   }
 
@@ -41,13 +41,13 @@ class _FibbonacciPivotsState extends State<FibbonacciPivots> {
     HCLTitle = elm;
     switch (elm) {
       case 'Intraday':
-        widget.dataModel.HLCCalculationMode = '2';
+        widget.dataModel.HLCCalculationMode = '0';
         break;
       case 'Daily Bars':
         widget.dataModel.HLCCalculationMode = '1';
         break;
       default:
-        widget.dataModel.HLCCalculationMode = '2';
+        widget.dataModel.HLCCalculationMode = '0';
     }
   }
 
@@ -55,28 +55,28 @@ class _FibbonacciPivotsState extends State<FibbonacciPivots> {
     VPTitle = elm;
     switch (elm) {
       case 'Pp':
-        widget.dataModel.valuePlot = '2';
+        widget.dataModel.valuePlot = '0';
         break;
       case 'R1':
         widget.dataModel.valuePlot = '1';
         break;
       case 'R2':
-        widget.dataModel.valuePlot = '0';
+        widget.dataModel.valuePlot = '2';
         break;
       case 'R3':
-        widget.dataModel.valuePlot = '2';
+        widget.dataModel.valuePlot = '3';
         break;
       case 'S1':
-        widget.dataModel.valuePlot = '1';
+        widget.dataModel.valuePlot = '4';
         break;
       case 'S2':
-        widget.dataModel.valuePlot = '0';
+        widget.dataModel.valuePlot = '5';
         break;
       case 'S3':
-        widget.dataModel.valuePlot = '0';
+        widget.dataModel.valuePlot = '6';
         break;
       default:
-        widget.dataModel.valuePlot = '2';
+        widget.dataModel.valuePlot = '0';
     }
   }
 
@@ -97,7 +97,8 @@ class _FibbonacciPivotsState extends State<FibbonacciPivots> {
     return SizedBox(
       height: compontHeight,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(compontPaddingLeft, 0, compontPaddingRignt, 0),
+        padding: const EdgeInsets.fromLTRB(
+            compontPaddingLeft, 0, compontPaddingRignt, 0),
         child: Column(
           children: [
             Expanded(
@@ -118,7 +119,9 @@ class _FibbonacciPivotsState extends State<FibbonacciPivots> {
                       decoration: BoxDecoration(
                           border: Border.all(color: COLOR_PRIMARY, width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: (plotOfChart) ? COLOR_PRIMARY : Colors.transparent),
+                          color: (plotOfChart)
+                              ? COLOR_PRIMARY
+                              : Colors.transparent),
                     ),
                   ),
                 ],
@@ -134,7 +137,9 @@ class _FibbonacciPivotsState extends State<FibbonacciPivots> {
                     onPressed: () async {
                       await showDialog(
                           context: context,
-                          builder: (BuildContext context) => FibbonacciPivotsValuePlotPopUp(selection: selectValuePlot));
+                          builder: (BuildContext context) =>
+                              FibbonacciPivotsValuePlotPopUp(
+                                  selection: selectValuePlot));
                       setState(() {});
                     },
                     child: Padding(
@@ -159,7 +164,9 @@ class _FibbonacciPivotsState extends State<FibbonacciPivots> {
                     onPressed: () async {
                       await showDialog(
                           context: context,
-                          builder: (BuildContext context) => FibbonacciPivotsPivotRangePopUp(selection: selectPivotRange));
+                          builder: (BuildContext context) =>
+                              FibbonacciPivotsPivotRangePopUp(
+                                  selection: selectPivotRange));
                       setState(() {});
                     },
                     child: Padding(
@@ -179,7 +186,10 @@ class _FibbonacciPivotsState extends State<FibbonacciPivots> {
                   ElevatedButton(
                     onPressed: () async {
                       await showDialog(
-                          context: context, builder: (BuildContext context) => FibboPivotsHCLPopUp(selection: selectHLCCalcMode));
+                          context: context,
+                          builder: (BuildContext context) =>
+                              FibboPivotsHCLPopUp(
+                                  selection: selectHLCCalcMode));
                       setState(() {});
                     },
                     child: Padding(

@@ -1,50 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ninjastrategy2/datamodel/indicators/keltner_channel_datamodel.dart';
+import 'package:ninjastrategy2/datamodel/indicators/rsi_datamodel.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
-import 'package:ninjastrategy2/ui/pages/components/valueplots/popup_keltnerchannel_value_plot.dart';
+import 'package:ninjastrategy2/ui/pages/components/valueplots/popup_rsi_value_plot.dart';
 
-class KeltnerChannel extends StatefulWidget {
-  KeltnerChanneldatamodel dataModel = KeltnerChanneldatamodel();
-  KeltnerChannel({Key? key}) : super(key: key);
+class RSI extends StatefulWidget {
+  RSIdatamodel dataModel = RSIdatamodel();
+  RSI({Key? key}) : super(key: key);
 
   @override
-  State<KeltnerChannel> createState() => _KeltnerChannelState();
+  State<RSI> createState() => _RSIState();
 }
 
-class _KeltnerChannelState extends State<KeltnerChannel> {
+class _RSIState extends State<RSI> {
   bool plotOfChart = false;
-  String VPTitle = 'Upper';
+  String VPTitle = 'Avg';
 
   void selectValuePlot(String elm) {
     VPTitle = elm;
     switch (elm) {
-      case 'Lower':
-        widget.dataModel.valuePlot = '2';
-        break;
-      case 'Midline':
-        widget.dataModel.valuePlot = '1';
-        break;
-      case 'Upper':
+      case 'Avg':
         widget.dataModel.valuePlot = '0';
         break;
+      case 'RSI':
+        widget.dataModel.valuePlot = '1';
+        break;
       default:
-        widget.dataModel.valuePlot = '2';
+        widget.dataModel.valuePlot = '0';
     }
   }
 
-  TextEditingController offsetMulti = TextEditingController();
+  TextEditingController smoth = TextEditingController();
   TextEditingController prd = TextEditingController();
   @override
   void initState() {
     super.initState();
-    offsetMulti.text = widget.dataModel.offsetMultiplier;
+    smoth.text = widget.dataModel.smooth;
     prd.text = widget.dataModel.period;
   }
 
   @override
   void dispose() {
-    offsetMulti.dispose();
+    smoth.dispose();
     prd.dispose();
     super.dispose();
   }
@@ -97,8 +94,7 @@ class _KeltnerChannelState extends State<KeltnerChannel> {
                       await showDialog(
                           context: context,
                           builder: (BuildContext context) =>
-                              KeltnerChannelValuePlotPopUp(
-                                  selection: selectValuePlot));
+                              RSIValuePlotPopUp(selection: selectValuePlot));
                       setState(() {});
                     },
                     child: Padding(
@@ -119,22 +115,22 @@ class _KeltnerChannelState extends State<KeltnerChannel> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child: Text('Offset Multiplier',
+                    child: Text('Smooth',
                         maxLines: 2, style: _textTheme.subtitle1),
                   ),
                   Container(
                     width: screensize.width * 0.1,
                     color: Colors.transparent,
                     child: TextField(
-                      controller: offsetMulti,
+                      controller: smoth,
                       decoration: const InputDecoration(
-                          isDense: true, hintText: 'Enter No. of S.D.'),
+                          isDense: true, hintText: 'Enter Smooth'),
                       style: _textTheme.subtitle1,
                       // inputFormatters: <TextInputFormatter>[
                       //   FilteringTextInputFormatter.digitsOnly
                       // ],
                       onChanged: (val) {
-                        widget.dataModel.offsetMultiplier = val;
+                        widget.dataModel.smooth = val;
                       },
                     ),
                   ),

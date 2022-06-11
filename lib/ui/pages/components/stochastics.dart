@@ -1,51 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ninjastrategy2/datamodel/indicators/keltner_channel_datamodel.dart';
+import 'package:ninjastrategy2/datamodel/indicators/stochastics_datamodel.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
-import 'package:ninjastrategy2/ui/pages/components/valueplots/popup_keltnerchannel_value_plot.dart';
+import 'package:ninjastrategy2/ui/pages/components/valueplots/popup_macd_value_plot.dart';
+import 'package:ninjastrategy2/ui/pages/components/valueplots/popup_stochastics_value_plot.dart';
 
-class KeltnerChannel extends StatefulWidget {
-  KeltnerChanneldatamodel dataModel = KeltnerChanneldatamodel();
-  KeltnerChannel({Key? key}) : super(key: key);
+class Stochastics extends StatefulWidget {
+  Stochasticsdatamodel dataModel = Stochasticsdatamodel();
+  Stochastics({Key? key}) : super(key: key);
 
   @override
-  State<KeltnerChannel> createState() => _KeltnerChannelState();
+  State<Stochastics> createState() => _StochasticsState();
 }
 
-class _KeltnerChannelState extends State<KeltnerChannel> {
+class _StochasticsState extends State<Stochastics> {
   bool plotOfChart = false;
-  String VPTitle = 'Upper';
+  String VPTitle = 'D';
 
   void selectValuePlot(String elm) {
     VPTitle = elm;
     switch (elm) {
-      case 'Lower':
-        widget.dataModel.valuePlot = '2';
-        break;
-      case 'Midline':
-        widget.dataModel.valuePlot = '1';
-        break;
-      case 'Upper':
+      case 'D':
         widget.dataModel.valuePlot = '0';
         break;
+      case 'K':
+        widget.dataModel.valuePlot = '1';
+        break;
       default:
-        widget.dataModel.valuePlot = '2';
+        widget.dataModel.valuePlot = '0';
     }
   }
 
-  TextEditingController offsetMulti = TextEditingController();
-  TextEditingController prd = TextEditingController();
+  TextEditingController pD = TextEditingController();
+  TextEditingController pK = TextEditingController();
+  TextEditingController smoth = TextEditingController();
+
   @override
   void initState() {
     super.initState();
-    offsetMulti.text = widget.dataModel.offsetMultiplier;
-    prd.text = widget.dataModel.period;
+    pD.text = widget.dataModel.periodD;
+    pK.text = widget.dataModel.periodK;
+    smoth.text = widget.dataModel.smooth;
   }
 
   @override
   void dispose() {
-    offsetMulti.dispose();
-    prd.dispose();
+    pD.dispose();
+    pK.dispose();
+    smoth.dispose();
     super.dispose();
   }
 
@@ -97,7 +99,7 @@ class _KeltnerChannelState extends State<KeltnerChannel> {
                       await showDialog(
                           context: context,
                           builder: (BuildContext context) =>
-                              KeltnerChannelValuePlotPopUp(
+                              StochasticsValuePlotPopUp(
                                   selection: selectValuePlot));
                       setState(() {});
                     },
@@ -119,22 +121,22 @@ class _KeltnerChannelState extends State<KeltnerChannel> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child: Text('Offset Multiplier',
+                    child: Text('Period D',
                         maxLines: 2, style: _textTheme.subtitle1),
                   ),
                   Container(
                     width: screensize.width * 0.1,
                     color: Colors.transparent,
                     child: TextField(
-                      controller: offsetMulti,
+                      controller: pD,
                       decoration: const InputDecoration(
-                          isDense: true, hintText: 'Enter No. of S.D.'),
+                          isDense: true, hintText: 'Enter Period D'),
                       style: _textTheme.subtitle1,
                       // inputFormatters: <TextInputFormatter>[
                       //   FilteringTextInputFormatter.digitsOnly
                       // ],
                       onChanged: (val) {
-                        widget.dataModel.offsetMultiplier = val;
+                        widget.dataModel.periodD = val;
                       },
                     ),
                   ),
@@ -146,27 +148,51 @@ class _KeltnerChannelState extends State<KeltnerChannel> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Period', style: _textTheme.subtitle1),
+                  Text('Period K', style: _textTheme.subtitle1),
                   Container(
                     width: screensize.width * 0.1,
                     color: Colors.transparent,
                     child: TextField(
-                      controller: prd,
+                      controller: pK,
                       decoration: const InputDecoration(
-                          isDense: true, hintText: 'Enter Period'),
+                          isDense: true, hintText: 'Enter Period K'),
                       style: _textTheme.subtitle1,
                       // inputFormatters: <TextInputFormatter>[
                       //   FilteringTextInputFormatter.digitsOnly
                       // ],
                       onChanged: (val) {
-                        widget.dataModel.period = val;
+                        widget.dataModel.periodK = val;
                       },
                     ),
                   ),
                 ],
               ),
             ),
-            const Expanded(flex: 1, child: SizedBox.shrink()),
+            Expanded(
+              flex: 1,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Smooth', style: _textTheme.subtitle1),
+                  Container(
+                    width: screensize.width * 0.1,
+                    color: Colors.transparent,
+                    child: TextField(
+                      controller: smoth,
+                      decoration: const InputDecoration(
+                          isDense: true, hintText: 'Enter Smooth'),
+                      style: _textTheme.subtitle1,
+                      // inputFormatters: <TextInputFormatter>[
+                      //   FilteringTextInputFormatter.digitsOnly
+                      // ],
+                      onChanged: (val) {
+                        widget.dataModel.smooth = val;
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Container(
               color: COLOR_Divider,
               height: 2,

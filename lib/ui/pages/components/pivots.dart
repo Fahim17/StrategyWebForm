@@ -1,51 +1,93 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ninjastrategy2/datamodel/indicators/keltner_channel_datamodel.dart';
+import 'package:ninjastrategy2/datamodel/indicators/fibbonacci_pivots_datamodel.dart';
+import 'package:ninjastrategy2/datamodel/indicators/pivots_datamodel.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
-import 'package:ninjastrategy2/ui/pages/components/valueplots/popup_keltnerchannel_value_plot.dart';
+import 'package:ninjastrategy2/ui/pages/components/valueplots/popup_fibbonacci_pivots_HCL.dart';
+import 'package:ninjastrategy2/ui/pages/components/valueplots/popup_fibbonacci_pivots_pivot_range.dart';
+import 'package:ninjastrategy2/ui/pages/components/valueplots/popup_fibbonacci_pivots_value_plot.dart';
 
-class KeltnerChannel extends StatefulWidget {
-  KeltnerChanneldatamodel dataModel = KeltnerChanneldatamodel();
-  KeltnerChannel({Key? key}) : super(key: key);
+class Pivots extends StatefulWidget {
+  Pivotsdatamodel dataModel = Pivotsdatamodel();
+  Pivots({Key? key}) : super(key: key);
 
   @override
-  State<KeltnerChannel> createState() => _KeltnerChannelState();
+  State<Pivots> createState() => _PivotsState();
 }
 
-class _KeltnerChannelState extends State<KeltnerChannel> {
+class _PivotsState extends State<Pivots> {
   bool plotOfChart = false;
-  String VPTitle = 'Upper';
+  String PRTitle = 'Daily';
+  String HCLTitle = 'Intraday';
+  String VPTitle = 'Pp';
+
+  void selectPivotRange(String elm) {
+    PRTitle = elm;
+    switch (elm) {
+      case 'Daily':
+        widget.dataModel.pivotRange = '0';
+        break;
+      case 'Weekly':
+        widget.dataModel.pivotRange = '1';
+        break;
+      case 'Monthly':
+        widget.dataModel.pivotRange = '2';
+        break;
+      default:
+        widget.dataModel.pivotRange = '0';
+    }
+  }
+
+  void selectHLCCalcMode(String elm) {
+    HCLTitle = elm;
+    switch (elm) {
+      case 'Intraday':
+        widget.dataModel.HLCCalculationMode = '0';
+        break;
+      case 'Daily Bars':
+        widget.dataModel.HLCCalculationMode = '1';
+        break;
+      default:
+        widget.dataModel.HLCCalculationMode = '0';
+    }
+  }
 
   void selectValuePlot(String elm) {
     VPTitle = elm;
     switch (elm) {
-      case 'Lower':
-        widget.dataModel.valuePlot = '2';
-        break;
-      case 'Midline':
-        widget.dataModel.valuePlot = '1';
-        break;
-      case 'Upper':
+      case 'Pp':
         widget.dataModel.valuePlot = '0';
         break;
-      default:
+      case 'R1':
+        widget.dataModel.valuePlot = '1';
+        break;
+      case 'R2':
         widget.dataModel.valuePlot = '2';
+        break;
+      case 'R3':
+        widget.dataModel.valuePlot = '3';
+        break;
+      case 'S1':
+        widget.dataModel.valuePlot = '4';
+        break;
+      case 'S2':
+        widget.dataModel.valuePlot = '5';
+        break;
+      case 'S3':
+        widget.dataModel.valuePlot = '6';
+        break;
+      default:
+        widget.dataModel.valuePlot = '0';
     }
   }
 
-  TextEditingController offsetMulti = TextEditingController();
-  TextEditingController prd = TextEditingController();
   @override
   void initState() {
     super.initState();
-    offsetMulti.text = widget.dataModel.offsetMultiplier;
-    prd.text = widget.dataModel.period;
   }
 
   @override
   void dispose() {
-    offsetMulti.dispose();
-    prd.dispose();
     super.dispose();
   }
 
@@ -97,7 +139,7 @@ class _KeltnerChannelState extends State<KeltnerChannel> {
                       await showDialog(
                           context: context,
                           builder: (BuildContext context) =>
-                              KeltnerChannelValuePlotPopUp(
+                              FibbonacciPivotsValuePlotPopUp(
                                   selection: selectValuePlot));
                       setState(() {});
                     },
@@ -118,24 +160,19 @@ class _KeltnerChannelState extends State<KeltnerChannel> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
-                    child: Text('Offset Multiplier',
-                        maxLines: 2, style: _textTheme.subtitle1),
-                  ),
-                  Container(
-                    width: screensize.width * 0.1,
-                    color: Colors.transparent,
-                    child: TextField(
-                      controller: offsetMulti,
-                      decoration: const InputDecoration(
-                          isDense: true, hintText: 'Enter No. of S.D.'),
-                      style: _textTheme.subtitle1,
-                      // inputFormatters: <TextInputFormatter>[
-                      //   FilteringTextInputFormatter.digitsOnly
-                      // ],
-                      onChanged: (val) {
-                        widget.dataModel.offsetMultiplier = val;
-                      },
+                  Text('Pivot Range', style: _textTheme.subtitle1),
+                  ElevatedButton(
+                    onPressed: () async {
+                      await showDialog(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              FibbonacciPivotsPivotRangePopUp(
+                                  selection: selectPivotRange));
+                      setState(() {});
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(PRTitle),
                     ),
                   ),
                 ],
@@ -146,21 +183,19 @@ class _KeltnerChannelState extends State<KeltnerChannel> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Period', style: _textTheme.subtitle1),
-                  Container(
-                    width: screensize.width * 0.1,
-                    color: Colors.transparent,
-                    child: TextField(
-                      controller: prd,
-                      decoration: const InputDecoration(
-                          isDense: true, hintText: 'Enter Period'),
-                      style: _textTheme.subtitle1,
-                      // inputFormatters: <TextInputFormatter>[
-                      //   FilteringTextInputFormatter.digitsOnly
-                      // ],
-                      onChanged: (val) {
-                        widget.dataModel.period = val;
-                      },
+                  Text('HLC Calculation Mode', style: _textTheme.subtitle1),
+                  ElevatedButton(
+                    onPressed: () async {
+                      await showDialog(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              FibboPivotsHCLPopUp(
+                                  selection: selectHLCCalcMode));
+                      setState(() {});
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(HCLTitle),
                     ),
                   ),
                 ],

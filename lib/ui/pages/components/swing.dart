@@ -1,51 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ninjastrategy2/datamodel/indicators/keltner_channel_datamodel.dart';
+import 'package:ninjastrategy2/datamodel/indicators/swing_datamodel.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
-import 'package:ninjastrategy2/ui/pages/components/valueplots/popup_keltnerchannel_value_plot.dart';
+import 'package:ninjastrategy2/ui/pages/components/valueplots/popup_swing_value_plot.dart';
 
-class KeltnerChannel extends StatefulWidget {
-  KeltnerChanneldatamodel dataModel = KeltnerChanneldatamodel();
-  KeltnerChannel({Key? key}) : super(key: key);
+class Swing extends StatefulWidget {
+  Swingdatamodel dataModel = Swingdatamodel();
+  Swing({Key? key}) : super(key: key);
 
   @override
-  State<KeltnerChannel> createState() => _KeltnerChannelState();
+  State<Swing> createState() => _SwingState();
 }
 
-class _KeltnerChannelState extends State<KeltnerChannel> {
+class _SwingState extends State<Swing> {
   bool plotOfChart = false;
-  String VPTitle = 'Upper';
+  String VPTitle = 'Swing High';
 
   void selectValuePlot(String elm) {
     VPTitle = elm;
     switch (elm) {
-      case 'Lower':
-        widget.dataModel.valuePlot = '2';
-        break;
-      case 'Midline':
-        widget.dataModel.valuePlot = '1';
-        break;
-      case 'Upper':
+      case 'Swing High':
         widget.dataModel.valuePlot = '0';
         break;
+      case 'Swing Low':
+        widget.dataModel.valuePlot = '1';
+        break;
       default:
-        widget.dataModel.valuePlot = '2';
+        widget.dataModel.valuePlot = '0';
     }
   }
 
-  TextEditingController offsetMulti = TextEditingController();
-  TextEditingController prd = TextEditingController();
+  TextEditingController strgth = TextEditingController();
   @override
   void initState() {
     super.initState();
-    offsetMulti.text = widget.dataModel.offsetMultiplier;
-    prd.text = widget.dataModel.period;
+    strgth.text = widget.dataModel.strength;
   }
 
   @override
   void dispose() {
-    offsetMulti.dispose();
-    prd.dispose();
+    strgth.dispose();
     super.dispose();
   }
 
@@ -97,8 +91,7 @@ class _KeltnerChannelState extends State<KeltnerChannel> {
                       await showDialog(
                           context: context,
                           builder: (BuildContext context) =>
-                              KeltnerChannelValuePlotPopUp(
-                                  selection: selectValuePlot));
+                              SwingValuePlotPopUp(selection: selectValuePlot));
                       setState(() {});
                     },
                     child: Padding(
@@ -119,53 +112,29 @@ class _KeltnerChannelState extends State<KeltnerChannel> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child: Text('Offset Multiplier',
+                    child: Text('Strength',
                         maxLines: 2, style: _textTheme.subtitle1),
                   ),
                   Container(
                     width: screensize.width * 0.1,
                     color: Colors.transparent,
                     child: TextField(
-                      controller: offsetMulti,
+                      controller: strgth,
                       decoration: const InputDecoration(
-                          isDense: true, hintText: 'Enter No. of S.D.'),
+                          isDense: true, hintText: 'Enter Strength'),
                       style: _textTheme.subtitle1,
                       // inputFormatters: <TextInputFormatter>[
                       //   FilteringTextInputFormatter.digitsOnly
                       // ],
                       onChanged: (val) {
-                        widget.dataModel.offsetMultiplier = val;
+                        widget.dataModel.strength = val;
                       },
                     ),
                   ),
                 ],
               ),
             ),
-            Expanded(
-              flex: 1,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Period', style: _textTheme.subtitle1),
-                  Container(
-                    width: screensize.width * 0.1,
-                    color: Colors.transparent,
-                    child: TextField(
-                      controller: prd,
-                      decoration: const InputDecoration(
-                          isDense: true, hintText: 'Enter Period'),
-                      style: _textTheme.subtitle1,
-                      // inputFormatters: <TextInputFormatter>[
-                      //   FilteringTextInputFormatter.digitsOnly
-                      // ],
-                      onChanged: (val) {
-                        widget.dataModel.period = val;
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            const Expanded(flex: 1, child: SizedBox.shrink()),
             const Expanded(flex: 1, child: SizedBox.shrink()),
             Container(
               color: COLOR_Divider,

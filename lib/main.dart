@@ -19,9 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Ninja Strategy Generator',
       debugShowCheckedModeBanner: false,
       theme: defalutTheme,
-      home: ConditionFormPage(
-        frompage: 'enl',
-      ),
+      home: MainPage(),
     );
   }
 }
