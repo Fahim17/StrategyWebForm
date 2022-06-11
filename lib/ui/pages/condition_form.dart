@@ -10,6 +10,8 @@ import 'package:ninjastrategy2/ui/pages/components/current_day_OHL.dart';
 import 'package:ninjastrategy2/ui/pages/components/dema.dart';
 import 'package:ninjastrategy2/ui/pages/components/double_stochastics.dart';
 import 'package:ninjastrategy2/ui/pages/components/ema.dart';
+import 'package:ninjastrategy2/ui/pages/components/fibbonacci_pivots.dart';
+import 'package:ninjastrategy2/ui/pages/components/keltner_channel.dart';
 import 'package:ninjastrategy2/ui/pages/widgets/basic_component_layout.dart';
 import 'package:ninjastrategy2/ui/pages/components/bollinger.dart';
 import 'package:ninjastrategy2/ui/pages/components/bop.dart';
@@ -67,6 +69,13 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
       case 'EMA':
         e1 = EMA();
         break;
+      case 'Fibbonacci Pivots':
+        e1 = FibbonacciPivots();
+        break;
+      case 'Keltner Channel':
+        e1 = KeltnerChannel();
+        break;
+
       default:
         e1 = const Center(child: Text('Select an Element'));
     }
@@ -206,9 +215,7 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                           onPressed: () async {
                             await showDialog(
                                 context: context,
-                                builder: (BuildContext context) =>
-                                    CompareOperationPopUp(
-                                        selection: selectCompareOperation));
+                                builder: (BuildContext context) => CompareOperationPopUp(selection: selectCompareOperation));
                             setState(() {});
                           },
                           child: Padding(
@@ -239,15 +246,11 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                           child: ElevatedButton(
                             onPressed: () async {
                               await showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      ComponentsPopUp(
-                                          selection: selectElement1));
+                                  context: context, builder: (BuildContext context) => ComponentsPopUp(selection: selectElement1));
                               setState(() {});
                             },
                             child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
+                              padding: const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(e1Title),
                             ),
                           ),
@@ -260,15 +263,11 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                           child: ElevatedButton(
                             onPressed: () async {
                               await showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      ComponentsPopUp(
-                                          selection: selectElement2));
+                                  context: context, builder: (BuildContext context) => ComponentsPopUp(selection: selectElement2));
                               setState(() {});
                             },
                             child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
+                              padding: const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(e2Title),
                             ),
                           ),
@@ -315,14 +314,11 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                         child: Center(
                           child: ElevatedButton(
                             onPressed: () {
-                              if (e1Title != 'Select' &&
-                                  e2Title != 'Select' &&
-                                  operationTitle != 'Select') {
+                              if (e1Title != 'Select' && e2Title != 'Select' && operationTitle != 'Select') {
                                 finalizeDataModels();
                                 Navigator.pop(context);
                               } else {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(const SnackBar(
+                                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                                   content: Text('Provide All Conditions'),
                                   backgroundColor: COLOR_PRIMARY,
                                 ));

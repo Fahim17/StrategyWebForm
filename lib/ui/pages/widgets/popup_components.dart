@@ -9,8 +9,7 @@ class ComponentsPopUp extends StatefulWidget {
   State<ComponentsPopUp> createState() => _ComponentsPopUpState();
 }
 
-class _ComponentsPopUpState extends State<ComponentsPopUp>
-    with TickerProviderStateMixin {
+class _ComponentsPopUpState extends State<ComponentsPopUp> with TickerProviderStateMixin {
   TextEditingController searchController = TextEditingController();
   List allIndicators = [
     'ADL',
@@ -23,8 +22,8 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
     'DEMA',
     'Double Stochastics',
     'EMA',
-    // 'Philadelphia',
-    // 'Texan',
+    'Fibbonacci Pivots',
+    'Keltner Channel',
     // 'Drinks',
     // 'FastFood',
     // 'Vegan',
@@ -166,9 +165,7 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
                           child: Padding(
                             padding: const EdgeInsets.all(10),
                             child: Text(allIndicators[index],
-                                textAlign: TextAlign.center,
-                                style: _textTheme.subtitle1
-                                    ?.copyWith(color: Colors.white)),
+                                textAlign: TextAlign.center, style: _textTheme.subtitle1?.copyWith(color: Colors.white)),
                           ),
                         ),
                       );
@@ -212,10 +209,7 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
                           onPressed: () {},
                           child: Padding(
                             padding: const EdgeInsets.all(10),
-                            child: FittedBox(
-                                child: Text(allPrice[index],
-                                    style: _textTheme.subtitle1
-                                        ?.copyWith(color: Colors.white))),
+                            child: FittedBox(child: Text(allPrice[index], style: _textTheme.subtitle1?.copyWith(color: Colors.white))),
                           ),
                         ),
                       );
