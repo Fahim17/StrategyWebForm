@@ -9,8 +9,7 @@ class ComponentsPopUp extends StatefulWidget {
   State<ComponentsPopUp> createState() => _ComponentsPopUpState();
 }
 
-class _ComponentsPopUpState extends State<ComponentsPopUp>
-    with TickerProviderStateMixin {
+class _ComponentsPopUpState extends State<ComponentsPopUp> with TickerProviderStateMixin {
   TextEditingController searchController = TextEditingController();
   List allIndicators = [
     'ADL',
@@ -39,16 +38,24 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
     'Ultimate Oscillator',
     'VOL',
     'ZigZag',
-    // 'Moroccan',
-    // 'Gambian',
-    // 'Philadelphia',
-    // 'Texan',
   ];
   List allPrice = [
     'Ask',
     'Bid',
     'Close',
     'High',
+    'Median',
+    'Low',
+  ];
+  List allVolumn = [
+    'Ask',
+    'Bid',
+    'Volumn',
+  ];
+  List allTime = [
+    'Date Value',
+    'Time Value',
+    'Day of Week',
   ];
   late TabController _tabController;
   @override
@@ -79,24 +86,6 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
 
     final Size screenSize = MediaQuery.of(context).size;
     return AlertDialog(
-      // actions: [
-      //   Padding(
-      //     padding: const EdgeInsets.all(8.0),
-      //     child: ElevatedButton(
-      //       style: ElevatedButton.styleFrom(
-      //         primary: Colors.green,
-      //         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-      //         shape: RoundedRectangleBorder(
-      //           borderRadius: BorderRadius.circular(5),
-      //         ),
-      //       ),
-      //       onPressed: () {
-      //         // Navigator.pop(context);
-      //       },
-      //       child: Text('OK', style: _textTheme.headline6),
-      //     ),
-      //   ),
-      // ],
       actions: [
         Container(
           decoration: BoxDecoration(
@@ -166,9 +155,7 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
                           child: Padding(
                             padding: const EdgeInsets.all(10),
                             child: Text(allIndicators[index],
-                                textAlign: TextAlign.center,
-                                style: _textTheme.subtitle1
-                                    ?.copyWith(color: Colors.white)),
+                                textAlign: TextAlign.center, style: _textTheme.subtitle1?.copyWith(color: Colors.white)),
                           ),
                         ),
                       );
@@ -179,16 +166,6 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
             ),
             Column(
               children: [
-                // Padding(
-                //   padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                //   child: TextField(
-                //     controller: widget.searchController,
-                //     decoration: const InputDecoration(hintText: 'Search')
-                //         .applyDefaults(_inputDecorTheme),
-                //     keyboardType: TextInputType.name,
-                //     style: _textTheme.headline6?.copyWith(color: Colors.black),
-                //   ),
-                // ),
                 Expanded(
                   child: GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -209,13 +186,13 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
                               borderRadius: BorderRadius.circular(5),
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            widget.selection(allPrice[index]);
+                            Navigator.pop(context);
+                          },
                           child: Padding(
                             padding: const EdgeInsets.all(10),
-                            child: FittedBox(
-                                child: Text(allPrice[index],
-                                    style: _textTheme.subtitle1
-                                        ?.copyWith(color: Colors.white))),
+                            child: FittedBox(child: Text(allPrice[index], style: _textTheme.subtitle1?.copyWith(color: Colors.white))),
                           ),
                         ),
                       );
@@ -224,8 +201,81 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
                 )
               ],
             ),
-            SizedBox.shrink(),
-            SizedBox.shrink(),
+            Column(
+              children: [
+                Expanded(
+                  child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      mainAxisSpacing: 0.0,
+                      crossAxisSpacing: 10.0,
+                      childAspectRatio: (screenSize.width / screenSize.height),
+                    ),
+                    shrinkWrap: true,
+                    itemCount: allVolumn.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: const EdgeInsets.all(10),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: COLOR_PRIMARY,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                          ),
+                          onPressed: () {
+                            widget.selection(allVolumn[index]);
+                            Navigator.pop(context);
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child:
+                                FittedBox(child: Text(allVolumn[index], style: _textTheme.subtitle1?.copyWith(color: Colors.white))),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),
+            Column(
+              children: [
+                Expanded(
+                  child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      mainAxisSpacing: 0.0,
+                      crossAxisSpacing: 10.0,
+                      childAspectRatio: (screenSize.width / screenSize.height),
+                    ),
+                    shrinkWrap: true,
+                    itemCount: allTime.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: const EdgeInsets.all(10),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: COLOR_PRIMARY,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                          ),
+                          onPressed: () {
+                            widget.selection(allTime[index]);
+                            Navigator.pop(context);
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: FittedBox(child: Text(allTime[index], style: _textTheme.subtitle1?.copyWith(color: Colors.white))),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),
           ],
         ),
       ),

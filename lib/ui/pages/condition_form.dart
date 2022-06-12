@@ -131,6 +131,25 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
       case 'ZigZag':
         e1 = ZigZag();
         break;
+
+      //       case 'Ask':
+      //   e1 = Ask();
+      //   break;
+      // case 'Bid':
+      //   e1 = Bid();
+      //   break;
+      // case 'Close':
+      //   e1 = Close();
+      //   break;
+      // case 'High':
+      //   e1 = High();
+      //   break;
+      // case 'Median':
+      //   e1 = Median();
+      //   break;
+      // case 'Low':
+      //   e1 = Low();
+      //   break;
       default:
         e1 = const Center(child: Text('Select an Element'));
     }
@@ -318,9 +337,7 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                           onPressed: () async {
                             await showDialog(
                                 context: context,
-                                builder: (BuildContext context) =>
-                                    CompareOperationPopUp(
-                                        selection: selectCompareOperation));
+                                builder: (BuildContext context) => CompareOperationPopUp(selection: selectCompareOperation));
                             setState(() {});
                           },
                           child: Padding(
@@ -351,15 +368,11 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                           child: ElevatedButton(
                             onPressed: () async {
                               await showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      ComponentsPopUp(
-                                          selection: selectElement1));
+                                  context: context, builder: (BuildContext context) => ComponentsPopUp(selection: selectElement1));
                               setState(() {});
                             },
                             child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
+                              padding: const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(e1Title),
                             ),
                           ),
@@ -372,15 +385,11 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                           child: ElevatedButton(
                             onPressed: () async {
                               await showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      ComponentsPopUp(
-                                          selection: selectElement2));
+                                  context: context, builder: (BuildContext context) => ComponentsPopUp(selection: selectElement2));
                               setState(() {});
                             },
                             child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
+                              padding: const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(e2Title),
                             ),
                           ),
@@ -427,14 +436,11 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                         child: Center(
                           child: ElevatedButton(
                             onPressed: () {
-                              if (e1Title != 'Select' &&
-                                  e2Title != 'Select' &&
-                                  operationTitle != 'Select') {
+                              if (e1Title != 'Select' && e2Title != 'Select' && operationTitle != 'Select') {
                                 finalizeDataModels();
                                 Navigator.pop(context);
                               } else {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(const SnackBar(
+                                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                                   content: Text('Provide All Conditions'),
                                   backgroundColor: COLOR_PRIMARY,
                                 ));
