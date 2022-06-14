@@ -4,14 +4,14 @@
 
 import 'dart:convert';
 
-// Askdatamodel datamodelFromJson(String str) =>
-//     Askdatamodel.fromJson(json.decode(str));
+// DateValuedatamodel datamodelFromJson(String str) =>
+//     DateValuedatamodel.fromJson(json.decode(str));
 
-String datamodelToJson(Askdatamodel data) => json.encode(data.toJson());
+String datamodelToJson(DateValuedatamodel data) => json.encode(data.toJson());
 
-class Askdatamodel {
-  Askdatamodel({
-    this.type = 'NinjaScriptGenerator.Ask, NinjaScriptGenerator',
+class DateValuedatamodel {
+  DateValuedatamodel({
+    this.type = 'NinjaScriptGenerator.DateValue, NinjaScriptGenerator',
     this.price = '0',
     this.barsAgo = '0',
     // this.plotOnChart = 'false',
@@ -19,7 +19,7 @@ class Askdatamodel {
     this.datamodelOperator = '0',
     this.offset = '0',
   });
-  String elementName = 'Ask';
+  String elementName = 'DateValue';
   String type;
   String price;
   String barsAgo;
@@ -28,7 +28,7 @@ class Askdatamodel {
   String datamodelOperator;
   String offset;
 
-  // factory Askdatamodel.fromJson(Map<String, dynamic> json) => Askdatamodel(
+  // factory DateValuedatamodel.fromJson(Map<String, dynamic> json) => DateValuedatamodel(
   //       type: json["\u0024type"],
   //       price: json["Price"],
   //       barsAgo: json["BarsAgo"],

@@ -16,6 +16,12 @@ import 'package:ninjastrategy2/ui/pages/components/macd.dart';
 import 'package:ninjastrategy2/ui/pages/components/max.dart';
 import 'package:ninjastrategy2/ui/pages/components/min.dart';
 import 'package:ninjastrategy2/ui/pages/components/pivots.dart';
+import 'package:ninjastrategy2/ui/pages/components/price/ask.dart';
+import 'package:ninjastrategy2/ui/pages/components/price/bid.dart';
+import 'package:ninjastrategy2/ui/pages/components/price/close.dart';
+import 'package:ninjastrategy2/ui/pages/components/price/high.dart';
+import 'package:ninjastrategy2/ui/pages/components/price/low.dart';
+import 'package:ninjastrategy2/ui/pages/components/price/median.dart';
 import 'package:ninjastrategy2/ui/pages/components/prior_day_ohlc.dart';
 import 'package:ninjastrategy2/ui/pages/components/rsi.dart';
 import 'package:ninjastrategy2/ui/pages/components/sma.dart';
@@ -131,25 +137,24 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
       case 'ZigZag':
         e1 = ZigZag();
         break;
-
-      //       case 'Ask':
-      //   e1 = Ask();
-      //   break;
-      // case 'Bid':
-      //   e1 = Bid();
-      //   break;
-      // case 'Close':
-      //   e1 = Close();
-      //   break;
-      // case 'High':
-      //   e1 = High();
-      //   break;
-      // case 'Median':
-      //   e1 = Median();
-      //   break;
-      // case 'Low':
-      //   e1 = Low();
-      //   break;
+      case 'Ask':
+        e1 = Ask();
+        break;
+      case 'Bid':
+        e1 = Bid();
+        break;
+      case 'Close':
+        e1 = Close();
+        break;
+      case 'High':
+        e1 = High();
+        break;
+      case 'Median':
+        e1 = Median();
+        break;
+      case 'Low':
+        e1 = Low();
+        break;
       default:
         e1 = const Center(child: Text('Select an Element'));
     }
