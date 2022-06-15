@@ -1,50 +1,92 @@
-// To parse this JSON data, do
-//
-//     final datamodel = datamodelFromJson(jsonString);
+import 'package:flutter/material.dart';
+import 'package:ninjastrategy2/datamodel/time/day_of_week_datamodel.dart';
+import 'package:ninjastrategy2/themes/app_theme_data.dart';
+import 'package:ninjastrategy2/ui/pages/components/valueplots/popup_day_of_week.dart';
 
-import 'dart:convert';
+class DayofWeek extends StatefulWidget {
+  DayofWeekdatamodel dataModel = DayofWeekdatamodel();
 
-// Closedatamodel datamodelFromJson(String str) =>
-//     Closedatamodel.fromJson(json.decode(str));
+  DayofWeek({Key? key}) : super(key: key);
 
-String datamodelToJson(Closedatamodel data) => json.encode(data.toJson());
+  @override
+  State<DayofWeek> createState() => _DayofWeekState();
+}
 
-class Closedatamodel {
-  Closedatamodel({
-    this.type = 'NinjaScriptGenerator.Volumn, NinjaScriptGenerator',
-    this.price = '0',
-    this.barsAgo = '0',
-    this.plotOnChart = 'false',
-    this.offsetType = '0',
-    this.datamodelOperator = '0',
-    this.offset = '0',
-  });
-  String elementName = 'Close';
-  String type;
-  String price;
-  String barsAgo;
-  String plotOnChart;
-  String offsetType;
-  String datamodelOperator;
-  String offset;
+class _DayofWeekState extends State<DayofWeek> {
+  String day1 = 'Monday';
 
-  // factory Closedatamodel.fromJson(Map<String, dynamic> json) => Closedatamodel(
-  //       type: json["\u0024type"],
-  //       price: json["Price"],
-  //       barsAgo: json["BarsAgo"],
-  //       plotOnChart: json["PlotOnChart"],
-  //       offsetType: json["OffsetType"],
-  //       datamodelOperator: json["Operator"],
-  //       offset: json["Offset"],
-  //     );
+  void selectDay(String elm) {
+    day1 = elm;
+    // switch (elm) {
+    //   case 'Lower':
+    //     widget.dataModel.valuePlot = '2';
+    //     break;
+    //   case 'Middle':
+    //     widget.dataModel.valuePlot = '1';
+    //     break;
+    //   case 'Upper':
+    //     widget.dataModel.valuePlot = '0';
+    //     break;
+    //   default:
+    //     widget.dataModel.valuePlot = '2';
+    // }
+  }
 
-  Map<String, dynamic> toJson() => {
-        "\u0024type": type,
-        "Price": price,
-        "BarsAgo": barsAgo,
-        "PlotOnChart": plotOnChart,
-        "OffsetType": offsetType,
-        "Operator": datamodelOperator,
-        "Offset": offset,
-      };
+  @override
+  Widget build(BuildContext context) {
+    Size screensize = MediaQuery.of(context).size;
+    TextTheme _textTheme = Theme.of(context).textTheme;
+    return SizedBox(
+      height: compontHeight,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(
+            compontPaddingLeft, 0, compontPaddingRignt, 0),
+        child: Column(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    'Day:',
+                    style: _textTheme.subtitle1,
+                    // textAlign: TextAlign.center,
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      await showDialog(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              DayofWeekPopUp(selection: selectDay));
+                      setState(() {});
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(day1),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Expanded(flex: 1, child: SizedBox.shrink()),
+            Container(
+              color: COLOR_Divider,
+              height: 2,
+            ),
+            const Expanded(flex: 1, child: SizedBox.shrink()),
+            Expanded(
+              flex: 1,
+              child: Text('No Parameters', style: _textTheme.subtitle1),
+            ),
+            const Expanded(flex: 1, child: SizedBox.shrink()),
+            Container(
+              color: COLOR_Divider,
+              height: 2,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }

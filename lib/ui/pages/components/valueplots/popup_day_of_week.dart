@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 
-class BollingerValuePlotPopUp extends StatefulWidget {
+class DayofWeekPopUp extends StatefulWidget {
   Function selection;
-  BollingerValuePlotPopUp({Key? key, required this.selection})
-      : super(key: key);
+  DayofWeekPopUp({Key? key, required this.selection}) : super(key: key);
 
   @override
-  State<BollingerValuePlotPopUp> createState() =>
-      _BollingerValuePlotPopUpState();
+  State<DayofWeekPopUp> createState() => _DayofWeekPopUpState();
 }
 
-class _BollingerValuePlotPopUpState extends State<BollingerValuePlotPopUp> {
-  List allValuePlots = [
-    'Lower',
-    'Middle',
-    'Upper',
+class _DayofWeekPopUpState extends State<DayofWeekPopUp> {
+  List allDays = [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
   ];
 
   @override
@@ -36,7 +38,7 @@ class _BollingerValuePlotPopUpState extends State<BollingerValuePlotPopUp> {
     return AlertDialog(
       title: Center(
         child: Text(
-          "Elements",
+          "Days",
           style: _textTheme.headline5?.copyWith(fontWeight: FontWeight.normal),
         ),
       ),
@@ -54,7 +56,7 @@ class _BollingerValuePlotPopUpState extends State<BollingerValuePlotPopUp> {
                   childAspectRatio: (screenSize.width / screenSize.height),
                 ),
                 shrinkWrap: true,
-                itemCount: allValuePlots.length,
+                itemCount: allDays.length,
                 itemBuilder: (context, index) {
                   return Container(
                     margin: const EdgeInsets.all(10),
@@ -66,13 +68,13 @@ class _BollingerValuePlotPopUpState extends State<BollingerValuePlotPopUp> {
                         ),
                       ),
                       onPressed: () {
-                        widget.selection(allValuePlots[index]);
+                        widget.selection(allDays[index]);
                         Navigator.pop(context);
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(10),
                         child: FittedBox(
-                            child: Text(allValuePlots[index],
+                            child: Text(allDays[index],
                                 style: _textTheme.subtitle1
                                     ?.copyWith(color: Colors.white))),
                       ),

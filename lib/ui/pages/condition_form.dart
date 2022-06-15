@@ -29,6 +29,9 @@ import 'package:ninjastrategy2/ui/pages/components/std_dev.dart';
 import 'package:ninjastrategy2/ui/pages/components/stochastics.dart';
 import 'package:ninjastrategy2/ui/pages/components/stochastics_fast.dart';
 import 'package:ninjastrategy2/ui/pages/components/swing.dart';
+import 'package:ninjastrategy2/ui/pages/components/time/date_value.dart';
+import 'package:ninjastrategy2/ui/pages/components/time/day_of_week.dart';
+import 'package:ninjastrategy2/ui/pages/components/time/time_value.dart';
 import 'package:ninjastrategy2/ui/pages/components/ultimate_oscillator.dart';
 import 'package:ninjastrategy2/ui/pages/components/vol.dart';
 import 'package:ninjastrategy2/ui/pages/components/volumn/ask_volume.dart';
@@ -158,14 +161,23 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
       case 'Low':
         e1 = Low();
         break;
-      case 'VAsk':
+      case 'Ask(Volume)':
         e1 = AskVolumn();
         break;
-      case 'VBid':
+      case 'Bid(Volume)':
         e1 = BidVolume();
         break;
-      case 'VClose':
+      case 'Volume':
         e1 = Volume();
+        break;
+      case 'Date Value':
+        e1 = DateValue();
+        break;
+      case 'Time Value':
+        e1 = TimeValue();
+        break;
+      case 'Day of Week':
+        e1 = DayofWeek();
         break;
       default:
         e1 = const Center(child: Text('Select an Element'));
@@ -252,6 +264,42 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
         break;
       case 'ZigZag':
         e2 = ZigZag();
+        break;
+      case 'Ask':
+        e2 = Ask();
+        break;
+      case 'Bid':
+        e2 = Bid();
+        break;
+      case 'Close':
+        e2 = Close();
+        break;
+      case 'High':
+        e2 = High();
+        break;
+      case 'Median':
+        e2 = Median();
+        break;
+      case 'Low':
+        e2 = Low();
+        break;
+      case 'Ask(Volume)':
+        e2 = AskVolumn();
+        break;
+      case 'Bid(Volume)':
+        e2 = BidVolume();
+        break;
+      case 'Volume':
+        e2 = Volume();
+        break;
+      case 'Date Value':
+        e2 = DateValue();
+        break;
+      case 'Time Value':
+        e2 = TimeValue();
+        break;
+      case 'Day of Week':
+        e2 = DayofWeek();
         break;
       default:
         e2 = const Center(child: Text('Select an Element'));
@@ -354,7 +402,9 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                           onPressed: () async {
                             await showDialog(
                                 context: context,
-                                builder: (BuildContext context) => CompareOperationPopUp(selection: selectCompareOperation));
+                                builder: (BuildContext context) =>
+                                    CompareOperationPopUp(
+                                        selection: selectCompareOperation));
                             setState(() {});
                           },
                           child: Padding(
@@ -385,11 +435,15 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                           child: ElevatedButton(
                             onPressed: () async {
                               await showDialog(
-                                  context: context, builder: (BuildContext context) => ComponentsPopUp(selection: selectElement1));
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      ComponentsPopUp(
+                                          selection: selectElement1));
                               setState(() {});
                             },
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(e1Title),
                             ),
                           ),
@@ -402,11 +456,15 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                           child: ElevatedButton(
                             onPressed: () async {
                               await showDialog(
-                                  context: context, builder: (BuildContext context) => ComponentsPopUp(selection: selectElement2));
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      ComponentsPopUp(
+                                          selection: selectElement2));
                               setState(() {});
                             },
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(e2Title),
                             ),
                           ),
@@ -453,11 +511,14 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                         child: Center(
                           child: ElevatedButton(
                             onPressed: () {
-                              if (e1Title != 'Select' && e2Title != 'Select' && operationTitle != 'Select') {
+                              if (e1Title != 'Select' &&
+                                  e2Title != 'Select' &&
+                                  operationTitle != 'Select') {
                                 finalizeDataModels();
                                 Navigator.pop(context);
                               } else {
-                                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
                                   content: Text('Provide All Conditions'),
                                   backgroundColor: COLOR_PRIMARY,
                                 ));

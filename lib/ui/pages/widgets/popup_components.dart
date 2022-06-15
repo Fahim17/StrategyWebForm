@@ -9,7 +9,8 @@ class ComponentsPopUp extends StatefulWidget {
   State<ComponentsPopUp> createState() => _ComponentsPopUpState();
 }
 
-class _ComponentsPopUpState extends State<ComponentsPopUp> with TickerProviderStateMixin {
+class _ComponentsPopUpState extends State<ComponentsPopUp>
+    with TickerProviderStateMixin {
   TextEditingController searchController = TextEditingController();
   List allIndicators = [
     'ADL',
@@ -48,9 +49,9 @@ class _ComponentsPopUpState extends State<ComponentsPopUp> with TickerProviderSt
     'Low',
   ];
   List<String> allVolumn = [
-    'VAsk',
-    'VBid',
-    'VVolumn',
+    'Ask(Volume)',
+    'Bid(Volume)',
+    'Volumn',
   ];
   List allTime = [
     'Date Value',
@@ -155,7 +156,9 @@ class _ComponentsPopUpState extends State<ComponentsPopUp> with TickerProviderSt
                           child: Padding(
                             padding: const EdgeInsets.all(10),
                             child: Text(allIndicators[index],
-                                textAlign: TextAlign.center, style: _textTheme.subtitle1?.copyWith(color: Colors.white)),
+                                textAlign: TextAlign.center,
+                                style: _textTheme.subtitle1
+                                    ?.copyWith(color: Colors.white)),
                           ),
                         ),
                       );
@@ -192,7 +195,10 @@ class _ComponentsPopUpState extends State<ComponentsPopUp> with TickerProviderSt
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(10),
-                            child: FittedBox(child: Text(allPrice[index], style: _textTheme.subtitle1?.copyWith(color: Colors.white))),
+                            child: FittedBox(
+                                child: Text(allPrice[index],
+                                    style: _textTheme.subtitle1
+                                        ?.copyWith(color: Colors.white))),
                           ),
                         ),
                       );
@@ -230,8 +236,9 @@ class _ComponentsPopUpState extends State<ComponentsPopUp> with TickerProviderSt
                           child: Padding(
                             padding: const EdgeInsets.all(10),
                             child: FittedBox(
-                                child:
-                                    Text(allVolumn[index].substring(1), style: _textTheme.subtitle1?.copyWith(color: Colors.white))),
+                                child: Text(allVolumn[index],
+                                    style: _textTheme.subtitle1
+                                        ?.copyWith(color: Colors.white))),
                           ),
                         ),
                       );
@@ -268,7 +275,10 @@ class _ComponentsPopUpState extends State<ComponentsPopUp> with TickerProviderSt
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(10),
-                            child: FittedBox(child: Text(allTime[index], style: _textTheme.subtitle1?.copyWith(color: Colors.white))),
+                            child: FittedBox(
+                                child: Text(allTime[index],
+                                    style: _textTheme.subtitle1
+                                        ?.copyWith(color: Colors.white))),
                           ),
                         ),
                       );

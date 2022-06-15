@@ -38,7 +38,7 @@ BoxDecoration bxDecorations = BoxDecoration(
 ThemeData defalutTheme = ThemeData(
   backgroundColor: BACKGROUND_COLOR,
   canvasColor: BACKGROUND_COLOR,
-  primaryColor: COLOR_PRIMARY,
+  primaryColor: Colors.red,
   textTheme: const TextTheme(
     headline4: TextStyle(
       color: COLOR_PRIMARY,
@@ -65,4 +65,9 @@ ThemeData defalutTheme = ThemeData(
       borderRadius: BorderRadius.circular(5),
     ),
   ),
+  timePickerTheme: const TimePickerThemeData(
+      // backgroundColor: BACKGROUND_COLOR,
+      // dialTextColor: COLOR_White,
+      // hourMinuteTextColor: COLOR_White,
+      ),
 );
