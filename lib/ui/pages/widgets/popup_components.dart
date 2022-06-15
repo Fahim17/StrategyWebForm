@@ -47,10 +47,10 @@ class _ComponentsPopUpState extends State<ComponentsPopUp> with TickerProviderSt
     'Median',
     'Low',
   ];
-  List allVolumn = [
-    'Ask',
-    'Bid',
-    'Volumn',
+  List<String> allVolumn = [
+    'VAsk',
+    'VBid',
+    'VVolumn',
   ];
   List allTime = [
     'Date Value',
@@ -229,8 +229,9 @@ class _ComponentsPopUpState extends State<ComponentsPopUp> with TickerProviderSt
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(10),
-                            child:
-                                FittedBox(child: Text(allVolumn[index], style: _textTheme.subtitle1?.copyWith(color: Colors.white))),
+                            child: FittedBox(
+                                child:
+                                    Text(allVolumn[index].substring(1), style: _textTheme.subtitle1?.copyWith(color: Colors.white))),
                           ),
                         ),
                       );

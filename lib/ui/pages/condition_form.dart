@@ -31,6 +31,9 @@ import 'package:ninjastrategy2/ui/pages/components/stochastics_fast.dart';
 import 'package:ninjastrategy2/ui/pages/components/swing.dart';
 import 'package:ninjastrategy2/ui/pages/components/ultimate_oscillator.dart';
 import 'package:ninjastrategy2/ui/pages/components/vol.dart';
+import 'package:ninjastrategy2/ui/pages/components/volumn/ask_volume.dart';
+import 'package:ninjastrategy2/ui/pages/components/volumn/bid_volume.dart';
+import 'package:ninjastrategy2/ui/pages/components/volumn/volume.dart';
 import 'package:ninjastrategy2/ui/pages/components/zigzag.dart';
 import 'package:ninjastrategy2/ui/pages/widgets/basic_component_layout.dart';
 import 'package:ninjastrategy2/ui/pages/components/bollinger.dart';
@@ -154,6 +157,15 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
         break;
       case 'Low':
         e1 = Low();
+        break;
+      case 'VAsk':
+        e1 = AskVolumn();
+        break;
+      case 'VBid':
+        e1 = BidVolume();
+        break;
+      case 'VClose':
+        e1 = Volume();
         break;
       default:
         e1 = const Center(child: Text('Select an Element'));
