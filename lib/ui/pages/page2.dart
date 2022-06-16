@@ -74,6 +74,7 @@ class _Page2State extends State<Page2> {
                 //     style: _textTheme.headline6,
                 //   ),
                 // ),
+                const SizedBox(height: 10),
                 Row(
                   children: [
                     const Expanded(flex: 1, child: SizedBox.shrink()),
@@ -126,6 +127,8 @@ class _Page2State extends State<Page2> {
                 //     style: _textTheme.headline6,
                 //   ),
                 // ),
+                const SizedBox(height: 10),
+
                 Row(
                   children: [
                     const Expanded(flex: 1, child: SizedBox.shrink()),

@@ -21,7 +21,7 @@ class EnLConditionListPage extends StatefulWidget {
 }
 
 class _EnLConditionListPageState extends State<EnLConditionListPage> {
-  List<bool> features = [false, false];
+  List<bool> features = [true, false];
 
   //TextEditingController ptController = TextEditingController();
 
@@ -160,7 +160,7 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                     children: [
                       Text(
                         'Condition List',
-                        style: _textTheme.subtitle1,
+                        style: _textTheme.headline6,
                       ),
                       IconButton(
                         onPressed: () async {

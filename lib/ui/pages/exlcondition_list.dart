@@ -13,7 +13,7 @@ class ExLConditionListPage extends StatefulWidget {
 }
 
 class _ExLConditionListPageState extends State<ExLConditionListPage> {
-  List<bool> features = [false, false];
+  List<bool> features = [true, false];
 
   // TextEditingController ptController = TextEditingController();
 
