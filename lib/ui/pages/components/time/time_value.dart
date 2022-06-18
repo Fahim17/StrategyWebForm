@@ -69,24 +69,27 @@ class _TimeValueState extends State<TimeValue> {
                   Expanded(
                     flex: 1,
                     child: IconButton(
-                        onPressed: () {
-                          showTimePicker(
-                            context: context,
-                            initialTime: timeSelected,
-                            initialEntryMode: TimePickerEntryMode.dial,
-                          ).then((value) {
-                            if (value == null) {
-                              return;
-                            }
-                            timeSelected = value;
-                            timeController.text = timeFormater(timeSelected);
-                            setState(() {});
-                          });
-                        },
-                        icon: const Icon(
-                          Icons.access_time_sharp,
-                          color: COLOR_PRIMARY,
-                        )),
+                      onPressed: () {
+                        showTimePicker(
+                          context: context,
+                          initialTime: timeSelected,
+                          initialEntryMode: TimePickerEntryMode.dial,
+                        ).then((value) {
+                          if (value == null) {
+                            return;
+                          }
+                          timeSelected = value;
+                          timeController.text = timeFormater(timeSelected);
+                          widget.dataModel.Time =
+                              '${value.hour}:${value.minute}';
+                          setState(() {});
+                        });
+                      },
+                      icon: const Icon(
+                        Icons.access_time_sharp,
+                        color: COLOR_PRIMARY,
+                      ),
+                    ),
                   )
                 ],
               ),

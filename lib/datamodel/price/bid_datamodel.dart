@@ -12,8 +12,8 @@ String datamodelToJson(Biddatamodel data) => json.encode(data.toJson());
 class Biddatamodel {
   Biddatamodel({
     this.type = 'NinjaScriptGenerator.Bid, NinjaScriptGenerator',
-    this.price = '0',
-    this.barsAgo = '0',
+    // this.price = '0',
+    // this.barsAgo = '0',
     // this.plotOnChart = 'false',
     this.offsetType = '0',
     this.datamodelOperator = '0',
@@ -21,8 +21,8 @@ class Biddatamodel {
   });
   String elementName = 'Bid';
   String type;
-  String price;
-  String barsAgo;
+  // String price;
+  // String barsAgo;
   // String plotOnChart;
   String offsetType;
   String datamodelOperator;
@@ -40,8 +40,8 @@ class Biddatamodel {
 
   Map<String, dynamic> toJson() => {
         "\u0024type": type,
-        "Price": price,
-        "BarsAgo": barsAgo,
+        // "Price": price,
+        // "BarsAgo": barsAgo,
         // "PlotOnChart": plotOnChart,
         "OffsetType": offsetType,
         "Operator": datamodelOperator,

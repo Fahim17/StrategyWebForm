@@ -12,7 +12,7 @@ String datamodelToJson(Closedatamodel data) => json.encode(data.toJson());
 class Closedatamodel {
   Closedatamodel({
     this.type = 'NinjaScriptGenerator.Close, NinjaScriptGenerator',
-    this.price = '0',
+    // this.price = '0',
     this.barsAgo = '0',
     // this.plotOnChart = 'false',
     this.offsetType = '0',
@@ -21,7 +21,7 @@ class Closedatamodel {
   });
   String elementName = 'Close';
   String type;
-  String price;
+  // String price;
   String barsAgo;
   // String plotOnChart;
   String offsetType;
@@ -30,7 +30,7 @@ class Closedatamodel {
 
   Map<String, dynamic> toJson() => {
         "\u0024type": type,
-        "Price": price,
+        // "Price": price,
         "BarsAgo": barsAgo,
         // // "PlotOnChart": plotOnChart,
         "OffsetType": offsetType,

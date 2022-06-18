@@ -17,19 +17,31 @@ class _DayofWeekState extends State<DayofWeek> {
 
   void selectDay(String elm) {
     day1 = elm;
-    // switch (elm) {
-    //   case 'Lower':
-    //     widget.dataModel.valuePlot = '2';
-    //     break;
-    //   case 'Middle':
-    //     widget.dataModel.valuePlot = '1';
-    //     break;
-    //   case 'Upper':
-    //     widget.dataModel.valuePlot = '0';
-    //     break;
-    //   default:
-    //     widget.dataModel.valuePlot = '2';
-    // }
+    switch (elm) {
+      case 'Sunday':
+        widget.dataModel.DayOfWeek = '0';
+        break;
+      case 'Monday':
+        widget.dataModel.DayOfWeek = '1';
+        break;
+      case 'Tuesday':
+        widget.dataModel.DayOfWeek = '2';
+        break;
+      case 'Wednesday':
+        widget.dataModel.DayOfWeek = '3';
+        break;
+      case 'Thursday':
+        widget.dataModel.DayOfWeek = '4';
+        break;
+      case 'Friday':
+        widget.dataModel.DayOfWeek = '5';
+        break;
+      case 'Saturday':
+        widget.dataModel.DayOfWeek = '6';
+        break;
+      default:
+        widget.dataModel.DayOfWeek = '0';
+    }
   }
 
   @override

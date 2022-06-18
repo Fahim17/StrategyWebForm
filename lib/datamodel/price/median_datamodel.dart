@@ -12,7 +12,7 @@ String datamodelToJson(Mediandatamodel data) => json.encode(data.toJson());
 class Mediandatamodel {
   Mediandatamodel({
     this.type = 'NinjaScriptGenerator.Median, NinjaScriptGenerator',
-    this.price = '0',
+    // this.price = '0',
     this.barsAgo = '0',
     // this.plotOnChart = 'false',
     this.offsetType = '0',
@@ -21,7 +21,7 @@ class Mediandatamodel {
   });
   String elementName = 'Median';
   String type;
-  String price;
+  // String price;
   String barsAgo;
   // String plotOnChart;
   String offsetType;
@@ -30,7 +30,7 @@ class Mediandatamodel {
 
   // factory Mediandatamodel.fromJson(Map<String, dynamic> json) => Mediandatamodel(
   //       type: json["\u0024type"],
-  //       price: json["Price"],
+  // price: json["Price"],
   //       barsAgo: json["BarsAgo"],
   //       plotOnChart: json["PlotOnChart"],
   //       offsetType: json["OffsetType"],
@@ -40,7 +40,7 @@ class Mediandatamodel {
 
   Map<String, dynamic> toJson() => {
         "\u0024type": type,
-        "Price": price,
+        // "Price": price,
         "BarsAgo": barsAgo,
         // "PlotOnChart": plotOnChart,
         "OffsetType": offsetType,
