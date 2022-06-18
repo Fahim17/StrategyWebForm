@@ -18,22 +18,20 @@ const COLOR_Grey1 = Color(0xff545454);
 const COLOR_Grey2 = Color(0xffD0D0D0);
 const COLOR_Grey3 = Color(0xffb5b5b5);
 const COLOR_Green1 = Color(0xff78A55A);
+const COLOR_Red1 = Color(0xffC62C2C);
 
 const COLOR_Divider = Color(0xff8d8d8d);
 
 const titleText = 'STRATEGY GENERATOR';
 
-BoxDecoration bxDecorations = BoxDecoration(
-    color: BX_COLOR,
-    borderRadius: BorderRadius.circular(bxBorderRadius),
-    boxShadow: const [
-      BoxShadow(
-        color: COLOR_Grey1,
-        offset: Offset(20, 20),
-        blurRadius: 30,
-        spreadRadius: 0,
-      )
-    ]);
+BoxDecoration bxDecorations = BoxDecoration(color: BX_COLOR, borderRadius: BorderRadius.circular(bxBorderRadius), boxShadow: const [
+  BoxShadow(
+    color: COLOR_Grey1,
+    offset: Offset(20, 20),
+    blurRadius: 30,
+    spreadRadius: 0,
+  )
+]);
 
 ThemeData defalutTheme = ThemeData(
   backgroundColor: BACKGROUND_COLOR,
