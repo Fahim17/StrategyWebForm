@@ -345,6 +345,7 @@ class enlConditionRow extends StatelessWidget {
                 border: Border.all(width: 1, color: Colors.white),
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Center(
                     child: Text(
@@ -352,13 +353,13 @@ class enlConditionRow extends StatelessWidget {
                       style: _textTheme.subtitle2,
                     ),
                   ),
-                  InkWell(
-                    onTap: () {},
-                    child: const Icon(
-                      Icons.delete_forever,
-                      color: COLOR_Red1,
-                    ),
-                  ),
+                  // InkWell(
+                  //   onTap: () {},
+                  //   child: const Icon(
+                  //     Icons.delete_forever,
+                  //     color: COLOR_Red1,
+                  //   ),
+                  // ),
                 ],
               ),
             ),
