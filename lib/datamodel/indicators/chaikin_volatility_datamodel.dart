@@ -7,20 +7,19 @@ import 'dart:convert';
 // ChaikinVolatilitydatamodel datamodelFromJson(String str) =>
 //     ChaikinVolatilitydatamodel.fromJson(json.decode(str));
 
-String datamodelToJson(ChaikinVolatilitydatamodel data) =>
-    json.encode(data.toJson());
+String datamodelToJson(ChaikinVolatilitydatamodel data) => json.encode(data.toJson());
 
 class ChaikinVolatilitydatamodel {
   ChaikinVolatilitydatamodel({
     this.type = 'NinjaScriptGenerator.ChaikinVolatility, NinjaScriptGenerator',
-    this.price = '4',
-    this.barsAgo = '1',
+    this.price = '0',
+    this.barsAgo = '0',
     this.plotOnChart = 'false',
     this.movingAvgPeriod = '0',
     this.rateOfChangePeriod = '0',
     this.offsetType = '0',
     this.datamodelOperator = '0',
-    this.offset = '2',
+    this.offset = '0',
   });
 
   String elementName = 'Chaikin Volatility';

@@ -7,20 +7,19 @@ import 'dart:convert';
 // ChaikinOscillatordatamodel datamodelFromJson(String str) =>
 //     ChaikinOscillatordatamodel.fromJson(json.decode(str));
 
-String datamodelToJson(ChaikinOscillatordatamodel data) =>
-    json.encode(data.toJson());
+String datamodelToJson(ChaikinOscillatordatamodel data) => json.encode(data.toJson());
 
 class ChaikinOscillatordatamodel {
   ChaikinOscillatordatamodel({
     this.type = 'NinjaScriptGenerator.ChaikinOscillator, NinjaScriptGenerator',
-    this.price = '4',
-    this.barsAgo = '1',
+    this.price = '0',
+    this.barsAgo = '0',
     this.plotOnChart = 'false',
     this.fast = '0',
     this.slow = '0',
     this.offsetType = '0',
     this.datamodelOperator = '0',
-    this.offset = '2',
+    this.offset = '0',
   });
 
   String elementName = 'Chaikin Oscillator';

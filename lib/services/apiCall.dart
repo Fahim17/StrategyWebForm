@@ -26,7 +26,7 @@ class ApiCall {
         },
         body: jsonEncode(MainDataModelInstance.mainData.toJson()),
       );
-      // print(response.statusCode);
+      print(response.statusCode);
       if (response.statusCode == 200) {
         downloadFile(response.body.toString(), MainDataModelInstance.mainData.name);
       }

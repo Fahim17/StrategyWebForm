@@ -47,14 +47,14 @@ class EndPage extends StatelessWidget {
                   children: [
                     ElevatedButton(
                         onPressed: () async {
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Page1(),
-                              ),
-                              (route) => false);
-                          // MainDataModelInstance.mainData.prepareFinalData();
-                          // print(jsonEncode(MainDataModelInstance.mainData.toJson()));
+                          // Navigator.pushAndRemoveUntil(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //       builder: (context) => Page1(),
+                          //     ),
+                          //     (route) => false);
+                          MainDataModelInstance.mainData.prepareFinalData();
+                          print(jsonEncode(MainDataModelInstance.mainData.toJson()));
                         },
                         child: const Text('Do It Again')),
                     ElevatedButton(
