@@ -53,6 +53,8 @@ class EndPage extends StatelessWidget {
                                 builder: (context) => Page1(),
                               ),
                               (route) => false);
+                          // MainDataModelInstance.mainData.prepareFinalData();
+                          // print(jsonEncode(MainDataModelInstance.mainData.toJson()));
                         },
                         child: const Text('Do It Again')),
                     ElevatedButton(
@@ -74,8 +76,7 @@ class EndPage extends StatelessWidget {
 class SummarizedInfo extends StatelessWidget {
   SummarizedInfo({Key? key}) : super(key: key) {
     MainDataModelInstance.mainData.name = 'Bishal naam  ';
-    MainDataModelInstance.mainData.desc =
-        '''But it’s often appropriate to summarize a whole article or chapter 
+    MainDataModelInstance.mainData.desc = '''But it’s often appropriate to summarize a whole article or chapter 
         if it is especially relevant to your own research, or to provide an 
         overview of a source before you analyze or critique it. In any case, 
         the goal of summarizing is to give your reader a clear understanding of 
