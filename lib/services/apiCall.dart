@@ -8,7 +8,8 @@ import 'dart:html' show AnchorElement;
 class ApiCall {
   void downloadFile(String res, String fileName) {
     AnchorElement()
-      ..href = '${Uri.dataFromString(res, mimeType: 'text/plain', encoding: utf8)}'
+      ..href =
+          '${Uri.dataFromString(res, mimeType: 'text/plain', encoding: utf8)}'
       ..download = '$fileName.cs'
       ..style.display = 'none'
       ..click();
@@ -28,7 +29,8 @@ class ApiCall {
       );
       print(response.statusCode);
       if (response.statusCode == 200) {
-        downloadFile(response.body.toString(), MainDataModelInstance.mainData.name);
+        downloadFile(
+            response.body.toString(), MainDataModelInstance.mainData.name);
       }
       return response;
     } on Exception catch (e) {
@@ -39,5 +41,6 @@ class ApiCall {
 }
 
 class ApiList {
-  static String formPost = '/web/php/handle-json.php';
+  // static String formPost = '/web/php/handle-json.php';
+  static String formPost = 'http://127.0.0.1/web/php/handle-json.php';
 }

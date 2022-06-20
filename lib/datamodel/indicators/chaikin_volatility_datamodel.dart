@@ -7,7 +7,8 @@ import 'dart:convert';
 // ChaikinVolatilitydatamodel datamodelFromJson(String str) =>
 //     ChaikinVolatilitydatamodel.fromJson(json.decode(str));
 
-String datamodelToJson(ChaikinVolatilitydatamodel data) => json.encode(data.toJson());
+String datamodelToJson(ChaikinVolatilitydatamodel data) =>
+    json.encode(data.toJson());
 
 class ChaikinVolatilitydatamodel {
   ChaikinVolatilitydatamodel({
@@ -45,8 +46,8 @@ class ChaikinVolatilitydatamodel {
 
   Map<String, dynamic> toJson() => {
         "\u0024type": type,
-        "MovingAvgPeriod": movingAvgPeriod,
-        "RateOfChangePeriod": rateOfChangePeriod,
+        "MAPeriod": movingAvgPeriod,
+        "ChangeRatePeriod": rateOfChangePeriod,
         "Price": price,
         "OffsetType": offsetType,
         "Operator": datamodelOperator,

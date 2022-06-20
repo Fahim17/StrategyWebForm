@@ -12,16 +12,16 @@ String datamodelToJson(FibbonacciPivotsdatamodel data) =>
 
 class FibbonacciPivotsdatamodel {
   FibbonacciPivotsdatamodel({
-    this.type = 'NinjaScriptGenerator.FibbonacciPivots, NinjaScriptGenerator',
-    this.price = '4',
-    this.barsAgo = '1',
+    this.type = 'NinjaScriptGenerator.FibonacciPivots, NinjaScriptGenerator',
+    this.price = '0',
+    this.barsAgo = '0',
     this.plotOnChart = 'false',
     this.pivotRange = '0',
     this.HLCCalculationMode = '0',
     this.valuePlot = '0',
     this.offsetType = '0',
     this.datamodelOperator = '0',
-    this.offset = '2',
+    this.offset = '0',
   });
 
   String elementName = 'Fibbonacci Pivots';
@@ -48,8 +48,8 @@ class FibbonacciPivotsdatamodel {
 
   Map<String, dynamic> toJson() => {
         "\u0024type": type,
-        "HLCCalculationMode": HLCCalculationMode,
-        "PivotRange": pivotRange,
+        "CalcMode": HLCCalculationMode,
+        "Range": pivotRange,
         "Price": price,
         "OffsetType": offsetType,
         "Operator": datamodelOperator,

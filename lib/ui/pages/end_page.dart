@@ -47,19 +47,34 @@ class EndPage extends StatelessWidget {
                   children: [
                     ElevatedButton(
                         onPressed: () async {
-                          // Navigator.pushAndRemoveUntil(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //       builder: (context) => Page1(),
-                          //     ),
-                          //     (route) => false);
-                          MainDataModelInstance.mainData.prepareFinalData();
-                          print(jsonEncode(MainDataModelInstance.mainData.toJson()));
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Page1(),
+                              ),
+                              (route) => false);
+                          // MainDataModelInstance.mainData.prepareFinalData();
+                          // print(jsonEncode(
+                          //     MainDataModelInstance.mainData.toJson()));
                         },
                         child: const Text('Do It Again')),
                     ElevatedButton(
                         onPressed: () async {
                           var res = await ApiCall().submitForm();
+                          if (res.statusCode == 200) {
+                            print('Success');
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
+                              content: Text('Success'),
+                              backgroundColor: COLOR_PRIMARY,
+                            ));
+                          } else {
+                            print('${res.body}');
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text('${res.body}'),
+                              backgroundColor: Colors.red,
+                            ));
+                          }
                         },
                         child: const Text('Submit & Download')),
                   ],
@@ -76,7 +91,8 @@ class EndPage extends StatelessWidget {
 class SummarizedInfo extends StatelessWidget {
   SummarizedInfo({Key? key}) : super(key: key) {
     MainDataModelInstance.mainData.name = 'Bishal naam  ';
-    MainDataModelInstance.mainData.desc = '''But it’s often appropriate to summarize a whole article or chapter 
+    MainDataModelInstance.mainData.desc =
+        '''But it’s often appropriate to summarize a whole article or chapter 
         if it is especially relevant to your own research, or to provide an 
         overview of a source before you analyze or critique it. In any case, 
         the goal of summarizing is to give your reader a clear understanding of 

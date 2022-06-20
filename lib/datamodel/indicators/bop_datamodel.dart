@@ -12,13 +12,13 @@ String datamodelToJson(BOPdatamodel data) => json.encode(data.toJson());
 class BOPdatamodel {
   BOPdatamodel({
     this.type = 'NinjaScriptGenerator.BOP, NinjaScriptGenerator',
-    this.price = '4',
-    this.barsAgo = '1',
+    this.price = '0',
+    this.barsAgo = '0',
     this.plotOnChart = 'false',
     this.smooth = '0',
     this.offsetType = '0',
     this.datamodelOperator = '0',
-    this.offset = '2',
+    this.offset = '0',
   });
 
   String elementName = 'BOP';

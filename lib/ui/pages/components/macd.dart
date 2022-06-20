@@ -179,7 +179,7 @@ class _MACDState extends State<MACD> {
                     width: screensize.width * 0.1,
                     color: Colors.transparent,
                     child: TextField(
-                      controller: slow,
+                      controller: smoth,
                       decoration: const InputDecoration(
                           isDense: true, hintText: 'Enter Smooth'),
                       style: _textTheme.subtitle1,

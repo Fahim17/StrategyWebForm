@@ -13,15 +13,15 @@ String datamodelToJson(KeltnerChanneldatamodel data) =>
 class KeltnerChanneldatamodel {
   KeltnerChanneldatamodel({
     this.type = 'NinjaScriptGenerator.KeltnerChannel, NinjaScriptGenerator',
-    this.price = '4',
-    this.barsAgo = '1',
+    this.price = '0',
+    this.barsAgo = '0',
     this.plotOnChart = 'false',
     this.period = '0',
     this.offsetMultiplier = '0',
     this.valuePlot = '0',
     this.offsetType = '0',
     this.datamodelOperator = '0',
-    this.offset = '2',
+    this.offset = '0',
   });
 
   String elementName = 'Keltner Channel';

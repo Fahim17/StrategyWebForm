@@ -94,7 +94,8 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                             onTap: () {
                               features[0] = true;
                               features[1] = false;
-                              MainDataModelInstance.mainData.enlC.conditionType = '11';
+                              MainDataModelInstance
+                                  .mainData.enlC.conditionType = '11';
                               setState(() {});
                             },
                             child: Container(
@@ -103,7 +104,9 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                               decoration: BoxDecoration(
                                   border: Border.all(color: COLOR_PRIMARY),
                                   borderRadius: BorderRadius.circular(15),
-                                  color: (features[0]) ? COLOR_PRIMARY : Colors.transparent),
+                                  color: (features[0])
+                                      ? COLOR_PRIMARY
+                                      : Colors.transparent),
                             ),
                           ),
                           const SizedBox(width: 10),
@@ -123,7 +126,8 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                             onTap: () {
                               features[0] = false;
                               features[1] = true;
-                              MainDataModelInstance.mainData.enlC.conditionType = '12';
+                              MainDataModelInstance
+                                  .mainData.enlC.conditionType = '12';
                               setState(() {});
                             },
                             child: Container(
@@ -132,7 +136,9 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                               decoration: BoxDecoration(
                                   border: Border.all(color: COLOR_PRIMARY),
                                   borderRadius: BorderRadius.circular(15),
-                                  color: (features[1]) ? COLOR_PRIMARY : Colors.transparent),
+                                  color: (features[1])
+                                      ? COLOR_PRIMARY
+                                      : Colors.transparent),
                             ),
                           ),
                           const SizedBox(width: 10),
@@ -240,7 +246,10 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                   width: double.infinity,
                   height: screensize.height * 0.45,
                   child: SingleChildScrollView(
-                    child: Column(children: MainDataModelInstance.mainData.enlC.compares.map((e) => enlConditionRow(e: e)).toList()),
+                    child: Column(
+                        children: MainDataModelInstance.mainData.enlC.compares
+                            .map((e) => enlConditionRow(e: e))
+                            .toList()),
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -260,9 +269,14 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                     ElevatedButton(
                       onPressed: () {
                         if (features[0] || features[1]) {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => ExLConditionListPage()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      ExLConditionListPage()));
                         } else {
-                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
                             content: Text('Select Condition Type'),
                             backgroundColor: COLOR_PRIMARY,
                           ));

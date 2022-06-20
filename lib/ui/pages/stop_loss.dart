@@ -11,7 +11,7 @@ class StopLoss extends StatefulWidget {
 }
 
 class _StopLossState extends State<StopLoss> {
-  List<bool> features = [false, false, false, false];
+  List<bool> features = [true, false, false];
 
   TextEditingController ptController = TextEditingController();
 

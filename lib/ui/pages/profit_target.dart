@@ -12,7 +12,7 @@ class ProfitTarget extends StatefulWidget {
 }
 
 class _ProfitTargetState extends State<ProfitTarget> {
-  List<bool> features = [false, false, false];
+  List<bool> features = [true, false, false];
 
   TextEditingController ptController = TextEditingController();
 

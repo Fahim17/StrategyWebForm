@@ -14,7 +14,7 @@ class TimeValuedatamodel {
     this.type = 'NinjaScriptGenerator.TimeValue, NinjaScriptGenerator',
     // this.price = '0',
     // this.barsAgo = '0',
-    this.Time = '', //hh:mm:ss.mmm
+    this.Time = '00:00:00', //hh:mm:ss.mmm
     // this.offsetType = '0',
     // this.datamodelOperator = '0',
     // this.offset = '0',

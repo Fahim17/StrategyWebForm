@@ -71,7 +71,7 @@ class _DateValueState extends State<DateValue> {
                             dateController.text =
                                 DateFormat.yMMMMd().format(_selectedDate);
                             widget.dataModel.Date =
-                                '${pickedDate.day}/${pickedDate.month}/${pickedDate.year}';
+                                '${pickedDate.day}-${pickedDate.month}-${pickedDate.year}';
                             setState(() {});
                           });
                         },

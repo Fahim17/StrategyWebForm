@@ -12,13 +12,13 @@ String datamodelToJson(DEMAdatamodel data) => json.encode(data.toJson());
 class DEMAdatamodel {
   DEMAdatamodel({
     this.type = 'NinjaScriptGenerator.DEMA, NinjaScriptGenerator',
-    this.price = '4',
-    this.barsAgo = '1',
+    this.price = '0',
+    this.barsAgo = '0',
     this.plotOnChart = 'false',
     this.period = '0',
     this.offsetType = '0',
     this.datamodelOperator = '0',
-    this.offset = '2',
+    this.offset = '0',
   });
 
   String elementName = 'DEMA';

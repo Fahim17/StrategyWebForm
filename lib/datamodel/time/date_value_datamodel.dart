@@ -14,7 +14,7 @@ class DateValuedatamodel {
     this.type = 'NinjaScriptGenerator.DateValue, NinjaScriptGenerator',
     // this.price = '0',
     // this.barsAgo = '0',
-    this.Date = '',
+    this.Date = '01-01-1970',
     // this.offsetType = '0',
     // this.datamodelOperator = '0',
     // this.offset = '0',

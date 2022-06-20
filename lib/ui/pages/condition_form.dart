@@ -95,7 +95,7 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
       case 'EMA':
         e1 = EMA();
         break;
-      case 'Fibbonacci Pivots':
+      case 'Fibonacci Pivots':
         e1 = FibbonacciPivots();
         break;
       case 'Keltner Channel':

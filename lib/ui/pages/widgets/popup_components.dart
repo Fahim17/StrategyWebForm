@@ -23,7 +23,7 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
     'DEMA',
     'Double Stochastics',
     'EMA',
-    'Fibbonacci Pivots',
+    'Fibonacci Pivots',
     'Keltner Channel',
     'MACD',
     'MAX',

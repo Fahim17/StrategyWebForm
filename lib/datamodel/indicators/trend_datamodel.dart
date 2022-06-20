@@ -19,7 +19,7 @@ class ADLdatamodel {
     this.datamodelOperator = '0',
     this.offset = '0',
   });
-  String elementName = 'ADL';
+  String elementName = 'trend';
   String type;
   String price;
   String barsAgo;
