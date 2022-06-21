@@ -41,6 +41,6 @@ class ApiCall {
 }
 
 class ApiList {
-  // static String formPost = '/web/php/handle-json.php';
-  static String formPost = 'http://127.0.0.1/web/php/handle-json.php';
+  static String formPost = '/web/php/handle-json.php';
+  // static String formPost = 'http://127.0.0.1/web/php/handle-json.php';
 }
