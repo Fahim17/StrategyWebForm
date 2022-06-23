@@ -68,8 +68,7 @@ class _ZigZagState extends State<ZigZag> {
     return SizedBox(
       height: compontHeight,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(
-            compontPaddingLeft, 0, compontPaddingRignt, 0),
+        padding: const EdgeInsets.fromLTRB(compontPaddingLeft, 0, compontPaddingRignt, 0),
         child: Column(
           children: [
             Expanded(
@@ -77,7 +76,7 @@ class _ZigZagState extends State<ZigZag> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Plot of Chart', style: _textTheme.subtitle1),
+                  Text('Plot on Chart', style: _textTheme.subtitle1),
                   InkWell(
                     onTap: () {
                       plotOfChart = !plotOfChart;
@@ -90,9 +89,7 @@ class _ZigZagState extends State<ZigZag> {
                       decoration: BoxDecoration(
                           border: Border.all(color: COLOR_PRIMARY, width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: (plotOfChart)
-                              ? COLOR_PRIMARY
-                              : Colors.transparent),
+                          color: (plotOfChart) ? COLOR_PRIMARY : Colors.transparent),
                     ),
                   ),
                 ],
@@ -107,9 +104,7 @@ class _ZigZagState extends State<ZigZag> {
                   ElevatedButton(
                     onPressed: () async {
                       await showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              ZigZagValuePlotPopUp(selection: selectValuePlot));
+                          context: context, builder: (BuildContext context) => ZigZagValuePlotPopUp(selection: selectValuePlot));
                       setState(() {});
                     },
                     child: Padding(
@@ -134,9 +129,7 @@ class _ZigZagState extends State<ZigZag> {
                     onPressed: () async {
                       await showDialog(
                           context: context,
-                          builder: (BuildContext context) =>
-                              ZigZagDeviationTypePopUp(
-                                  selection: selectDeviationType));
+                          builder: (BuildContext context) => ZigZagDeviationTypePopUp(selection: selectDeviationType));
                       setState(() {});
                     },
                     child: Padding(
@@ -153,16 +146,14 @@ class _ZigZagState extends State<ZigZag> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child: Text('Deviation Value',
-                        maxLines: 2, style: _textTheme.subtitle1),
+                    child: Text('Deviation Value', maxLines: 2, style: _textTheme.subtitle1),
                   ),
                   Container(
                     width: screensize.width * 0.1,
                     color: Colors.transparent,
                     child: TextField(
                       controller: dvitinVal,
-                      decoration: const InputDecoration(
-                          isDense: true, hintText: 'Enter Fast'),
+                      decoration: const InputDecoration(isDense: true, hintText: 'Enter Fast'),
                       style: _textTheme.subtitle1,
                       // inputFormatters: <TextInputFormatter>[
                       //   FilteringTextInputFormatter.digitsOnly
@@ -193,9 +184,7 @@ class _ZigZagState extends State<ZigZag> {
                       decoration: BoxDecoration(
                           border: Border.all(color: COLOR_PRIMARY, width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: (useHighLow)
-                              ? COLOR_PRIMARY
-                              : Colors.transparent),
+                          color: (useHighLow) ? COLOR_PRIMARY : Colors.transparent),
                     ),
                   ),
                 ],

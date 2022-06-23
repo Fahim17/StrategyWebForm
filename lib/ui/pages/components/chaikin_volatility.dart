@@ -38,8 +38,7 @@ class _ChaikinVolatilityState extends State<ChaikinVolatility> {
     return SizedBox(
       height: compontHeight,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(
-            compontPaddingLeft, 0, compontPaddingRignt, 0),
+        padding: const EdgeInsets.fromLTRB(compontPaddingLeft, 0, compontPaddingRignt, 0),
         child: Column(
           children: [
             Expanded(
@@ -47,7 +46,7 @@ class _ChaikinVolatilityState extends State<ChaikinVolatility> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Plot of Chart', style: _textTheme.subtitle1),
+                  Text('Plot on Chart', style: _textTheme.subtitle1),
                   InkWell(
                     onTap: () {
                       plotOfChart = !plotOfChart;
@@ -60,9 +59,7 @@ class _ChaikinVolatilityState extends State<ChaikinVolatility> {
                       decoration: BoxDecoration(
                           border: Border.all(color: COLOR_PRIMARY, width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: (plotOfChart)
-                              ? COLOR_PRIMARY
-                              : Colors.transparent),
+                          color: (plotOfChart) ? COLOR_PRIMARY : Colors.transparent),
                     ),
                   ),
                 ],
@@ -80,8 +77,7 @@ class _ChaikinVolatilityState extends State<ChaikinVolatility> {
                 children: [
                   Expanded(
                     flex: 2,
-                    child: Text('Moving Avg. Period',
-                        maxLines: 2, style: _textTheme.subtitle1),
+                    child: Text('Moving Avg. Period', maxLines: 2, style: _textTheme.subtitle1),
                   ),
                   Expanded(
                     flex: 1,
@@ -90,9 +86,7 @@ class _ChaikinVolatilityState extends State<ChaikinVolatility> {
                       color: Colors.transparent,
                       child: TextField(
                         controller: movingAvgPeriod,
-                        decoration: const InputDecoration(
-                            isDense: true,
-                            hintText: 'Enter Moving Avg. Period.'),
+                        decoration: const InputDecoration(isDense: true, hintText: 'Enter Moving Avg. Period.'),
                         style: _textTheme.subtitle1,
                         // inputFormatters: <TextInputFormatter>[
                         //   FilteringTextInputFormatter.digitsOnly
@@ -113,8 +107,7 @@ class _ChaikinVolatilityState extends State<ChaikinVolatility> {
                 children: [
                   Expanded(
                     flex: 2,
-                    child: Text('Rate of Change Period',
-                        style: _textTheme.subtitle1),
+                    child: Text('Rate of Change Period', style: _textTheme.subtitle1),
                   ),
                   Expanded(
                     flex: 1,
@@ -123,9 +116,7 @@ class _ChaikinVolatilityState extends State<ChaikinVolatility> {
                       color: Colors.transparent,
                       child: TextField(
                         controller: rateOfChangePeriod,
-                        decoration: const InputDecoration(
-                            isDense: true,
-                            hintText: 'Enter Rate of Change Period'),
+                        decoration: const InputDecoration(isDense: true, hintText: 'Enter Rate of Change Period'),
                         style: _textTheme.subtitle1,
                         // inputFormatters: <TextInputFormatter>[
                         //   FilteringTextInputFormatter.digitsOnly

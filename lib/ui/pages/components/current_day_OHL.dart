@@ -56,8 +56,7 @@ class _CurrentDayOHLState extends State<CurrentDayOHL> {
     return SizedBox(
       height: compontHeight,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(
-            compontPaddingLeft, 0, compontPaddingRignt, 0),
+        padding: const EdgeInsets.fromLTRB(compontPaddingLeft, 0, compontPaddingRignt, 0),
         child: Column(
           children: [
             Expanded(
@@ -65,7 +64,7 @@ class _CurrentDayOHLState extends State<CurrentDayOHL> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Plot of Chart', style: _textTheme.subtitle1),
+                  Text('Plot on Chart', style: _textTheme.subtitle1),
                   InkWell(
                     onTap: () {
                       plotOfChart = !plotOfChart;
@@ -78,9 +77,7 @@ class _CurrentDayOHLState extends State<CurrentDayOHL> {
                       decoration: BoxDecoration(
                           border: Border.all(color: COLOR_PRIMARY, width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: (plotOfChart)
-                              ? COLOR_PRIMARY
-                              : Colors.transparent),
+                          color: (plotOfChart) ? COLOR_PRIMARY : Colors.transparent),
                     ),
                   ),
                 ],
@@ -96,9 +93,7 @@ class _CurrentDayOHLState extends State<CurrentDayOHL> {
                     onPressed: () async {
                       await showDialog(
                           context: context,
-                          builder: (BuildContext context) =>
-                              CurrentDayOHLValuePlotPopUp(
-                                  selection: selectValuePlot));
+                          builder: (BuildContext context) => CurrentDayOHLValuePlotPopUp(selection: selectValuePlot));
                       setState(() {});
                     },
                     child: Padding(

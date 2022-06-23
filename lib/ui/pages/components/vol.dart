@@ -20,8 +20,7 @@ class _VOLState extends State<VOL> {
     return SizedBox(
       height: compontHeight,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(
-            compontPaddingLeft, 0, compontPaddingRignt, 0),
+        padding: const EdgeInsets.fromLTRB(compontPaddingLeft, 0, compontPaddingRignt, 0),
         child: Column(
           children: [
             Expanded(
@@ -29,7 +28,7 @@ class _VOLState extends State<VOL> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Plot of Chart', style: _textTheme.subtitle1),
+                  Text('Plot on Chart', style: _textTheme.subtitle1),
                   InkWell(
                     onTap: () {
                       plotOfChart = !plotOfChart;
@@ -42,9 +41,7 @@ class _VOLState extends State<VOL> {
                       decoration: BoxDecoration(
                           border: Border.all(color: COLOR_PRIMARY, width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: (plotOfChart)
-                              ? COLOR_PRIMARY
-                              : Colors.transparent),
+                          color: (plotOfChart) ? COLOR_PRIMARY : Colors.transparent),
                     ),
                   ),
                 ],

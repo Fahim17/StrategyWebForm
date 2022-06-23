@@ -56,8 +56,7 @@ class _StochasticsFastState extends State<StochasticsFast> {
     return SizedBox(
       height: compontHeight,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(
-            compontPaddingLeft, 0, compontPaddingRignt, 0),
+        padding: const EdgeInsets.fromLTRB(compontPaddingLeft, 0, compontPaddingRignt, 0),
         child: Column(
           children: [
             Expanded(
@@ -65,7 +64,7 @@ class _StochasticsFastState extends State<StochasticsFast> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Plot of Chart', style: _textTheme.subtitle1),
+                  Text('Plot on Chart', style: _textTheme.subtitle1),
                   InkWell(
                     onTap: () {
                       plotOfChart = !plotOfChart;
@@ -78,9 +77,7 @@ class _StochasticsFastState extends State<StochasticsFast> {
                       decoration: BoxDecoration(
                           border: Border.all(color: COLOR_PRIMARY, width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: (plotOfChart)
-                              ? COLOR_PRIMARY
-                              : Colors.transparent),
+                          color: (plotOfChart) ? COLOR_PRIMARY : Colors.transparent),
                     ),
                   ),
                 ],
@@ -95,10 +92,7 @@ class _StochasticsFastState extends State<StochasticsFast> {
                   ElevatedButton(
                     onPressed: () async {
                       await showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              StochasticsValuePlotPopUp(
-                                  selection: selectValuePlot));
+                          context: context, builder: (BuildContext context) => StochasticsValuePlotPopUp(selection: selectValuePlot));
                       setState(() {});
                     },
                     child: Padding(
@@ -119,16 +113,14 @@ class _StochasticsFastState extends State<StochasticsFast> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child: Text('Period D',
-                        maxLines: 2, style: _textTheme.subtitle1),
+                    child: Text('Period D', maxLines: 2, style: _textTheme.subtitle1),
                   ),
                   Container(
                     width: screensize.width * 0.1,
                     color: Colors.transparent,
                     child: TextField(
                       controller: pD,
-                      decoration: const InputDecoration(
-                          isDense: true, hintText: 'Enter Period D'),
+                      decoration: const InputDecoration(isDense: true, hintText: 'Enter Period D'),
                       style: _textTheme.subtitle1,
                       // inputFormatters: <TextInputFormatter>[
                       //   FilteringTextInputFormatter.digitsOnly
@@ -152,8 +144,7 @@ class _StochasticsFastState extends State<StochasticsFast> {
                     color: Colors.transparent,
                     child: TextField(
                       controller: pK,
-                      decoration: const InputDecoration(
-                          isDense: true, hintText: 'Enter Period K'),
+                      decoration: const InputDecoration(isDense: true, hintText: 'Enter Period K'),
                       style: _textTheme.subtitle1,
                       // inputFormatters: <TextInputFormatter>[
                       //   FilteringTextInputFormatter.digitsOnly

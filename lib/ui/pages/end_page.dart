@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:ninjastrategy2/datamodel/main_datamodel_instance.dart';
 import 'package:ninjastrategy2/services/apiCall.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
+import 'package:ninjastrategy2/ui/featurenav.dart';
 import 'package:ninjastrategy2/ui/pages/page1.dart';
 import 'package:ninjastrategy2/ui/pages/page2.dart';
 
@@ -47,6 +48,7 @@ class EndPage extends StatelessWidget {
                   children: [
                     ElevatedButton(
                         onPressed: () async {
+                          FeatureNav.clearNavigation();
                           Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
@@ -63,8 +65,7 @@ class EndPage extends StatelessWidget {
                           var res = await ApiCall().submitForm();
                           if (res.statusCode == 200) {
                             print('Success');
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(const SnackBar(
+                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                               content: Text('Success'),
                               backgroundColor: COLOR_PRIMARY,
                             ));
@@ -91,8 +92,7 @@ class EndPage extends StatelessWidget {
 class SummarizedInfo extends StatelessWidget {
   SummarizedInfo({Key? key}) : super(key: key) {
     MainDataModelInstance.mainData.name = 'Bishal naam  ';
-    MainDataModelInstance.mainData.desc =
-        '''But it’s often appropriate to summarize a whole article or chapter 
+    MainDataModelInstance.mainData.desc = '''But it’s often appropriate to summarize a whole article or chapter 
         if it is especially relevant to your own research, or to provide an 
         overview of a source before you analyze or critique it. In any case, 
         the goal of summarizing is to give your reader a clear understanding of 

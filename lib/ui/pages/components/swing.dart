@@ -50,8 +50,7 @@ class _SwingState extends State<Swing> {
     return SizedBox(
       height: compontHeight,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(
-            compontPaddingLeft, 0, compontPaddingRignt, 0),
+        padding: const EdgeInsets.fromLTRB(compontPaddingLeft, 0, compontPaddingRignt, 0),
         child: Column(
           children: [
             Expanded(
@@ -59,7 +58,7 @@ class _SwingState extends State<Swing> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Plot of Chart', style: _textTheme.subtitle1),
+                  Text('Plot on Chart', style: _textTheme.subtitle1),
                   InkWell(
                     onTap: () {
                       plotOfChart = !plotOfChart;
@@ -72,9 +71,7 @@ class _SwingState extends State<Swing> {
                       decoration: BoxDecoration(
                           border: Border.all(color: COLOR_PRIMARY, width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: (plotOfChart)
-                              ? COLOR_PRIMARY
-                              : Colors.transparent),
+                          color: (plotOfChart) ? COLOR_PRIMARY : Colors.transparent),
                     ),
                   ),
                 ],
@@ -89,9 +86,7 @@ class _SwingState extends State<Swing> {
                   ElevatedButton(
                     onPressed: () async {
                       await showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              SwingValuePlotPopUp(selection: selectValuePlot));
+                          context: context, builder: (BuildContext context) => SwingValuePlotPopUp(selection: selectValuePlot));
                       setState(() {});
                     },
                     child: Padding(
@@ -112,16 +107,14 @@ class _SwingState extends State<Swing> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child: Text('Strength',
-                        maxLines: 2, style: _textTheme.subtitle1),
+                    child: Text('Strength', maxLines: 2, style: _textTheme.subtitle1),
                   ),
                   Container(
                     width: screensize.width * 0.1,
                     color: Colors.transparent,
                     child: TextField(
                       controller: strgth,
-                      decoration: const InputDecoration(
-                          isDense: true, hintText: 'Enter Strength'),
+                      decoration: const InputDecoration(isDense: true, hintText: 'Enter Strength'),
                       style: _textTheme.subtitle1,
                       // inputFormatters: <TextInputFormatter>[
                       //   FilteringTextInputFormatter.digitsOnly

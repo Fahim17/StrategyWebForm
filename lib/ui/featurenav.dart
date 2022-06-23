@@ -16,22 +16,29 @@ class FeatureNav {
   static bool finishedLongTrade = false;
   static bool finishedShortTrade = false;
 
+  static clearNavigation() {
+    profitTarget = false;
+    stopLoss = false;
+    longTrade = false;
+    shortTrade = false;
+
+    finishedProfitTarget = false;
+    finishedStopLoss = false;
+    finishedLongTrade = false;
+    finishedShortTrade = false;
+  }
+
   static void runPageRouting(BuildContext context) {
     if (profitTarget && !finishedProfitTarget) {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => ProfitTarget()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfitTarget()));
     } else if (stopLoss && !finishedStopLoss) {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => StopLoss()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => StopLoss()));
     } else if (longTrade && !finishedLongTrade) {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => EnLConditionListPage()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => EnLConditionListPage()));
     } else if (shortTrade && !finishedShortTrade) {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => EnSConditionListPage()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => EnSConditionListPage()));
     } else {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => EndPage()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => EndPage()));
     }
   }
 }

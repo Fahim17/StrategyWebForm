@@ -56,8 +56,7 @@ class _KeltnerChannelState extends State<KeltnerChannel> {
     return SizedBox(
       height: compontHeight,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(
-            compontPaddingLeft, 0, compontPaddingRignt, 0),
+        padding: const EdgeInsets.fromLTRB(compontPaddingLeft, 0, compontPaddingRignt, 0),
         child: Column(
           children: [
             Expanded(
@@ -65,7 +64,7 @@ class _KeltnerChannelState extends State<KeltnerChannel> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Plot of Chart', style: _textTheme.subtitle1),
+                  Text('Plot on Chart', style: _textTheme.subtitle1),
                   InkWell(
                     onTap: () {
                       plotOfChart = !plotOfChart;
@@ -78,9 +77,7 @@ class _KeltnerChannelState extends State<KeltnerChannel> {
                       decoration: BoxDecoration(
                           border: Border.all(color: COLOR_PRIMARY, width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: (plotOfChart)
-                              ? COLOR_PRIMARY
-                              : Colors.transparent),
+                          color: (plotOfChart) ? COLOR_PRIMARY : Colors.transparent),
                     ),
                   ),
                 ],
@@ -96,9 +93,7 @@ class _KeltnerChannelState extends State<KeltnerChannel> {
                     onPressed: () async {
                       await showDialog(
                           context: context,
-                          builder: (BuildContext context) =>
-                              KeltnerChannelValuePlotPopUp(
-                                  selection: selectValuePlot));
+                          builder: (BuildContext context) => KeltnerChannelValuePlotPopUp(selection: selectValuePlot));
                       setState(() {});
                     },
                     child: Padding(
@@ -119,16 +114,14 @@ class _KeltnerChannelState extends State<KeltnerChannel> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child: Text('Offset Multiplier',
-                        maxLines: 2, style: _textTheme.subtitle1),
+                    child: Text('Offset Multiplier', maxLines: 2, style: _textTheme.subtitle1),
                   ),
                   Container(
                     width: screensize.width * 0.1,
                     color: Colors.transparent,
                     child: TextField(
                       controller: offsetMulti,
-                      decoration: const InputDecoration(
-                          isDense: true, hintText: 'Enter No. of S.D.'),
+                      decoration: const InputDecoration(isDense: true, hintText: 'Enter No. of S.D.'),
                       style: _textTheme.subtitle1,
                       // inputFormatters: <TextInputFormatter>[
                       //   FilteringTextInputFormatter.digitsOnly
@@ -152,8 +145,7 @@ class _KeltnerChannelState extends State<KeltnerChannel> {
                     color: Colors.transparent,
                     child: TextField(
                       controller: prd,
-                      decoration: const InputDecoration(
-                          isDense: true, hintText: 'Enter Period'),
+                      decoration: const InputDecoration(isDense: true, hintText: 'Enter Period'),
                       style: _textTheme.subtitle1,
                       // inputFormatters: <TextInputFormatter>[
                       //   FilteringTextInputFormatter.digitsOnly

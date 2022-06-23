@@ -37,8 +37,7 @@ class _ChaikinOscillatorState extends State<ChaikinOscillator> {
     return SizedBox(
       height: compontHeight,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(
-            compontPaddingLeft, 0, compontPaddingRignt, 0),
+        padding: const EdgeInsets.fromLTRB(compontPaddingLeft, 0, compontPaddingRignt, 0),
         child: Column(
           children: [
             Expanded(
@@ -46,7 +45,7 @@ class _ChaikinOscillatorState extends State<ChaikinOscillator> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Plot of Chart', style: _textTheme.subtitle1),
+                  Text('Plot on Chart', style: _textTheme.subtitle1),
                   InkWell(
                     onTap: () {
                       plotOfChart = !plotOfChart;
@@ -59,9 +58,7 @@ class _ChaikinOscillatorState extends State<ChaikinOscillator> {
                       decoration: BoxDecoration(
                           border: Border.all(color: COLOR_PRIMARY, width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: (plotOfChart)
-                              ? COLOR_PRIMARY
-                              : Colors.transparent),
+                          color: (plotOfChart) ? COLOR_PRIMARY : Colors.transparent),
                     ),
                   ),
                 ],
@@ -78,16 +75,14 @@ class _ChaikinOscillatorState extends State<ChaikinOscillator> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child:
-                        Text('Fast', maxLines: 2, style: _textTheme.subtitle1),
+                    child: Text('Fast', maxLines: 2, style: _textTheme.subtitle1),
                   ),
                   Container(
                     width: screensize.width * 0.1,
                     color: Colors.transparent,
                     child: TextField(
                       controller: fast,
-                      decoration: const InputDecoration(
-                          isDense: true, hintText: 'Enter Fast.'),
+                      decoration: const InputDecoration(isDense: true, hintText: 'Enter Fast.'),
                       style: _textTheme.subtitle1,
                       // inputFormatters: <TextInputFormatter>[
                       //   FilteringTextInputFormatter.digitsOnly
@@ -111,8 +106,7 @@ class _ChaikinOscillatorState extends State<ChaikinOscillator> {
                     color: Colors.transparent,
                     child: TextField(
                       controller: slow,
-                      decoration: const InputDecoration(
-                          isDense: true, hintText: 'Enter Slow'),
+                      decoration: const InputDecoration(isDense: true, hintText: 'Enter Slow'),
                       style: _textTheme.subtitle1,
                       // inputFormatters: <TextInputFormatter>[
                       //   FilteringTextInputFormatter.digitsOnly

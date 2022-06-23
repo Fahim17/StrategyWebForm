@@ -98,8 +98,7 @@ class _PivotsState extends State<Pivots> {
     return SizedBox(
       height: compontHeight,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(
-            compontPaddingLeft, 0, compontPaddingRignt, 0),
+        padding: const EdgeInsets.fromLTRB(compontPaddingLeft, 0, compontPaddingRignt, 0),
         child: Column(
           children: [
             Expanded(
@@ -107,7 +106,7 @@ class _PivotsState extends State<Pivots> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Plot of Chart', style: _textTheme.subtitle1),
+                  Text('Plot on Chart', style: _textTheme.subtitle1),
                   InkWell(
                     onTap: () {
                       plotOfChart = !plotOfChart;
@@ -120,9 +119,7 @@ class _PivotsState extends State<Pivots> {
                       decoration: BoxDecoration(
                           border: Border.all(color: COLOR_PRIMARY, width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: (plotOfChart)
-                              ? COLOR_PRIMARY
-                              : Colors.transparent),
+                          color: (plotOfChart) ? COLOR_PRIMARY : Colors.transparent),
                     ),
                   ),
                 ],
@@ -138,9 +135,7 @@ class _PivotsState extends State<Pivots> {
                     onPressed: () async {
                       await showDialog(
                           context: context,
-                          builder: (BuildContext context) =>
-                              FibbonacciPivotsValuePlotPopUp(
-                                  selection: selectValuePlot));
+                          builder: (BuildContext context) => FibbonacciPivotsValuePlotPopUp(selection: selectValuePlot));
                       setState(() {});
                     },
                     child: Padding(
@@ -165,9 +160,7 @@ class _PivotsState extends State<Pivots> {
                     onPressed: () async {
                       await showDialog(
                           context: context,
-                          builder: (BuildContext context) =>
-                              FibbonacciPivotsPivotRangePopUp(
-                                  selection: selectPivotRange));
+                          builder: (BuildContext context) => FibbonacciPivotsPivotRangePopUp(selection: selectPivotRange));
                       setState(() {});
                     },
                     child: Padding(
@@ -187,10 +180,7 @@ class _PivotsState extends State<Pivots> {
                   ElevatedButton(
                     onPressed: () async {
                       await showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              FibboPivotsHCLPopUp(
-                                  selection: selectHLCCalcMode));
+                          context: context, builder: (BuildContext context) => FibboPivotsHCLPopUp(selection: selectHLCCalcMode));
                       setState(() {});
                     },
                     child: Padding(

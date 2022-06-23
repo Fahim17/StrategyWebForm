@@ -59,8 +59,7 @@ class _PriorDayOHLCState extends State<PriorDayOHLC> {
     return SizedBox(
       height: compontHeight,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(
-            compontPaddingLeft, 0, compontPaddingRignt, 0),
+        padding: const EdgeInsets.fromLTRB(compontPaddingLeft, 0, compontPaddingRignt, 0),
         child: Column(
           children: [
             Expanded(
@@ -68,7 +67,7 @@ class _PriorDayOHLCState extends State<PriorDayOHLC> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Plot of Chart', style: _textTheme.subtitle1),
+                  Text('Plot on Chart', style: _textTheme.subtitle1),
                   InkWell(
                     onTap: () {
                       plotOfChart = !plotOfChart;
@@ -81,9 +80,7 @@ class _PriorDayOHLCState extends State<PriorDayOHLC> {
                       decoration: BoxDecoration(
                           border: Border.all(color: COLOR_PRIMARY, width: 2),
                           borderRadius: BorderRadius.circular(10),
-                          color: (plotOfChart)
-                              ? COLOR_PRIMARY
-                              : Colors.transparent),
+                          color: (plotOfChart) ? COLOR_PRIMARY : Colors.transparent),
                     ),
                   ),
                 ],
@@ -98,10 +95,7 @@ class _PriorDayOHLCState extends State<PriorDayOHLC> {
                   ElevatedButton(
                     onPressed: () async {
                       await showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              PriorDayOHLCValuePlotPopUp(
-                                  selection: selectValuePlot));
+                          context: context, builder: (BuildContext context) => PriorDayOHLCValuePlotPopUp(selection: selectValuePlot));
                       setState(() {});
                     },
                     child: Padding(
