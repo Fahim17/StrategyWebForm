@@ -49,13 +49,14 @@ class EndPage extends StatelessWidget {
                     ElevatedButton(
                         onPressed: () async {
                           FeatureNav.clearNavigation();
+                          MainDataModelInstance.newMainData();
                           Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => Page1(),
                               ),
                               (route) => false);
-                          MainDataModelInstance.mainData.prepareFinalData();
+                          // MainDataModelInstance.mainData.prepareFinalData();
                           print(jsonEncode(
                               MainDataModelInstance.mainData.toJson()));
                         },
