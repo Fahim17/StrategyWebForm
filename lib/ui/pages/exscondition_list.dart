@@ -13,7 +13,7 @@ class ExSConditionListPage extends StatefulWidget {
 }
 
 class _ExSConditionListPageState extends State<ExSConditionListPage> {
-  List<bool> features = [true, false];
+  List<bool> features = [false, true];
 
   // TextEditingController ptController = TextEditingController();
 
@@ -70,38 +70,6 @@ class _ExSConditionListPageState extends State<ExSConditionListPage> {
                         children: [
                           InkWell(
                             onTap: () {
-                              features[0] = true;
-                              features[1] = false;
-                              MainDataModelInstance
-                                  .mainData.exsC.conditionType = '11';
-                              setState(() {});
-                            },
-                            child: Container(
-                              height: 30,
-                              width: 30,
-                              decoration: BoxDecoration(
-                                  border: Border.all(color: COLOR_PRIMARY),
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: (features[0])
-                                      ? COLOR_PRIMARY
-                                      : Colors.transparent),
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          Text(
-                            'If Any',
-                            style: _textTheme.subtitle1,
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: optionVPadding),
-                    SizedBox(
-                      width: 100,
-                      child: Row(
-                        children: [
-                          InkWell(
-                            onTap: () {
                               features[0] = false;
                               features[1] = true;
                               MainDataModelInstance
@@ -122,6 +90,38 @@ class _ExSConditionListPageState extends State<ExSConditionListPage> {
                           const SizedBox(width: 10),
                           Text(
                             'If All',
+                            style: _textTheme.subtitle1,
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: optionVPadding),
+                    SizedBox(
+                      width: 100,
+                      child: Row(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              features[0] = true;
+                              features[1] = false;
+                              MainDataModelInstance
+                                  .mainData.exsC.conditionType = '11';
+                              setState(() {});
+                            },
+                            child: Container(
+                              height: 30,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: COLOR_PRIMARY),
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: (features[0])
+                                      ? COLOR_PRIMARY
+                                      : Colors.transparent),
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          Text(
+                            'If Any',
                             style: _textTheme.subtitle1,
                           ),
                         ],

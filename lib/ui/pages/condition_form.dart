@@ -374,6 +374,17 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
       default:
         break;
     }
+    if (e1.dataModel.elementName == 'Variable') {
+      MainDataModelInstance.mainData.variables.add(e1.dataModel);
+    } else if (e1.dataModel.elementName == 'Input') {
+      MainDataModelInstance.mainData.inputs.add(e1.dataModel);
+    }
+
+    if (e2.dataModel.elementName == 'Variable') {
+      MainDataModelInstance.mainData.variables.add(e2.dataModel);
+    } else if (e2.dataModel.elementName == 'Input') {
+      MainDataModelInstance.mainData.inputs.add(e2.dataModel);
+    }
   }
 
   @override
@@ -411,21 +422,30 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                       Expanded(
                         flex: 1,
                         child: Center(
-                            child: ElevatedButton(
-                          onPressed: () async {
-                            await showDialog(
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    CompareOperationPopUp(
-                                        selection: selectCompareOperation));
-                            setState(() {});
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: Text(operationTitle),
+                          child: Text(
+                            'Comparison',
+                            style: _textTheme.headline5,
                           ),
-                        )),
+                        ),
                       ),
+                      // Expanded(
+                      //   flex: 1,
+                      //   child: Center(
+                      //       child: ElevatedButton(
+                      //     onPressed: () async {
+                      //       await showDialog(
+                      //           context: context,
+                      //           builder: (BuildContext context) =>
+                      //               CompareOperationPopUp(
+                      //                   selection: selectCompareOperation));
+                      //       setState(() {});
+                      //     },
+                      //     child: Padding(
+                      //       padding: const EdgeInsets.symmetric(horizontal: 10),
+                      //       child: Text(operationTitle),
+                      //     ),
+                      //   )),
+                      // ),
                       Expanded(
                         flex: 1,
                         child: Center(
@@ -462,7 +482,24 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                           ),
                         ),
                       ),
-                      const Expanded(flex: 1, child: SizedBox.shrink()),
+                      Expanded(
+                        flex: 1,
+                        child: Center(
+                            child: ElevatedButton(
+                          onPressed: () async {
+                            await showDialog(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    CompareOperationPopUp(
+                                        selection: selectCompareOperation));
+                            setState(() {});
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Text(operationTitle),
+                          ),
+                        )),
+                      ),
                       Expanded(
                         flex: 1,
                         child: Center(

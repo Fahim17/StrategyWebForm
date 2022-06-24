@@ -38,8 +38,8 @@ class MainDataModel {
         "Description": desc,
         "Defaults": defaults.toJson(),
         "Instruments": List<dynamic>.from(instruments.map((x) => x.toJson())),
-        "Inputs": List<dynamic>.from(inputs.map((x) => x)),
-        "Variables": List<dynamic>.from(variables.map((x) => x)),
+        "Inputs": List<dynamic>.from(inputs.map((x) => x.toJson2())),
+        "Variables": List<dynamic>.from(variables.map((x) => x.toJson2())),
         "ConditionSets":
             List<dynamic>.from(conditionSets.map((x) => x.toJson())),
         "TargetActions":

@@ -12,25 +12,25 @@ class Input1 extends StatefulWidget {
 }
 
 class _Input1State extends State<Input1> {
-  bool plotOfChart = false;
-  String VPTitle = 'Integer';
+  // bool plotOfChart = false;
+  // String VPTitle = 'Integer';
 
-  void selectValueType(String elm) {
-    VPTitle = elm;
-    switch (elm) {
-      case 'Integer':
-        widget.dataModel.valuePlot = '2';
-        break;
-      case 'Double':
-        widget.dataModel.valuePlot = '1';
-        break;
-      case 'Time':
-        widget.dataModel.valuePlot = '0';
-        break;
-      default:
-        widget.dataModel.valuePlot = '2';
-    }
-  }
+  // void selectValueType(String elm) {
+  //   VPTitle = elm;
+  //   switch (elm) {
+  //     case 'Integer':
+  //       widget.dataModel.valuePlot = '2';
+  //       break;
+  //     case 'Double':
+  //       widget.dataModel.valuePlot = '1';
+  //       break;
+  //     case 'Time':
+  //       widget.dataModel.valuePlot = '0';
+  //       break;
+  //     default:
+  //       widget.dataModel.valuePlot = '2';
+  //   }
+  // }
 
   TextEditingController nameController = TextEditingController();
   TextEditingController valueController = TextEditingController();
@@ -64,10 +64,12 @@ class _Input1State extends State<Input1> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Name', style: _textTheme.subtitle1),
-                  const SizedBox(width: 10),
                   Expanded(
-                    flex: 1,
+                      flex: 1,
+                      child: Text('Name', style: _textTheme.subtitle1)),
+                  // const SizedBox(width: 10),
+                  Expanded(
+                    flex: 5,
                     child: TextField(
                       controller: nameController,
                       decoration: const InputDecoration(
@@ -77,7 +79,7 @@ class _Input1State extends State<Input1> {
                       //   FilteringTextInputFormatter.digitsOnly
                       // ],
                       onChanged: (val) {
-                        widget.dataModel.period = val;
+                        widget.dataModel.name = val;
                       },
                     ),
                   ),
@@ -89,11 +91,14 @@ class _Input1State extends State<Input1> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Value', style: _textTheme.subtitle1),
-                  const SizedBox(width: 13),
                   Expanded(
+                      flex: 1,
+                      child: Text('Value', style: _textTheme.subtitle1)),
+                  // const SizedBox(width: 13),
+                  Expanded(
+                    flex: 5,
                     child: TextField(
-                      controller: nameController,
+                      controller: valueController,
                       decoration: const InputDecoration(
                           isDense: true, hintText: 'Enter Value'),
                       style: _textTheme.subtitle1,
@@ -101,31 +106,31 @@ class _Input1State extends State<Input1> {
                       //   FilteringTextInputFormatter.digitsOnly
                       // ],
                       onChanged: (val) {
-                        widget.dataModel.period = val;
+                        widget.dataModel.value = val;
                       },
                     ),
                   ),
-                  const SizedBox(width: 10),
-                  ElevatedButton(
-                    onPressed: () async {
-                      await showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              Variable1PlotPopUp(selection: selectValueType));
-                      setState(() {});
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Text(VPTitle),
-                    ),
-                  ),
+                  // const SizedBox(width: 10),
+                  // ElevatedButton(
+                  //   onPressed: () async {
+                  //     await showDialog(
+                  //         context: context,
+                  //         builder: (BuildContext context) =>
+                  //             Variable1PlotPopUp(selection: selectValueType));
+                  //     setState(() {});
+                  //   },
+                  //   child: Padding(
+                  //     padding: const EdgeInsets.symmetric(horizontal: 10),
+                  //     child: Text(VPTitle),
+                  //   ),
+                  // ),
                 ],
               ),
             ),
-            // Container(
-            //   color: COLOR_Divider,
-            //   height: 2,
-            // ),
+            Container(
+              color: COLOR_Divider,
+              height: 2,
+            ),
             const Expanded(flex: 1, child: SizedBox.shrink()),
             const Expanded(flex: 1, child: SizedBox.shrink()),
             const Expanded(flex: 1, child: SizedBox.shrink()),

@@ -11,29 +11,29 @@ String datamodelToJson(Inputdatamodel data) => json.encode(data.toJson());
 
 class Inputdatamodel {
   Inputdatamodel({
-    this.type = 'NinjaScriptGenerator.Input, NinjaScriptGenerator',
-    this.price = '0',
-    this.barsAgo = '0',
-    this.plotOnChart = 'false',
-    this.period = '0',
-    this.numStdDev = '0',
-    this.valuePlot = '0',
-    this.offsetType = '0',
-    this.datamodelOperator = '0',
-    this.offset = '0',
+    this.type = 'NinjaScriptGenerator.InputReference, NinjaScriptGenerator',
+    this.name = '',
+    this.valueType = '14',
+    this.value = '0',
+    this.reference = '',
+    this.description = '',
+    this.minimum = '0',
+    // this.offsetType = '0',
+    // this.datamodelOperator = '0',
+    // this.offset = '0',
   });
 
   String elementName = 'Input';
   String type;
-  String price;
-  String numStdDev;
-  String valuePlot;
-  String barsAgo;
-  String plotOnChart;
-  String period;
-  String offsetType;
-  String datamodelOperator;
-  String offset;
+  String name;
+  String valueType;
+  String value;
+  String reference;
+  String description;
+  String minimum;
+  // String offsetType;
+  // String datamodelOperator;
+  // String offset;
 
   // factory Inputdatamodel.fromJson(Map<String, dynamic> json) => Inputdatamodel(
   //       type: json["\u0024type"],
@@ -47,14 +47,27 @@ class Inputdatamodel {
 
   Map<String, dynamic> toJson() => {
         "\u0024type": type,
-        "Period": period,
-        "NumStdDev": numStdDev,
-        "Price": price,
-        "OffsetType": offsetType,
-        "Operator": datamodelOperator,
-        "BarsAgo": barsAgo,
-        "Offset": offset,
-        "PlotOnChart": plotOnChart,
-        "ValuePlot": valuePlot,
+        // "Name": name,
+        // "Type": valueType,
+        // "Value": value,
+        "Reference": name,
+        // "Description": description,
+        // "Minimum": minimum,
+        // "Offset": offset,
+        // "PlotOnChart": plotOnChart,
+        // "ValuePlot": valuePlot,
+      };
+
+  Map<String, dynamic> toJson2() => {
+        // "\u0024type": type,
+        "Name": name,
+        "Type": valueType,
+        "Value": value,
+        // "Reference": name,
+        "Description": description,
+        "Minimum": minimum,
+        // "Offset": offset,
+        // "PlotOnChart": plotOnChart,
+        // "ValuePlot": valuePlot,
       };
 }
