@@ -64,7 +64,7 @@ class Inputdatamodel {
         "Type": valueType,
         "Value": value,
         // "Reference": name,
-        "Description": description,
+        "Description": name,
         "Minimum": minimum,
         // "Offset": offset,
         // "PlotOnChart": plotOnChart,

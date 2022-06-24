@@ -38,7 +38,7 @@ class MainDataModel {
 
   Map<String, dynamic> toJson() => {
         "Name": name,
-        "Description": desc,
+        "Description": name,
         "Defaults": defaults.toJson(),
         "Instruments": List<dynamic>.from(instruments.map((x) => x.toJson())),
         "Inputs": List<dynamic>.from(inputs.map((x) => x.toJson2())),
