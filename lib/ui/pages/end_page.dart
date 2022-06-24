@@ -49,7 +49,6 @@ class EndPage extends StatelessWidget {
                     ElevatedButton(
                         onPressed: () async {
                           FeatureNav.clearNavigation();
-                          MainDataModelInstance.newMainData();
                           Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
@@ -59,6 +58,7 @@ class EndPage extends StatelessWidget {
                           // MainDataModelInstance.mainData.prepareFinalData();
                           print(jsonEncode(
                               MainDataModelInstance.mainData.toJson()));
+                          MainDataModelInstance.newMainData();
                         },
                         child: const Text('Do It Again')),
                     ElevatedButton(

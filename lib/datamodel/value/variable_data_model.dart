@@ -12,7 +12,7 @@ String datamodelToJson(Variabledatamodel data) => json.encode(data.toJson());
 class Variabledatamodel {
   Variabledatamodel({
     this.type = 'NinjaScriptGenerator.VariableReference, NinjaScriptGenerator',
-    this.name = '',
+    this.name = 'MyVariable',
     this.valueType = '14',
     this.value = '0',
     this.reference = '',

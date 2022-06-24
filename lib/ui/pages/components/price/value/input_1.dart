@@ -59,33 +59,33 @@ class _Input1State extends State<Input1> {
             compontPaddingLeft, 0, compontPaddingRignt, 0),
         child: Column(
           children: [
-            Expanded(
-              flex: 1,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                      flex: 1,
-                      child: Text('Name', style: _textTheme.subtitle1)),
-                  // const SizedBox(width: 10),
-                  Expanded(
-                    flex: 5,
-                    child: TextField(
-                      controller: nameController,
-                      decoration: const InputDecoration(
-                          isDense: true, hintText: 'Enter Name'),
-                      style: _textTheme.subtitle1,
-                      // inputFormatters: <TextInputFormatter>[
-                      //   FilteringTextInputFormatter.digitsOnly
-                      // ],
-                      onChanged: (val) {
-                        widget.dataModel.name = val;
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            // Expanded(
+            //   flex: 1,
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       Expanded(
+            //           flex: 1,
+            //           child: Text('Name', style: _textTheme.subtitle1)),
+            //       // const SizedBox(width: 10),
+            //       Expanded(
+            //         flex: 5,
+            //         child: TextField(
+            //           controller: nameController,
+            //           decoration: const InputDecoration(
+            //               isDense: true, hintText: 'Enter Name'),
+            //           style: _textTheme.subtitle1,
+            //           // inputFormatters: <TextInputFormatter>[
+            //           //   FilteringTextInputFormatter.digitsOnly
+            //           // ],
+            //           onChanged: (val) {
+            //             widget.dataModel.name = val;
+            //           },
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
             Expanded(
               flex: 1,
               child: Row(
@@ -110,6 +110,8 @@ class _Input1State extends State<Input1> {
                       },
                     ),
                   ),
+                  const Expanded(flex: 1, child: SizedBox.shrink()),
+
                   // const SizedBox(width: 10),
                   // ElevatedButton(
                   //   onPressed: () async {

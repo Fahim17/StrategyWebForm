@@ -375,14 +375,22 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
         break;
     }
     if (e1.dataModel.elementName == 'Variable') {
+      e1.dataModel.name =
+          'MyVariable${MainDataModelInstance.mainData.variables.length + 1}';
       MainDataModelInstance.mainData.variables.add(e1.dataModel);
     } else if (e1.dataModel.elementName == 'Input') {
+      e1.dataModel.name =
+          'MyInput${MainDataModelInstance.mainData.inputs.length + 1}';
       MainDataModelInstance.mainData.inputs.add(e1.dataModel);
     }
 
     if (e2.dataModel.elementName == 'Variable') {
+      e2.dataModel.name =
+          'MyVariable${MainDataModelInstance.mainData.variables.length + 1}';
       MainDataModelInstance.mainData.variables.add(e2.dataModel);
     } else if (e2.dataModel.elementName == 'Input') {
+      e2.dataModel.name =
+          'MyInput${MainDataModelInstance.mainData.inputs.length + 1}';
       MainDataModelInstance.mainData.inputs.add(e2.dataModel);
     }
   }

@@ -12,7 +12,7 @@ String datamodelToJson(Inputdatamodel data) => json.encode(data.toJson());
 class Inputdatamodel {
   Inputdatamodel({
     this.type = 'NinjaScriptGenerator.InputReference, NinjaScriptGenerator',
-    this.name = '',
+    this.name = 'MyInput',
     this.valueType = '14',
     this.value = '0',
     this.reference = '',
