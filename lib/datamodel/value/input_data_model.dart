@@ -17,7 +17,7 @@ class Inputdatamodel {
     this.value = '0',
     this.reference = '',
     this.description = '',
-    this.minimum = '0',
+    this.minimum = '-2147483645',
     // this.offsetType = '0',
     // this.datamodelOperator = '0',
     // this.offset = '0',
