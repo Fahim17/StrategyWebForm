@@ -22,6 +22,8 @@ import 'package:ninjastrategy2/ui/pages/components/price/close.dart';
 import 'package:ninjastrategy2/ui/pages/components/price/high.dart';
 import 'package:ninjastrategy2/ui/pages/components/price/low.dart';
 import 'package:ninjastrategy2/ui/pages/components/price/median.dart';
+import 'package:ninjastrategy2/ui/pages/components/price/value/input_1.dart';
+import 'package:ninjastrategy2/ui/pages/components/price/value/variable_1.dart';
 import 'package:ninjastrategy2/ui/pages/components/prior_day_ohlc.dart';
 import 'package:ninjastrategy2/ui/pages/components/rsi.dart';
 import 'package:ninjastrategy2/ui/pages/components/sma.dart';
@@ -41,7 +43,6 @@ import 'package:ninjastrategy2/ui/pages/components/zigzag.dart';
 import 'package:ninjastrategy2/ui/pages/widgets/basic_component_layout.dart';
 import 'package:ninjastrategy2/ui/pages/components/bollinger.dart';
 import 'package:ninjastrategy2/ui/pages/components/bop.dart';
-import 'package:ninjastrategy2/ui/pages/page2.dart';
 import 'package:ninjastrategy2/ui/pages/widgets/popup_compare_operation.dart';
 import 'package:ninjastrategy2/ui/pages/widgets/popup_components.dart';
 
@@ -179,6 +180,12 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
       case 'Day of Week':
         e1 = DayofWeek();
         break;
+      case 'Variable':
+        e1 = Variable1();
+        break;
+      case 'Input':
+        e1 = Input1();
+        break;
       default:
         e1 = const Center(child: Text('Select an Element'));
     }
@@ -300,6 +307,12 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
         break;
       case 'Day of Week':
         e2 = DayofWeek();
+        break;
+      case 'Variable':
+        e2 = Variable1();
+        break;
+      case 'Input':
+        e2 = Input1();
         break;
       default:
         e2 = const Center(child: Text('Select an Element'));

@@ -58,11 +58,15 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
     'Time Value',
     'Day of Week',
   ];
+  List value = [
+    'Variable',
+    'Input',
+  ];
   late TabController _tabController;
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: 5, vsync: this);
   }
 
   @override
@@ -101,6 +105,7 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
               _tabOptions('Price'),
               _tabOptions('Volumn'),
               _tabOptions('Time'),
+              _tabOptions('Value')
             ],
           ),
         ),
@@ -277,6 +282,46 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
                             padding: const EdgeInsets.all(10),
                             child: FittedBox(
                                 child: Text(allTime[index],
+                                    style: _textTheme.subtitle1
+                                        ?.copyWith(color: Colors.white))),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),
+            Column(
+              children: [
+                Expanded(
+                  child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      mainAxisSpacing: 0.0,
+                      crossAxisSpacing: 10.0,
+                      childAspectRatio: (screenSize.width / screenSize.height),
+                    ),
+                    shrinkWrap: true,
+                    itemCount: value.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: const EdgeInsets.all(10),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: COLOR_PRIMARY,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                          ),
+                          onPressed: () {
+                            widget.selection(value[index]);
+                            Navigator.pop(context);
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: FittedBox(
+                                child: Text(value[index],
                                     style: _textTheme.subtitle1
                                         ?.copyWith(color: Colors.white))),
                           ),
