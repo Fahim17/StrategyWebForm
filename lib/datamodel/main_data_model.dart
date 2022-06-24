@@ -16,6 +16,9 @@ class MainDataModel {
   TargetAction ta_stop_loss = TargetAction(targetType: 1);
   List targetActions = [];
 
+  int variablesCount = 0;
+  int inputsCount = 0;
+
   enlConditionDataModel enlC = enlConditionDataModel();
   ensConditionDataModel ensC = ensConditionDataModel();
   exlConditionDataModel exlC = exlConditionDataModel();
