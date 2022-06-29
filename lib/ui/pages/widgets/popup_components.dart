@@ -9,8 +9,7 @@ class ComponentsPopUp extends StatefulWidget {
   State<ComponentsPopUp> createState() => _ComponentsPopUpState();
 }
 
-class _ComponentsPopUpState extends State<ComponentsPopUp>
-    with TickerProviderStateMixin {
+class _ComponentsPopUpState extends State<ComponentsPopUp> with TickerProviderStateMixin {
   TextEditingController searchController = TextEditingController();
   List allIndicators = [
     'ADL',
@@ -59,7 +58,7 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
     'Day of Week',
   ];
   List value = [
-    'Variable',
+    // 'Variable',
     'Input',
   ];
   late TabController _tabController;
@@ -100,13 +99,7 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
           child: TabBar(
             indicatorWeight: 5,
             controller: _tabController,
-            tabs: [
-              _tabOptions('Indicators'),
-              _tabOptions('Price'),
-              _tabOptions('Volumn'),
-              _tabOptions('Time'),
-              _tabOptions('Value')
-            ],
+            tabs: [_tabOptions('Indicators'), _tabOptions('Price'), _tabOptions('Volumn'), _tabOptions('Time'), _tabOptions('Value')],
           ),
         ),
       ],
@@ -161,9 +154,7 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
                           child: Padding(
                             padding: const EdgeInsets.all(10),
                             child: Text(allIndicators[index],
-                                textAlign: TextAlign.center,
-                                style: _textTheme.subtitle1
-                                    ?.copyWith(color: Colors.white)),
+                                textAlign: TextAlign.center, style: _textTheme.subtitle1?.copyWith(color: Colors.white)),
                           ),
                         ),
                       );
@@ -200,10 +191,7 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(10),
-                            child: FittedBox(
-                                child: Text(allPrice[index],
-                                    style: _textTheme.subtitle1
-                                        ?.copyWith(color: Colors.white))),
+                            child: FittedBox(child: Text(allPrice[index], style: _textTheme.subtitle1?.copyWith(color: Colors.white))),
                           ),
                         ),
                       );
@@ -240,10 +228,8 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(10),
-                            child: FittedBox(
-                                child: Text(allVolumn[index],
-                                    style: _textTheme.subtitle1
-                                        ?.copyWith(color: Colors.white))),
+                            child:
+                                FittedBox(child: Text(allVolumn[index], style: _textTheme.subtitle1?.copyWith(color: Colors.white))),
                           ),
                         ),
                       );
@@ -280,10 +266,7 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(10),
-                            child: FittedBox(
-                                child: Text(allTime[index],
-                                    style: _textTheme.subtitle1
-                                        ?.copyWith(color: Colors.white))),
+                            child: FittedBox(child: Text(allTime[index], style: _textTheme.subtitle1?.copyWith(color: Colors.white))),
                           ),
                         ),
                       );
@@ -320,10 +303,7 @@ class _ComponentsPopUpState extends State<ComponentsPopUp>
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(10),
-                            child: FittedBox(
-                                child: Text(value[index],
-                                    style: _textTheme.subtitle1
-                                        ?.copyWith(color: Colors.white))),
+                            child: FittedBox(child: Text(value[index], style: _textTheme.subtitle1?.copyWith(color: Colors.white))),
                           ),
                         ),
                       );

@@ -22,8 +22,8 @@ import 'package:ninjastrategy2/ui/pages/components/price/close.dart';
 import 'package:ninjastrategy2/ui/pages/components/price/high.dart';
 import 'package:ninjastrategy2/ui/pages/components/price/low.dart';
 import 'package:ninjastrategy2/ui/pages/components/price/median.dart';
-import 'package:ninjastrategy2/ui/pages/components/price/value/input_1.dart';
-import 'package:ninjastrategy2/ui/pages/components/price/value/variable_1.dart';
+import 'package:ninjastrategy2/ui/pages/components/value/input_1.dart';
+import 'package:ninjastrategy2/ui/pages/components/value/variable_1.dart';
 import 'package:ninjastrategy2/ui/pages/components/prior_day_ohlc.dart';
 import 'package:ninjastrategy2/ui/pages/components/rsi.dart';
 import 'package:ninjastrategy2/ui/pages/components/sma.dart';
@@ -180,9 +180,9 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
       case 'Day of Week':
         e1 = DayofWeek();
         break;
-      case 'Variable':
-        e1 = Variable1();
-        break;
+      // case 'Variable':
+      //   e1 = Variable1();
+      //   break;
       case 'Input':
         e1 = Input1();
         break;
@@ -308,9 +308,9 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
       case 'Day of Week':
         e2 = DayofWeek();
         break;
-      case 'Variable':
-        e2 = Variable1();
-        break;
+      // case 'Variable':
+      //   e2 = Variable1();
+      //   break;
       case 'Input':
         e2 = Input1();
         break;
@@ -375,25 +375,21 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
         break;
     }
     if (e1.dataModel.elementName == 'Variable') {
-      e1.dataModel.name =
-          'MyVariable${MainDataModelInstance.mainData.variablesCount}';
+      e1.dataModel.name = 'MyVariable${MainDataModelInstance.mainData.variablesCount}';
       MainDataModelInstance.mainData.variablesCount++;
       MainDataModelInstance.mainData.variables.add(e1.dataModel);
     } else if (e1.dataModel.elementName == 'Input') {
-      e1.dataModel.name =
-          'MyInput${MainDataModelInstance.mainData.inputsCount}';
+      e1.dataModel.name = 'MyInput${MainDataModelInstance.mainData.inputsCount}';
       MainDataModelInstance.mainData.inputsCount++;
       MainDataModelInstance.mainData.inputs.add(e1.dataModel);
     }
 
     if (e2.dataModel.elementName == 'Variable') {
-      e2.dataModel.name =
-          'MyVariable${MainDataModelInstance.mainData.variablesCount}';
+      e2.dataModel.name = 'MyVariable${MainDataModelInstance.mainData.variablesCount}';
       MainDataModelInstance.mainData.variablesCount++;
       MainDataModelInstance.mainData.variables.add(e2.dataModel);
     } else if (e2.dataModel.elementName == 'Input') {
-      e2.dataModel.name =
-          'MyInput${MainDataModelInstance.mainData.inputsCount}';
+      e2.dataModel.name = 'MyInput${MainDataModelInstance.mainData.inputsCount}';
       MainDataModelInstance.mainData.inputsCount++;
       MainDataModelInstance.mainData.inputs.add(e2.dataModel);
     }
@@ -480,15 +476,11 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                           child: ElevatedButton(
                             onPressed: () async {
                               await showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      ComponentsPopUp(
-                                          selection: selectElement1));
+                                  context: context, builder: (BuildContext context) => ComponentsPopUp(selection: selectElement1));
                               setState(() {});
                             },
                             child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
+                              padding: const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(e1Title),
                             ),
                           ),
@@ -501,9 +493,7 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                           onPressed: () async {
                             await showDialog(
                                 context: context,
-                                builder: (BuildContext context) =>
-                                    CompareOperationPopUp(
-                                        selection: selectCompareOperation));
+                                builder: (BuildContext context) => CompareOperationPopUp(selection: selectCompareOperation));
                             setState(() {});
                           },
                           child: Padding(
@@ -518,15 +508,11 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                           child: ElevatedButton(
                             onPressed: () async {
                               await showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      ComponentsPopUp(
-                                          selection: selectElement2));
+                                  context: context, builder: (BuildContext context) => ComponentsPopUp(selection: selectElement2));
                               setState(() {});
                             },
                             child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
+                              padding: const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(e2Title),
                             ),
                           ),
@@ -573,14 +559,11 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                         child: Center(
                           child: ElevatedButton(
                             onPressed: () {
-                              if (e1Title != 'Select' &&
-                                  e2Title != 'Select' &&
-                                  operationTitle != 'Select') {
+                              if (e1Title != 'Select' && e2Title != 'Select' && operationTitle != 'Select') {
                                 finalizeDataModels();
                                 Navigator.pop(context);
                               } else {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(const SnackBar(
+                                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                                   content: Text('Provide All Conditions'),
                                   backgroundColor: COLOR_PRIMARY,
                                 ));

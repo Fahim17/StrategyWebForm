@@ -4,6 +4,7 @@ import 'package:ninjastrategy2/datamodel/enlcondition_data_model.dart';
 import 'package:ninjastrategy2/datamodel/enscondition_data_model.dart';
 import 'package:ninjastrategy2/datamodel/exlcondition_data_model.dart';
 import 'package:ninjastrategy2/datamodel/exscondition_data_model.dart';
+import 'package:ninjastrategy2/ui/featurenav.dart';
 
 class MainDataModel {
   String name = 'Default';
@@ -30,10 +31,18 @@ class MainDataModel {
     targetActions.add(ta_profit_margin);
     targetActions.add(ta_stop_loss);
 
-    conditionSets.add(enlC);
-    conditionSets.add(exlC);
-    conditionSets.add(ensC);
-    conditionSets.add(exsC);
+    if (enlC.compares.isNotEmpty) {
+      conditionSets.add(enlC);
+    }
+    if (exlC.compares.isNotEmpty) {
+      conditionSets.add(exlC);
+    }
+    if (ensC.compares.isNotEmpty) {
+      conditionSets.add(ensC);
+    }
+    if (exsC.compares.isNotEmpty) {
+      conditionSets.add(exsC);
+    }
   }
 
   Map<String, dynamic> toJson() => {
@@ -43,10 +52,8 @@ class MainDataModel {
         "Instruments": List<dynamic>.from(instruments.map((x) => x.toJson())),
         "Inputs": List<dynamic>.from(inputs.map((x) => x.toJson2())),
         "Variables": List<dynamic>.from(variables.map((x) => x.toJson2())),
-        "ConditionSets":
-            List<dynamic>.from(conditionSets.map((x) => x.toJson())),
-        "TargetActions":
-            List<dynamic>.from(targetActions.map((x) => x.toJson())),
+        "ConditionSets": List<dynamic>.from(conditionSets.map((x) => x.toJson())),
+        "TargetActions": List<dynamic>.from(targetActions.map((x) => x.toJson())),
       };
 }
 
