@@ -183,7 +183,7 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                   child: Row(
                     children: [
                       Expanded(
-                        flex: 1,
+                        flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
                             color: COLOR_Grey2,
@@ -202,7 +202,7 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                         ),
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
                             color: COLOR_Grey2,
@@ -221,6 +221,25 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                         ),
                       ),
                       Expanded(
+                        flex: 2,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: COLOR_Grey2,
+                            // borderRadius: const BorderRadius.only(
+                            //   topRight: Radius.circular(5),
+                            //   bottomRight: Radius.circular(5),
+                            // ),
+                            border: Border.all(width: 1, color: Colors.white),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Element 2',
+                              style: _textTheme.subtitle1,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
                         flex: 1,
                         child: Container(
                           decoration: BoxDecoration(
@@ -233,7 +252,7 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                           ),
                           child: Center(
                             child: Text(
-                              'Element 2',
+                              'Edit/Del',
                               style: _textTheme.subtitle1,
                             ),
                           ),
@@ -311,7 +330,7 @@ class enlConditionRow extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            flex: 1,
+            flex: 2,
             child: Container(
               padding: EdgeInsets.symmetric(vertical: rowTextPadding),
               decoration: BoxDecoration(
@@ -331,7 +350,7 @@ class enlConditionRow extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 1,
+            flex: 2,
             child: Container(
               padding: EdgeInsets.symmetric(vertical: rowTextPadding),
               decoration: BoxDecoration(
@@ -347,15 +366,15 @@ class enlConditionRow extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 1,
+            flex: 2,
             child: Container(
               padding: EdgeInsets.symmetric(vertical: rowTextPadding),
               decoration: BoxDecoration(
                 color: COLOR_White1,
-                borderRadius: const BorderRadius.only(
-                  topRight: Radius.circular(5),
-                  bottomRight: Radius.circular(5),
-                ),
+                // borderRadius: const BorderRadius.only(
+                //   topRight: Radius.circular(5),
+                //   bottomRight: Radius.circular(5),
+                // ),
                 border: Border.all(width: 1, color: Colors.white),
               ),
               child: Row(
@@ -374,6 +393,41 @@ class enlConditionRow extends StatelessWidget {
                   //     color: COLOR_Red1,
                   //   ),
                   // ),
+                ],
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: rowTextPadding),
+              decoration: BoxDecoration(
+                color: COLOR_White1,
+                borderRadius: const BorderRadius.only(
+                  topRight: Radius.circular(5),
+                  bottomRight: Radius.circular(5),
+                ),
+                border: Border.all(width: 1, color: Colors.white),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  InkWell(
+                    onTap: () {},
+                    child: const Icon(
+                      Icons.edit,
+                      color: Colors.blue,
+                      size: 16,
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {},
+                    child: const Icon(
+                      Icons.delete_forever,
+                      color: COLOR_Red1,
+                      size: 16,
+                    ),
+                  ),
                 ],
               ),
             ),
