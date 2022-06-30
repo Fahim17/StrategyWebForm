@@ -33,11 +33,26 @@ class _BollingerState extends State<Bollinger> {
     }
   }
 
+  String revSelectValuePlot(String elm) {
+    switch (elm) {
+      case '2':
+        return 'Lower';
+      case '1':
+        return 'Middle';
+      case '0':
+        return 'Upper';
+      default:
+        return 'Lower';
+    }
+  }
+
   TextEditingController nSD = TextEditingController();
   TextEditingController prd = TextEditingController();
   @override
   void initState() {
     super.initState();
+    plotOfChart = (widget.dataModel.plotOnChart == 'true') ? true : false;
+    selectValuePlot(revSelectValuePlot(widget.dataModel.valuePlot));
     nSD.text = widget.dataModel.numStdDev;
     prd.text = widget.dataModel.period;
   }

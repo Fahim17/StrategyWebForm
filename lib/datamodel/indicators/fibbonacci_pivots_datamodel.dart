@@ -7,8 +7,7 @@ import 'dart:convert';
 // FibbonacciPivotsdatamodel datamodelFromJson(String str) =>
 //     FibbonacciPivotsdatamodel.fromJson(json.decode(str));
 
-String datamodelToJson(FibbonacciPivotsdatamodel data) =>
-    json.encode(data.toJson());
+String datamodelToJson(FibbonacciPivotsdatamodel data) => json.encode(data.toJson());
 
 class FibbonacciPivotsdatamodel {
   FibbonacciPivotsdatamodel({
@@ -24,7 +23,7 @@ class FibbonacciPivotsdatamodel {
     this.offset = '0',
   });
 
-  String elementName = 'Fibbonacci Pivots';
+  String elementName = 'Fibonacci Pivots';
   String type;
   String price;
   String HLCCalculationMode;

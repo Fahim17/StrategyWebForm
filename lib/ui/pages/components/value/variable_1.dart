@@ -41,8 +41,8 @@ class _Variable1State extends State<Variable1> {
   @override
   void initState() {
     super.initState();
-    // nameController.text = '';
-    // valueController.text = widget.dataModel.period;
+    nameController.text = widget.dataModel.name;
+    valueController.text = widget.dataModel.value;
   }
 
   @override

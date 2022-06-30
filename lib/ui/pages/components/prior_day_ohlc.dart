@@ -36,11 +36,28 @@ class _PriorDayOHLCState extends State<PriorDayOHLC> {
     }
   }
 
+  String revSelectValuePlot(String elm) {
+    switch (elm) {
+      case '0':
+        return 'Prior Open';
+      case '2':
+        return 'Prior High';
+      case '3':
+        return 'Prior Low';
+      case '1':
+        return 'Prior Close';
+      default:
+        return 'Prior Open';
+    }
+  }
+
   // TextEditingController nSD = TextEditingController();
   // TextEditingController prd = TextEditingController();
   @override
   void initState() {
     super.initState();
+    plotOfChart = (widget.dataModel.plotOnChart == 'true') ? true : false;
+    selectValuePlot(revSelectValuePlot(widget.dataModel.valuePlot));
     // nSD.text = widget.dataModel.;
     // prd.text = widget.dataModel.period;
   }

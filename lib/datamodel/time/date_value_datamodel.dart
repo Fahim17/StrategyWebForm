@@ -19,7 +19,7 @@ class DateValuedatamodel {
     // this.datamodelOperator = '0',
     // this.offset = '0',
   });
-  String elementName = 'DateValue';
+  String elementName = 'Date Value';
   String type;
   // String price;
   // String barsAgo;

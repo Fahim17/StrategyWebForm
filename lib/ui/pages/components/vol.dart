@@ -13,6 +13,13 @@ class VOL extends StatefulWidget {
 
 class _VOLState extends State<VOL> {
   bool plotOfChart = false;
+
+  @override
+  void initState() {
+    super.initState();
+    plotOfChart = (widget.dataModel.plotOnChart == 'true') ? true : false;
+  }
+
   @override
   Widget build(BuildContext context) {
     Size screensize = MediaQuery.of(context).size;

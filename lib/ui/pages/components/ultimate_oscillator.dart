@@ -21,6 +21,8 @@ class _UltimateOscillatorState extends State<UltimateOscillator> {
   @override
   void initState() {
     super.initState();
+    plotOfChart = (widget.dataModel.plotOnChart == 'true') ? true : false;
+
     fast.text = widget.dataModel.fast;
     slow.text = widget.dataModel.slow;
     intrmdit.text = widget.dataModel.intermediate;

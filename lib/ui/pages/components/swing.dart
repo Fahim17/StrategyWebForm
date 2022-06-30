@@ -30,10 +30,24 @@ class _SwingState extends State<Swing> {
     }
   }
 
+  String revSelectValuePlot(String elm) {
+    VPTitle = elm;
+    switch (elm) {
+      case '0':
+        return 'Swing High';
+      case '1':
+        return 'Swing Low';
+      default:
+        return 'Swing High';
+    }
+  }
+
   TextEditingController strgth = TextEditingController();
   @override
   void initState() {
     super.initState();
+    plotOfChart = (widget.dataModel.plotOnChart == 'true') ? true : false;
+    selectValuePlot(revSelectValuePlot(widget.dataModel.valuePlot));
     strgth.text = widget.dataModel.strength;
   }
 

@@ -16,6 +16,7 @@ class _BOPState extends State<BOP> {
   @override
   void initState() {
     super.initState();
+    plotOfChart = (widget.dataModel.plotOnChart == 'true') ? true : false;
     smt.text = widget.dataModel.smooth;
   }
 

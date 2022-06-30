@@ -33,11 +33,30 @@ class _CurrentDayOHLState extends State<CurrentDayOHL> {
     }
   }
 
+  String revSelectValuePlot(String elm) {
+    switch (elm) {
+      case '0':
+        return 'Current Open';
+
+      case '1':
+        return 'Current High';
+
+      case '2':
+        return 'Current Low';
+
+      default:
+        return 'Current Open';
+    }
+  }
+
   // TextEditingController nSD = TextEditingController();
   // TextEditingController prd = TextEditingController();
   @override
   void initState() {
     super.initState();
+    plotOfChart = (widget.dataModel.plotOnChart == 'true') ? true : false;
+    selectValuePlot(revSelectValuePlot(widget.dataModel.valuePlot));
+
     // nSD.text = widget.dataModel.;
     // prd.text = widget.dataModel.period;
   }

@@ -16,6 +16,7 @@ class _ADXState extends State<ADX> {
   @override
   void initState() {
     super.initState();
+    plotOfChart = (widget.dataModel.plotOnChart == 'true') ? true : false;
     prd.text = widget.dataModel.period;
   }
 

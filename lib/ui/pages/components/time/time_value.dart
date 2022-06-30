@@ -30,6 +30,15 @@ class _TimeValueState extends State<TimeValue> {
   @override
   void initState() {
     super.initState();
+    try {
+      if (widget.dataModel.Time == '00:00:00') {
+        List<String> editTime = widget.dataModel.Time.split(':');
+        timeSelected = TimeOfDay(hour: int.parse(editTime[0]), minute: int.parse(editTime[1]));
+      }
+    } on Exception catch (e) {
+      print(e);
+    }
+
     timeController.text = timeFormater(timeSelected);
   }
 
@@ -47,8 +56,7 @@ class _TimeValueState extends State<TimeValue> {
     return SizedBox(
       height: compontHeight,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(
-            compontPaddingLeft, 0, compontPaddingRignt, 0),
+        padding: const EdgeInsets.fromLTRB(compontPaddingLeft, 0, compontPaddingRignt, 0),
         child: Column(
           children: [
             Expanded(
@@ -59,8 +67,7 @@ class _TimeValueState extends State<TimeValue> {
                     flex: 2,
                     child: TextField(
                       controller: timeController,
-                      decoration: const InputDecoration(
-                          isDense: true, hintText: 'Date Value'),
+                      decoration: const InputDecoration(isDense: true, hintText: 'Date Value'),
                       style: _textTheme.subtitle1,
                       enabled: false,
                       textAlign: TextAlign.center,
@@ -80,8 +87,7 @@ class _TimeValueState extends State<TimeValue> {
                           }
                           timeSelected = value;
                           timeController.text = timeFormater(timeSelected);
-                          widget.dataModel.Time =
-                              '${value.hour}:${value.minute}';
+                          widget.dataModel.Time = '${value.hour}:${value.minute}';
                           setState(() {});
                         });
                       },

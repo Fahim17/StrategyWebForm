@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+
 import 'package:ninjastrategy2/datamodel/compare_data_model.dart';
 import 'package:ninjastrategy2/datamodel/enlcondition_data_model.dart';
 import 'package:ninjastrategy2/datamodel/indicators/adl_datamodel.dart';
@@ -11,6 +12,7 @@ import 'package:ninjastrategy2/datamodel/main_datamodel_instance.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/featurenav.dart';
 import 'package:ninjastrategy2/ui/pages/condition_form.dart';
+import 'package:ninjastrategy2/ui/pages/condition_form_edit.dart';
 import 'package:ninjastrategy2/ui/pages/exlcondition_list.dart';
 
 class EnLConditionListPage extends StatefulWidget {
@@ -94,8 +96,7 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                             onTap: () {
                               features[0] = false;
                               features[1] = true;
-                              MainDataModelInstance
-                                  .mainData.enlC.conditionType = '12';
+                              MainDataModelInstance.mainData.enlC.conditionType = '12';
                               setState(() {});
                             },
                             child: Container(
@@ -104,9 +105,7 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                               decoration: BoxDecoration(
                                   border: Border.all(color: COLOR_PRIMARY),
                                   borderRadius: BorderRadius.circular(15),
-                                  color: (features[1])
-                                      ? COLOR_PRIMARY
-                                      : Colors.transparent),
+                                  color: (features[1]) ? COLOR_PRIMARY : Colors.transparent),
                             ),
                           ),
                           const SizedBox(width: 10),
@@ -126,8 +125,7 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                             onTap: () {
                               features[0] = true;
                               features[1] = false;
-                              MainDataModelInstance
-                                  .mainData.enlC.conditionType = '11';
+                              MainDataModelInstance.mainData.enlC.conditionType = '11';
                               setState(() {});
                             },
                             child: Container(
@@ -136,9 +134,7 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                               decoration: BoxDecoration(
                                   border: Border.all(color: COLOR_PRIMARY),
                                   borderRadius: BorderRadius.circular(15),
-                                  color: (features[0])
-                                      ? COLOR_PRIMARY
-                                      : Colors.transparent),
+                                  color: (features[0]) ? COLOR_PRIMARY : Colors.transparent),
                             ),
                           ),
                           const SizedBox(width: 10),
@@ -261,16 +257,138 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                     ],
                   ),
                 ),
+                // SizedBox(
+                //   width: double.infinity,
+                //   // height: screensize.height * 0.45,
+                //   child: SingleChildScrollView(
+                //     child: Column(children: MainDataModelInstance.mainData.enlC.compares.map((e) => enlConditionRow(e: e)).toList()),
+                //   ),
+                // ),
                 SizedBox(
                   width: double.infinity,
-                  height: screensize.height * 0.45,
+                  // height: screensize.height * 0.45,
                   child: SingleChildScrollView(
                     child: Column(
-                        children: MainDataModelInstance.mainData.enlC.compares
-                            .map((e) => enlConditionRow(e: e))
-                            .toList()),
+                        children: MainDataModelInstance.mainData.enlC.compares.asMap().entries.map((e) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 3),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                padding: EdgeInsets.symmetric(vertical: 10),
+                                decoration: BoxDecoration(
+                                  color: COLOR_White1,
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(5),
+                                    bottomLeft: Radius.circular(5),
+                                  ),
+                                  border: Border.all(width: 1, color: Colors.white),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    e.value.firstObject.elementName,
+                                    style: _textTheme.subtitle2,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                padding: EdgeInsets.symmetric(vertical: 10),
+                                decoration: BoxDecoration(
+                                  color: COLOR_White1,
+                                  border: Border.all(width: 1, color: Colors.white),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    e.value.operationName,
+                                    style: _textTheme.subtitle2,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                padding: EdgeInsets.symmetric(vertical: 10),
+                                decoration: BoxDecoration(
+                                  color: COLOR_White1,
+                                  // borderRadius: const BorderRadius.only(
+                                  //   topRight: Radius.circular(5),
+                                  //   bottomRight: Radius.circular(5),
+                                  // ),
+                                  border: Border.all(width: 1, color: Colors.white),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Center(
+                                      child: Text(
+                                        e.value.secondObject.elementName,
+                                        style: _textTheme.subtitle2,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                padding: EdgeInsets.symmetric(vertical: 10),
+                                decoration: BoxDecoration(
+                                  color: COLOR_White1,
+                                  borderRadius: const BorderRadius.only(
+                                    topRight: Radius.circular(5),
+                                    bottomRight: Radius.circular(5),
+                                  ),
+                                  border: Border.all(width: 1, color: Colors.white),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    InkWell(
+                                      onTap: () async {
+                                        await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => ConditionFormEditPage(
+                                                      indx: e.key,
+                                                      frompage: 'enl',
+                                                    )));
+                                        setState(() {});
+                                      },
+                                      child: const Icon(
+                                        Icons.edit,
+                                        color: Colors.blue,
+                                        size: 16,
+                                      ),
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        MainDataModelInstance.mainData.enlC.compares.removeAt(e.key);
+                                        setState(() {});
+                                      },
+                                      child: const Icon(
+                                        Icons.delete_forever,
+                                        color: COLOR_Red1,
+                                        size: 16,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    }).toList()),
                   ),
                 ),
+
                 const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -288,14 +406,9 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                     ElevatedButton(
                       onPressed: () {
                         if (features[0] || features[1]) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      ExLConditionListPage()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ExLConditionListPage()));
                         } else {
-                          ScaffoldMessenger.of(context)
-                              .showSnackBar(const SnackBar(
+                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                             content: Text('Select Condition Type'),
                             backgroundColor: COLOR_PRIMARY,
                           ));
@@ -318,8 +431,13 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
 }
 
 class enlConditionRow extends StatelessWidget {
+  int indx;
   Compare e;
-  enlConditionRow({Key? key, required this.e}) : super(key: key);
+  enlConditionRow({
+    Key? key,
+    required this.indx,
+    required this.e,
+  }) : super(key: key);
 
   double rowTextPadding = 10;
   @override

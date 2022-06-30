@@ -33,6 +33,19 @@ class _MACDState extends State<MACD> {
     }
   }
 
+  String revSelectValuePlot(String elm) {
+    switch (elm) {
+      case '0':
+        return 'avg';
+      case '1':
+        return 'MACD';
+      case '2':
+        return 'Diff';
+      default:
+        return 'Avg';
+    }
+  }
+
   TextEditingController fast = TextEditingController();
   TextEditingController slow = TextEditingController();
   TextEditingController smoth = TextEditingController();
@@ -40,6 +53,8 @@ class _MACDState extends State<MACD> {
   @override
   void initState() {
     super.initState();
+    plotOfChart = (widget.dataModel.plotOnChart == 'true') ? true : false;
+    selectValuePlot(revSelectValuePlot(widget.dataModel.valuePlot));
     fast.text = widget.dataModel.fast;
     slow.text = widget.dataModel.slow;
     smoth.text = widget.dataModel.smooth;

@@ -31,6 +31,17 @@ class _StochasticsState extends State<Stochastics> {
     }
   }
 
+  String revSelectValuePlot(String elm) {
+    switch (elm) {
+      case '0':
+        return 'D';
+      case '1':
+        return 'K';
+      default:
+        return 'D';
+    }
+  }
+
   TextEditingController pD = TextEditingController();
   TextEditingController pK = TextEditingController();
   TextEditingController smoth = TextEditingController();
@@ -38,6 +49,8 @@ class _StochasticsState extends State<Stochastics> {
   @override
   void initState() {
     super.initState();
+    plotOfChart = (widget.dataModel.plotOnChart == 'true') ? true : false;
+    selectValuePlot(revSelectValuePlot(widget.dataModel.valuePlot));
     pD.text = widget.dataModel.periodD;
     pK.text = widget.dataModel.periodK;
     smoth.text = widget.dataModel.smooth;

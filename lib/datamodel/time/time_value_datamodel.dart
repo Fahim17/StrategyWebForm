@@ -19,7 +19,7 @@ class TimeValuedatamodel {
     // this.datamodelOperator = '0',
     // this.offset = '0',
   });
-  String elementName = 'TimeValue';
+  String elementName = 'Time Value';
   String type;
   // String price;
   // String barsAgo;

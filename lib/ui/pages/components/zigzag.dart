@@ -35,6 +35,17 @@ class _ZigZagState extends State<ZigZag> {
     }
   }
 
+  String revSelectDeviationType(String elm) {
+    switch (elm) {
+      case '0':
+        return 'Point';
+      case '1':
+        return 'Percent';
+      default:
+        return 'Point';
+    }
+  }
+
   void selectValuePlot(String elm) {
     VPTitle = elm;
     switch (elm) {
@@ -49,10 +60,29 @@ class _ZigZagState extends State<ZigZag> {
     }
   }
 
+  String revSelectValuePlot(String elm) {
+    switch (elm) {
+      case '0':
+        return 'ZigZag High';
+
+      case '1':
+        return 'ZigZag Low';
+
+      default:
+        return 'ZigZag High';
+    }
+  }
+
   @override
   void initState() {
     super.initState();
+    plotOfChart = (widget.dataModel.plotOnChart == 'true') ? true : false;
+    useHighLow = (widget.dataModel.useHighLow == 'true') ? true : false;
+
     dvitinVal.text = widget.dataModel.deviationValue;
+    selectDeviationType(revSelectDeviationType(widget.dataModel.valuePlot));
+
+    selectValuePlot(revSelectValuePlot(widget.dataModel.valuePlot));
   }
 
   @override

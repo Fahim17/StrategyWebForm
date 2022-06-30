@@ -20,6 +20,7 @@ class _ChaikinVolatilityState extends State<ChaikinVolatility> {
   @override
   void initState() {
     super.initState();
+    plotOfChart = (widget.dataModel.plotOnChart == 'true') ? true : false;
     movingAvgPeriod.text = widget.dataModel.movingAvgPeriod;
     rateOfChangePeriod.text = widget.dataModel.rateOfChangePeriod;
   }

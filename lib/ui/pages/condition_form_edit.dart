@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+
 import 'package:ninjastrategy2/datamodel/compare_data_model.dart';
 import 'package:ninjastrategy2/datamodel/main_datamodel_instance.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/pages/components/adl.dart';
 import 'package:ninjastrategy2/ui/pages/components/adx.dart';
+import 'package:ninjastrategy2/ui/pages/components/bollinger.dart';
+import 'package:ninjastrategy2/ui/pages/components/bop.dart';
 import 'package:ninjastrategy2/ui/pages/components/chaikin_oscillator.dart';
 import 'package:ninjastrategy2/ui/pages/components/chaikin_volatility.dart';
 import 'package:ninjastrategy2/ui/pages/components/current_day_OHL.dart';
@@ -23,8 +26,6 @@ import 'package:ninjastrategy2/ui/pages/components/price/high.dart';
 import 'package:ninjastrategy2/ui/pages/components/price/low.dart';
 import 'package:ninjastrategy2/ui/pages/components/price/median.dart';
 import 'package:ninjastrategy2/ui/pages/components/price/open.dart';
-import 'package:ninjastrategy2/ui/pages/components/value/input_1.dart';
-import 'package:ninjastrategy2/ui/pages/components/value/variable_1.dart';
 import 'package:ninjastrategy2/ui/pages/components/prior_day_ohlc.dart';
 import 'package:ninjastrategy2/ui/pages/components/rsi.dart';
 import 'package:ninjastrategy2/ui/pages/components/sma.dart';
@@ -36,26 +37,31 @@ import 'package:ninjastrategy2/ui/pages/components/time/date_value.dart';
 import 'package:ninjastrategy2/ui/pages/components/time/day_of_week.dart';
 import 'package:ninjastrategy2/ui/pages/components/time/time_value.dart';
 import 'package:ninjastrategy2/ui/pages/components/ultimate_oscillator.dart';
+import 'package:ninjastrategy2/ui/pages/components/value/input_1.dart';
+import 'package:ninjastrategy2/ui/pages/components/value/variable_1.dart';
 import 'package:ninjastrategy2/ui/pages/components/vol.dart';
 import 'package:ninjastrategy2/ui/pages/components/volumn/ask_volume.dart';
 import 'package:ninjastrategy2/ui/pages/components/volumn/bid_volume.dart';
 import 'package:ninjastrategy2/ui/pages/components/volumn/volume.dart';
 import 'package:ninjastrategy2/ui/pages/components/zigzag.dart';
 import 'package:ninjastrategy2/ui/pages/widgets/basic_component_layout.dart';
-import 'package:ninjastrategy2/ui/pages/components/bollinger.dart';
-import 'package:ninjastrategy2/ui/pages/components/bop.dart';
 import 'package:ninjastrategy2/ui/pages/widgets/popup_compare_operation.dart';
 import 'package:ninjastrategy2/ui/pages/widgets/popup_components.dart';
 
-class ConditionFormPage extends StatefulWidget {
+class ConditionFormEditPage extends StatefulWidget {
+  int indx;
   String frompage;
-  ConditionFormPage({Key? key, required this.frompage}) : super(key: key);
+  ConditionFormEditPage({
+    Key? key,
+    required this.indx,
+    required this.frompage,
+  }) : super(key: key);
 
   @override
-  State<ConditionFormPage> createState() => _ConditionFormPageState();
+  State<ConditionFormEditPage> createState() => _ConditionFormEditPageState();
 }
 
-class _ConditionFormPageState extends State<ConditionFormPage> {
+class _ConditionFormEditPageState extends State<ConditionFormEditPage> {
   dynamic e1 = const Center(child: Text('Select an Element'));
   dynamic e2 = const Center(child: Text('Select an Element'));
   String compareOperation = '7';
@@ -63,6 +69,56 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
   String e1Title = 'Select';
   String e2Title = 'Select';
   String operationTitle = 'Select';
+
+  void editCompares() {
+    if (widget.frompage == 'enl') {
+      String E1 = MainDataModelInstance.mainData.enlC.compares[widget.indx].firstObject.elementName;
+      String E2 = MainDataModelInstance.mainData.enlC.compares[widget.indx].secondObject.elementName;
+      String oper = MainDataModelInstance.mainData.enlC.compares[widget.indx].operationName;
+
+      selectElement1(E1);
+      selectElement2(E2);
+      selectCompareOperation(oper);
+      e1.dataModel = MainDataModelInstance.mainData.enlC.compares[widget.indx].firstObject;
+      e2.dataModel = MainDataModelInstance.mainData.enlC.compares[widget.indx].secondObject;
+    } else if (widget.frompage == 'ens') {
+      String E1 = MainDataModelInstance.mainData.ensC.compares[widget.indx].firstObject.elementName;
+      String E2 = MainDataModelInstance.mainData.ensC.compares[widget.indx].secondObject.elementName;
+      String oper = MainDataModelInstance.mainData.ensC.compares[widget.indx].operationName;
+
+      selectElement1(E1);
+      selectElement2(E2);
+      selectCompareOperation(oper);
+      e1.dataModel = MainDataModelInstance.mainData.ensC.compares[widget.indx].firstObject;
+      e2.dataModel = MainDataModelInstance.mainData.ensC.compares[widget.indx].secondObject;
+    } else if (widget.frompage == 'exl') {
+      String E1 = MainDataModelInstance.mainData.exlC.compares[widget.indx].firstObject.elementName;
+      String E2 = MainDataModelInstance.mainData.exlC.compares[widget.indx].secondObject.elementName;
+      String oper = MainDataModelInstance.mainData.exlC.compares[widget.indx].operationName;
+
+      selectElement1(E1);
+      selectElement2(E2);
+      selectCompareOperation(oper);
+      e1.dataModel = MainDataModelInstance.mainData.exlC.compares[widget.indx].firstObject;
+      e2.dataModel = MainDataModelInstance.mainData.exlC.compares[widget.indx].secondObject;
+    } else if (widget.frompage == 'exs') {
+      String E1 = MainDataModelInstance.mainData.exsC.compares[widget.indx].firstObject.elementName;
+      String E2 = MainDataModelInstance.mainData.exsC.compares[widget.indx].secondObject.elementName;
+      String oper = MainDataModelInstance.mainData.exsC.compares[widget.indx].operationName;
+
+      selectElement1(E1);
+      selectElement2(E2);
+      selectCompareOperation(oper);
+      e1.dataModel = MainDataModelInstance.mainData.exsC.compares[widget.indx].firstObject;
+      e2.dataModel = MainDataModelInstance.mainData.exsC.compares[widget.indx].secondObject;
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    editCompares();
+  }
 
   void selectElement1(String elm1) {
     e1Title = elm1;
@@ -184,7 +240,6 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
       case 'Day of Week':
         e1 = DayofWeek();
         break;
-
       // case 'Variable':
       //   e1 = Variable1();
       //   break;
@@ -293,7 +348,7 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
         e2 = Median();
         break;
       case 'Open':
-        e2 = Open();
+        e1 = Open();
         break;
       case 'Low':
         e2 = Low();
@@ -368,16 +423,16 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
 
     switch (widget.frompage) {
       case 'enl':
-        MainDataModelInstance.mainData.enlC.compares.add(x);
+        MainDataModelInstance.mainData.enlC.compares[widget.indx] = x;
         break;
       case 'ens':
-        MainDataModelInstance.mainData.ensC.compares.add(x);
+        MainDataModelInstance.mainData.ensC.compares[widget.indx] = x;
         break;
       case 'exl':
-        MainDataModelInstance.mainData.exlC.compares.add(x);
+        MainDataModelInstance.mainData.exlC.compares[widget.indx] = x;
         break;
       case 'exs':
-        MainDataModelInstance.mainData.exsC.compares.add(x);
+        MainDataModelInstance.mainData.exsC.compares[widget.indx] = x;
         break;
       default:
         break;
@@ -401,11 +456,6 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
       MainDataModelInstance.mainData.inputsCount++;
       MainDataModelInstance.mainData.inputs.add(e2.dataModel);
     }
-  }
-
-  @override
-  void initState() {
-    super.initState();
   }
 
   @override

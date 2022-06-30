@@ -7,8 +7,7 @@ import 'dart:convert';
 // StochasticsFastdatamodel datamodelFromJson(String str) =>
 //     StochasticsFastdatamodel.fromJson(json.decode(str));
 
-String datamodelToJson(StochasticsFastdatamodel data) =>
-    json.encode(data.toJson());
+String datamodelToJson(StochasticsFastdatamodel data) => json.encode(data.toJson());
 
 class StochasticsFastdatamodel {
   StochasticsFastdatamodel({
@@ -23,7 +22,7 @@ class StochasticsFastdatamodel {
     this.datamodelOperator = '0',
     this.offset = '0',
   });
-  String elementName = 'StochasticsFast';
+  String elementName = 'Stochastics Fast';
   String type;
   String price;
   String barsAgo;

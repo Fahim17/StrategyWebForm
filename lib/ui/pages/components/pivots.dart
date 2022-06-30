@@ -38,6 +38,19 @@ class _PivotsState extends State<Pivots> {
     }
   }
 
+  String revSelectPivotRange(String elm) {
+    switch (elm) {
+      case '0':
+        return 'Daily';
+      case '1':
+        return 'Weekly';
+      case '2':
+        return 'Monthly';
+      default:
+        return 'Daily';
+    }
+  }
+
   void selectHLCCalcMode(String elm) {
     HCLTitle = elm;
     switch (elm) {
@@ -49,6 +62,17 @@ class _PivotsState extends State<Pivots> {
         break;
       default:
         widget.dataModel.HLCCalculationMode = '0';
+    }
+  }
+
+  String revSelectHLCCalcMode(String elm) {
+    switch (elm) {
+      case '0':
+        return 'Intraday';
+      case '1':
+        return 'Daily Bars';
+      default:
+        return 'Intraday';
     }
   }
 
@@ -81,9 +105,43 @@ class _PivotsState extends State<Pivots> {
     }
   }
 
+  String revSelectValuePlot(String elm) {
+    switch (elm) {
+      case '0':
+        return 'Pp';
+
+      case '1':
+        return 'R1';
+
+      case '2':
+        return 'R2';
+
+      case '3':
+        return 'R3';
+
+      case '4':
+        return 'S1';
+
+      case '5':
+        return 'S2';
+
+      case '6':
+        return 'S3';
+
+      default:
+        return 'Pp';
+    }
+  }
+
   @override
   void initState() {
     super.initState();
+    plotOfChart = (widget.dataModel.plotOnChart == 'true') ? true : false;
+    selectPivotRange(revSelectPivotRange(widget.dataModel.pivotRange));
+
+    selectHLCCalcMode(revSelectHLCCalcMode(widget.dataModel.HLCCalculationMode));
+
+    selectValuePlot(revSelectValuePlot(widget.dataModel.valuePlot));
   }
 
   @override

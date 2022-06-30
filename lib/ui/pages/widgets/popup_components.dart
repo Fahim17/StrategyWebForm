@@ -46,6 +46,7 @@ class _ComponentsPopUpState extends State<ComponentsPopUp> with TickerProviderSt
     'High',
     'Median',
     'Low',
+    'Open',
   ];
   List<String> allVolumn = [
     'Ask(Volume)',

@@ -30,11 +30,24 @@ class _RSIState extends State<RSI> {
     }
   }
 
+  String revSelectValuePlot(String elm) {
+    switch (elm) {
+      case '0':
+        return 'Avg';
+      case '1':
+        return 'RSI';
+      default:
+        return 'Avg';
+    }
+  }
+
   TextEditingController smoth = TextEditingController();
   TextEditingController prd = TextEditingController();
   @override
   void initState() {
     super.initState();
+    plotOfChart = (widget.dataModel.plotOnChart == 'true') ? true : false;
+    selectValuePlot(revSelectValuePlot(widget.dataModel.valuePlot));
     smoth.text = widget.dataModel.smooth;
     prd.text = widget.dataModel.period;
   }

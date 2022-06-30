@@ -44,6 +44,33 @@ class _DayofWeekState extends State<DayofWeek> {
     }
   }
 
+  String revSelectDay(String elm) {
+    switch (elm) {
+      case '0':
+        return 'Sunday';
+      case '1':
+        return 'Monday';
+      case '2':
+        return 'Tuesday';
+      case '3':
+        return 'Wednesday';
+      case '4':
+        return 'Thursday';
+      case '5':
+        return 'Friday';
+      case '6':
+        return 'Saturday';
+      default:
+        return 'Sunday';
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    selectDay(revSelectDay(widget.dataModel.DayOfWeek));
+  }
+
   @override
   Widget build(BuildContext context) {
     Size screensize = MediaQuery.of(context).size;
@@ -51,8 +78,7 @@ class _DayofWeekState extends State<DayofWeek> {
     return SizedBox(
       height: compontHeight,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(
-            compontPaddingLeft, 0, compontPaddingRignt, 0),
+        padding: const EdgeInsets.fromLTRB(compontPaddingLeft, 0, compontPaddingRignt, 0),
         child: Column(
           children: [
             Expanded(
@@ -67,10 +93,7 @@ class _DayofWeekState extends State<DayofWeek> {
                   ),
                   ElevatedButton(
                     onPressed: () async {
-                      await showDialog(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              DayofWeekPopUp(selection: selectDay));
+                      await showDialog(context: context, builder: (BuildContext context) => DayofWeekPopUp(selection: selectDay));
                       setState(() {});
                     },
                     child: Padding(

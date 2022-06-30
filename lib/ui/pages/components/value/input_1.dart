@@ -45,8 +45,8 @@ class _Input1State extends State<Input1> {
   @override
   void initState() {
     super.initState();
-    // nameController.text = '';
-    // valueController.text = widget.dataModel.period;
+    nameController.text = widget.dataModel.name;
+    valueController.text = widget.dataModel.value;
   }
 
   @override
@@ -63,8 +63,7 @@ class _Input1State extends State<Input1> {
     return SizedBox(
       height: compontHeight,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(
-            compontPaddingLeft, 0, compontPaddingRignt, 0),
+        padding: const EdgeInsets.fromLTRB(compontPaddingLeft, 0, compontPaddingRignt, 0),
         child: Column(
           children: [
             Expanded(
@@ -72,16 +71,13 @@ class _Input1State extends State<Input1> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
-                      flex: 1,
-                      child: Text('Name', style: _textTheme.subtitle1)),
+                  Expanded(flex: 1, child: Text('Name', style: _textTheme.subtitle1)),
                   // const SizedBox(width: 10),
                   Expanded(
                     flex: 5,
                     child: TextField(
                       controller: nameController,
-                      decoration: const InputDecoration(
-                          isDense: true, hintText: 'Enter Name'),
+                      decoration: const InputDecoration(isDense: true, hintText: 'Enter Name'),
                       style: _textTheme.subtitle1,
                       // inputFormatters: <TextInputFormatter>[
                       //   FilteringTextInputFormatter.digitsOnly
@@ -99,16 +95,13 @@ class _Input1State extends State<Input1> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
-                      flex: 1,
-                      child: Text('Value', style: _textTheme.subtitle1)),
+                  Expanded(flex: 1, child: Text('Value', style: _textTheme.subtitle1)),
                   // const SizedBox(width: 13),
                   Expanded(
                     flex: 5,
                     child: TextField(
                       controller: valueController,
-                      decoration: const InputDecoration(
-                          isDense: true, hintText: 'Enter Value'),
+                      decoration: const InputDecoration(isDense: true, hintText: 'Enter Value'),
                       style: _textTheme.subtitle1,
                       // inputFormatters: <TextInputFormatter>[
                       //   // UpperCaseTextFormatter(),
