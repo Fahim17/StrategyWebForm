@@ -74,7 +74,7 @@ class EndPage extends StatelessWidget {
                           } else {
                             print('${res.body}');
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text('${res.body}'),
+                              content: Text('${res.statusCode}:${res.body}'),
                               backgroundColor: Colors.red,
                             ));
                           }
