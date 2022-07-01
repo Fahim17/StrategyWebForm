@@ -383,21 +383,26 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
         break;
     }
     if (e1.dataModel.elementName == 'Variable') {
-      e1.dataModel.name = 'MyVariable${MainDataModelInstance.mainData.variablesCount}';
+      // e1.dataModel.name = 'MyVariable${MainDataModelInstance.mainData.variablesCount}';
+      e1.dataModel.name =
+          '${e1.dataModel.name}${MainDataModelInstance.mainData.variablesCount}';
       MainDataModelInstance.mainData.variablesCount++;
       MainDataModelInstance.mainData.variables.add(e1.dataModel);
     } else if (e1.dataModel.elementName == 'Input') {
-      e1.dataModel.name = 'MyInput${MainDataModelInstance.mainData.inputsCount}';
+      e1.dataModel.name =
+          '${e1.dataModel.name}${MainDataModelInstance.mainData.inputsCount}';
       MainDataModelInstance.mainData.inputsCount++;
       MainDataModelInstance.mainData.inputs.add(e1.dataModel);
     }
 
     if (e2.dataModel.elementName == 'Variable') {
-      e2.dataModel.name = 'MyVariable${MainDataModelInstance.mainData.variablesCount}';
+      e2.dataModel.name =
+          '${e2.dataModel.name}${MainDataModelInstance.mainData.variablesCount}';
       MainDataModelInstance.mainData.variablesCount++;
       MainDataModelInstance.mainData.variables.add(e2.dataModel);
     } else if (e2.dataModel.elementName == 'Input') {
-      e2.dataModel.name = 'MyInput${MainDataModelInstance.mainData.inputsCount}';
+      e2.dataModel.name =
+          '${e2.dataModel.name}${MainDataModelInstance.mainData.inputsCount}';
       MainDataModelInstance.mainData.inputsCount++;
       MainDataModelInstance.mainData.inputs.add(e2.dataModel);
     }
@@ -484,11 +489,15 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                           child: ElevatedButton(
                             onPressed: () async {
                               await showDialog(
-                                  context: context, builder: (BuildContext context) => ComponentsPopUp(selection: selectElement1));
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      ComponentsPopUp(
+                                          selection: selectElement1));
                               setState(() {});
                             },
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(e1Title),
                             ),
                           ),
@@ -501,7 +510,9 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                           onPressed: () async {
                             await showDialog(
                                 context: context,
-                                builder: (BuildContext context) => CompareOperationPopUp(selection: selectCompareOperation));
+                                builder: (BuildContext context) =>
+                                    CompareOperationPopUp(
+                                        selection: selectCompareOperation));
                             setState(() {});
                           },
                           child: Padding(
@@ -516,11 +527,15 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                           child: ElevatedButton(
                             onPressed: () async {
                               await showDialog(
-                                  context: context, builder: (BuildContext context) => ComponentsPopUp(selection: selectElement2));
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      ComponentsPopUp(
+                                          selection: selectElement2));
                               setState(() {});
                             },
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(e2Title),
                             ),
                           ),
@@ -567,11 +582,14 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                         child: Center(
                           child: ElevatedButton(
                             onPressed: () {
-                              if (e1Title != 'Select' && e2Title != 'Select' && operationTitle != 'Select') {
+                              if (e1Title != 'Select' &&
+                                  e2Title != 'Select' &&
+                                  operationTitle != 'Select') {
                                 finalizeDataModels();
                                 Navigator.pop(context);
                               } else {
-                                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
                                   content: Text('Provide All Conditions'),
                                   backgroundColor: COLOR_PRIMARY,
                                 ));

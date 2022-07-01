@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:ninjastrategy2/datamodel/price/median_datamodel.dart';
+import 'package:ninjastrategy2/datamodel/price/open_datamodel.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 
 class Open extends StatefulWidget {
-  Mediandatamodel dataModel = Mediandatamodel();
+  Opendatamodel dataModel = Opendatamodel();
 
   Open({Key? key}) : super(key: key);
 
@@ -20,7 +20,8 @@ class _OpenState extends State<Open> {
     return SizedBox(
       height: compontHeight,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(compontPaddingLeft, 0, compontPaddingRignt, 0),
+        padding: const EdgeInsets.fromLTRB(
+            compontPaddingLeft, 0, compontPaddingRignt, 0),
         child: Column(
           children: [
             const Expanded(flex: 1, child: SizedBox.shrink()),

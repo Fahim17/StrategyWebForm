@@ -138,7 +138,7 @@ class _Page2State extends State<Page2> {
                         controller: contractController,
                         decoration: const InputDecoration(
                             border: InputBorder.none,
-                            hintText: 'Type Answer Here...'),
+                            hintText: 'Enter a Number Here...'),
                         style: _textTheme.subtitle1,
                       ),
                     ),

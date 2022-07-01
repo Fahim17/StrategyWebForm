@@ -4,6 +4,7 @@ import 'package:ninjastrategy2/datamodel/main_datamodel_instance.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/featurenav.dart';
 import 'package:ninjastrategy2/ui/pages/condition_form.dart';
+import 'package:ninjastrategy2/ui/pages/condition_form_edit.dart';
 
 class ExSConditionListPage extends StatefulWidget {
   ExSConditionListPage({Key? key}) : super(key: key);
@@ -160,7 +161,7 @@ class _ExSConditionListPageState extends State<ExSConditionListPage> {
                   child: Row(
                     children: [
                       Expanded(
-                        flex: 1,
+                        flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
                             color: COLOR_Grey2,
@@ -179,7 +180,7 @@ class _ExSConditionListPageState extends State<ExSConditionListPage> {
                         ),
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
                             color: COLOR_Grey2,
@@ -198,7 +199,7 @@ class _ExSConditionListPageState extends State<ExSConditionListPage> {
                         ),
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
                             color: COLOR_Grey2,
@@ -216,17 +217,172 @@ class _ExSConditionListPageState extends State<ExSConditionListPage> {
                           ),
                         ),
                       ),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: COLOR_Grey2,
+                            borderRadius: const BorderRadius.only(
+                              topRight: Radius.circular(5),
+                              bottomRight: Radius.circular(5),
+                            ),
+                            border: Border.all(width: 1, color: Colors.white),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Edit/Del',
+                              style: _textTheme.subtitle1,
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
+                // SizedBox(
+                //   width: double.infinity,
+                //   height: screensize.height * 0.45,
+                //   child: SingleChildScrollView(
+                //     child: Column(
+                //         children: MainDataModelInstance.mainData.exsC.compares
+                //             .map((e) => exsConditionRow(e: e))
+                //             .toList()),
+                //   ),
+                // ),
                 SizedBox(
                   width: double.infinity,
                   height: screensize.height * 0.45,
                   child: SingleChildScrollView(
                     child: Column(
                         children: MainDataModelInstance.mainData.exsC.compares
-                            .map((e) => exsConditionRow(e: e))
-                            .toList()),
+                            .asMap()
+                            .entries
+                            .map((e) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 25, vertical: 3),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                padding: EdgeInsets.symmetric(vertical: 10),
+                                decoration: BoxDecoration(
+                                  color: COLOR_White1,
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(5),
+                                    bottomLeft: Radius.circular(5),
+                                  ),
+                                  border:
+                                      Border.all(width: 1, color: Colors.white),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    e.value.firstObject.elementName,
+                                    style: _textTheme.subtitle2,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                padding: EdgeInsets.symmetric(vertical: 10),
+                                decoration: BoxDecoration(
+                                  color: COLOR_White1,
+                                  border:
+                                      Border.all(width: 1, color: Colors.white),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    e.value.operationName,
+                                    style: _textTheme.subtitle2,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                padding: EdgeInsets.symmetric(vertical: 10),
+                                decoration: BoxDecoration(
+                                  color: COLOR_White1,
+                                  // borderRadius: const BorderRadius.only(
+                                  //   topRight: Radius.circular(5),
+                                  //   bottomRight: Radius.circular(5),
+                                  // ),
+                                  border:
+                                      Border.all(width: 1, color: Colors.white),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Center(
+                                      child: Text(
+                                        e.value.secondObject.elementName,
+                                        style: _textTheme.subtitle2,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                padding: EdgeInsets.symmetric(vertical: 10),
+                                decoration: BoxDecoration(
+                                  color: COLOR_White1,
+                                  borderRadius: const BorderRadius.only(
+                                    topRight: Radius.circular(5),
+                                    bottomRight: Radius.circular(5),
+                                  ),
+                                  border:
+                                      Border.all(width: 1, color: Colors.white),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    InkWell(
+                                      onTap: () async {
+                                        await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ConditionFormEditPage(
+                                                      indx: e.key,
+                                                      frompage: 'exs',
+                                                    )));
+                                        setState(() {});
+                                      },
+                                      child: const Icon(
+                                        Icons.edit,
+                                        color: Colors.blue,
+                                        size: 16,
+                                      ),
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        MainDataModelInstance
+                                            .mainData.exsC.compares
+                                            .removeAt(e.key);
+                                        setState(() {});
+                                      },
+                                      child: const Icon(
+                                        Icons.delete_forever,
+                                        color: COLOR_Red1,
+                                        size: 16,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    }).toList()),
                   ),
                 ),
                 const SizedBox(height: 10),

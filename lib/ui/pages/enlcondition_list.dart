@@ -96,7 +96,8 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                             onTap: () {
                               features[0] = false;
                               features[1] = true;
-                              MainDataModelInstance.mainData.enlC.conditionType = '12';
+                              MainDataModelInstance
+                                  .mainData.enlC.conditionType = '12';
                               setState(() {});
                             },
                             child: Container(
@@ -105,7 +106,9 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                               decoration: BoxDecoration(
                                   border: Border.all(color: COLOR_PRIMARY),
                                   borderRadius: BorderRadius.circular(15),
-                                  color: (features[1]) ? COLOR_PRIMARY : Colors.transparent),
+                                  color: (features[1])
+                                      ? COLOR_PRIMARY
+                                      : Colors.transparent),
                             ),
                           ),
                           const SizedBox(width: 10),
@@ -125,7 +128,8 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                             onTap: () {
                               features[0] = true;
                               features[1] = false;
-                              MainDataModelInstance.mainData.enlC.conditionType = '11';
+                              MainDataModelInstance
+                                  .mainData.enlC.conditionType = '11';
                               setState(() {});
                             },
                             child: Container(
@@ -134,7 +138,9 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                               decoration: BoxDecoration(
                                   border: Border.all(color: COLOR_PRIMARY),
                                   borderRadius: BorderRadius.circular(15),
-                                  color: (features[0]) ? COLOR_PRIMARY : Colors.transparent),
+                                  color: (features[0])
+                                      ? COLOR_PRIMARY
+                                      : Colors.transparent),
                             ),
                           ),
                           const SizedBox(width: 10),
@@ -266,12 +272,16 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                 // ),
                 SizedBox(
                   width: double.infinity,
-                  // height: screensize.height * 0.45,
+                  height: screensize.height * 0.45,
                   child: SingleChildScrollView(
                     child: Column(
-                        children: MainDataModelInstance.mainData.enlC.compares.asMap().entries.map((e) {
+                        children: MainDataModelInstance.mainData.enlC.compares
+                            .asMap()
+                            .entries
+                            .map((e) {
                       return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 3),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 25, vertical: 3),
                         child: Row(
                           children: [
                             Expanded(
@@ -284,7 +294,8 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                                     topLeft: Radius.circular(5),
                                     bottomLeft: Radius.circular(5),
                                   ),
-                                  border: Border.all(width: 1, color: Colors.white),
+                                  border:
+                                      Border.all(width: 1, color: Colors.white),
                                 ),
                                 child: Center(
                                   child: Text(
@@ -300,7 +311,8 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                                 padding: EdgeInsets.symmetric(vertical: 10),
                                 decoration: BoxDecoration(
                                   color: COLOR_White1,
-                                  border: Border.all(width: 1, color: Colors.white),
+                                  border:
+                                      Border.all(width: 1, color: Colors.white),
                                 ),
                                 child: Center(
                                   child: Text(
@@ -320,7 +332,8 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                                   //   topRight: Radius.circular(5),
                                   //   bottomRight: Radius.circular(5),
                                   // ),
-                                  border: Border.all(width: 1, color: Colors.white),
+                                  border:
+                                      Border.all(width: 1, color: Colors.white),
                                 ),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -345,17 +358,20 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                                     topRight: Radius.circular(5),
                                     bottomRight: Radius.circular(5),
                                   ),
-                                  border: Border.all(width: 1, color: Colors.white),
+                                  border:
+                                      Border.all(width: 1, color: Colors.white),
                                 ),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     InkWell(
                                       onTap: () async {
                                         await Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context) => ConditionFormEditPage(
+                                                builder: (context) =>
+                                                    ConditionFormEditPage(
                                                       indx: e.key,
                                                       frompage: 'enl',
                                                     )));
@@ -369,7 +385,9 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                                     ),
                                     InkWell(
                                       onTap: () {
-                                        MainDataModelInstance.mainData.enlC.compares.removeAt(e.key);
+                                        MainDataModelInstance
+                                            .mainData.enlC.compares
+                                            .removeAt(e.key);
                                         setState(() {});
                                       },
                                       child: const Icon(
@@ -406,9 +424,14 @@ class _EnLConditionListPageState extends State<EnLConditionListPage> {
                     ElevatedButton(
                       onPressed: () {
                         if (features[0] || features[1]) {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => ExLConditionListPage()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      ExLConditionListPage()));
                         } else {
-                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
                             content: Text('Select Condition Type'),
                             backgroundColor: COLOR_PRIMARY,
                           ));
