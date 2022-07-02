@@ -19,6 +19,7 @@ class _ProfitTargetState extends State<ProfitTarget> {
   @override
   void initState() {
     super.initState();
+    ptController.text = MainDataModelInstance.mainData.ta_profit_margin.value;
   }
 
   @override

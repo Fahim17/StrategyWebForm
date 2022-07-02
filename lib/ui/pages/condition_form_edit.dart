@@ -72,45 +72,65 @@ class _ConditionFormEditPageState extends State<ConditionFormEditPage> {
 
   void editCompares() {
     if (widget.frompage == 'enl') {
-      String E1 = MainDataModelInstance.mainData.enlC.compares[widget.indx].firstObject.elementName;
-      String E2 = MainDataModelInstance.mainData.enlC.compares[widget.indx].secondObject.elementName;
-      String oper = MainDataModelInstance.mainData.enlC.compares[widget.indx].operationName;
+      String E1 = MainDataModelInstance
+          .mainData.enlC.compares[widget.indx].firstObject.elementName;
+      String E2 = MainDataModelInstance
+          .mainData.enlC.compares[widget.indx].secondObject.elementName;
+      String oper = MainDataModelInstance
+          .mainData.enlC.compares[widget.indx].operationName;
 
       selectElement1(E1);
       selectElement2(E2);
       selectCompareOperation(oper);
-      e1.dataModel = MainDataModelInstance.mainData.enlC.compares[widget.indx].firstObject;
-      e2.dataModel = MainDataModelInstance.mainData.enlC.compares[widget.indx].secondObject;
+      e1.dataModel =
+          MainDataModelInstance.mainData.enlC.compares[widget.indx].firstObject;
+      e2.dataModel = MainDataModelInstance
+          .mainData.enlC.compares[widget.indx].secondObject;
     } else if (widget.frompage == 'ens') {
-      String E1 = MainDataModelInstance.mainData.ensC.compares[widget.indx].firstObject.elementName;
-      String E2 = MainDataModelInstance.mainData.ensC.compares[widget.indx].secondObject.elementName;
-      String oper = MainDataModelInstance.mainData.ensC.compares[widget.indx].operationName;
+      String E1 = MainDataModelInstance
+          .mainData.ensC.compares[widget.indx].firstObject.elementName;
+      String E2 = MainDataModelInstance
+          .mainData.ensC.compares[widget.indx].secondObject.elementName;
+      String oper = MainDataModelInstance
+          .mainData.ensC.compares[widget.indx].operationName;
 
       selectElement1(E1);
       selectElement2(E2);
       selectCompareOperation(oper);
-      e1.dataModel = MainDataModelInstance.mainData.ensC.compares[widget.indx].firstObject;
-      e2.dataModel = MainDataModelInstance.mainData.ensC.compares[widget.indx].secondObject;
+      e1.dataModel =
+          MainDataModelInstance.mainData.ensC.compares[widget.indx].firstObject;
+      e2.dataModel = MainDataModelInstance
+          .mainData.ensC.compares[widget.indx].secondObject;
     } else if (widget.frompage == 'exl') {
-      String E1 = MainDataModelInstance.mainData.exlC.compares[widget.indx].firstObject.elementName;
-      String E2 = MainDataModelInstance.mainData.exlC.compares[widget.indx].secondObject.elementName;
-      String oper = MainDataModelInstance.mainData.exlC.compares[widget.indx].operationName;
+      String E1 = MainDataModelInstance
+          .mainData.exlC.compares[widget.indx].firstObject.elementName;
+      String E2 = MainDataModelInstance
+          .mainData.exlC.compares[widget.indx].secondObject.elementName;
+      String oper = MainDataModelInstance
+          .mainData.exlC.compares[widget.indx].operationName;
 
       selectElement1(E1);
       selectElement2(E2);
       selectCompareOperation(oper);
-      e1.dataModel = MainDataModelInstance.mainData.exlC.compares[widget.indx].firstObject;
-      e2.dataModel = MainDataModelInstance.mainData.exlC.compares[widget.indx].secondObject;
+      e1.dataModel =
+          MainDataModelInstance.mainData.exlC.compares[widget.indx].firstObject;
+      e2.dataModel = MainDataModelInstance
+          .mainData.exlC.compares[widget.indx].secondObject;
     } else if (widget.frompage == 'exs') {
-      String E1 = MainDataModelInstance.mainData.exsC.compares[widget.indx].firstObject.elementName;
-      String E2 = MainDataModelInstance.mainData.exsC.compares[widget.indx].secondObject.elementName;
-      String oper = MainDataModelInstance.mainData.exsC.compares[widget.indx].operationName;
+      String E1 = MainDataModelInstance
+          .mainData.exsC.compares[widget.indx].firstObject.elementName;
+      String E2 = MainDataModelInstance
+          .mainData.exsC.compares[widget.indx].secondObject.elementName;
+      String oper = MainDataModelInstance
+          .mainData.exsC.compares[widget.indx].operationName;
 
       selectElement1(E1);
       selectElement2(E2);
       selectCompareOperation(oper);
-      e1.dataModel = MainDataModelInstance.mainData.exsC.compares[widget.indx].firstObject;
-      e2.dataModel = MainDataModelInstance.mainData.exsC.compares[widget.indx].secondObject;
+      e1.dataModel =
+          MainDataModelInstance.mainData.exsC.compares[widget.indx].firstObject;
+      e2.dataModel = MainDataModelInstance
+          .mainData.exsC.compares[widget.indx].secondObject;
     }
   }
 
@@ -284,7 +304,7 @@ class _ConditionFormEditPageState extends State<ConditionFormEditPage> {
       case 'EMA':
         e2 = EMA();
         break;
-      case 'Fibbonacci Pivots':
+      case 'Fibonacci Pivots':
         e2 = FibbonacciPivots();
         break;
       case 'Keltner Channel':
@@ -438,21 +458,25 @@ class _ConditionFormEditPageState extends State<ConditionFormEditPage> {
         break;
     }
     if (e1.dataModel.elementName == 'Variable') {
-      e1.dataModel.name = 'MyVariable${MainDataModelInstance.mainData.variablesCount}';
+      e1.dataModel.name =
+          'MyVariable${MainDataModelInstance.mainData.variablesCount}';
       MainDataModelInstance.mainData.variablesCount++;
       MainDataModelInstance.mainData.variables.add(e1.dataModel);
     } else if (e1.dataModel.elementName == 'Input') {
-      e1.dataModel.name = 'MyInput${MainDataModelInstance.mainData.inputsCount}';
+      e1.dataModel.name =
+          'MyInput${MainDataModelInstance.mainData.inputsCount}';
       MainDataModelInstance.mainData.inputsCount++;
       MainDataModelInstance.mainData.inputs.add(e1.dataModel);
     }
 
     if (e2.dataModel.elementName == 'Variable') {
-      e2.dataModel.name = 'MyVariable${MainDataModelInstance.mainData.variablesCount}';
+      e2.dataModel.name =
+          'MyVariable${MainDataModelInstance.mainData.variablesCount}';
       MainDataModelInstance.mainData.variablesCount++;
       MainDataModelInstance.mainData.variables.add(e2.dataModel);
     } else if (e2.dataModel.elementName == 'Input') {
-      e2.dataModel.name = 'MyInput${MainDataModelInstance.mainData.inputsCount}';
+      e2.dataModel.name =
+          'MyInput${MainDataModelInstance.mainData.inputsCount}';
       MainDataModelInstance.mainData.inputsCount++;
       MainDataModelInstance.mainData.inputs.add(e2.dataModel);
     }
@@ -534,11 +558,15 @@ class _ConditionFormEditPageState extends State<ConditionFormEditPage> {
                           child: ElevatedButton(
                             onPressed: () async {
                               await showDialog(
-                                  context: context, builder: (BuildContext context) => ComponentsPopUp(selection: selectElement1));
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      ComponentsPopUp(
+                                          selection: selectElement1));
                               setState(() {});
                             },
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(e1Title),
                             ),
                           ),
@@ -551,7 +579,9 @@ class _ConditionFormEditPageState extends State<ConditionFormEditPage> {
                           onPressed: () async {
                             await showDialog(
                                 context: context,
-                                builder: (BuildContext context) => CompareOperationPopUp(selection: selectCompareOperation));
+                                builder: (BuildContext context) =>
+                                    CompareOperationPopUp(
+                                        selection: selectCompareOperation));
                             setState(() {});
                           },
                           child: Padding(
@@ -566,11 +596,15 @@ class _ConditionFormEditPageState extends State<ConditionFormEditPage> {
                           child: ElevatedButton(
                             onPressed: () async {
                               await showDialog(
-                                  context: context, builder: (BuildContext context) => ComponentsPopUp(selection: selectElement2));
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      ComponentsPopUp(
+                                          selection: selectElement2));
                               setState(() {});
                             },
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(e2Title),
                             ),
                           ),
@@ -617,11 +651,14 @@ class _ConditionFormEditPageState extends State<ConditionFormEditPage> {
                         child: Center(
                           child: ElevatedButton(
                             onPressed: () {
-                              if (e1Title != 'Select' && e2Title != 'Select' && operationTitle != 'Select') {
+                              if (e1Title != 'Select' &&
+                                  e2Title != 'Select' &&
+                                  operationTitle != 'Select') {
                                 finalizeDataModels();
                                 Navigator.pop(context);
                               } else {
-                                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
                                   content: Text('Provide All Conditions'),
                                   backgroundColor: COLOR_PRIMARY,
                                 ));

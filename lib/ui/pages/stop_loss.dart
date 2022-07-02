@@ -18,6 +18,7 @@ class _StopLossState extends State<StopLoss> {
   @override
   void initState() {
     super.initState();
+    ptController.text = MainDataModelInstance.mainData.ta_stop_loss.value;
   }
 
   @override

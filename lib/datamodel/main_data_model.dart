@@ -52,8 +52,10 @@ class MainDataModel {
         "Instruments": List<dynamic>.from(instruments.map((x) => x.toJson())),
         "Inputs": List<dynamic>.from(inputs.map((x) => x.toJson2())),
         "Variables": List<dynamic>.from(variables.map((x) => x.toJson2())),
-        "ConditionSets": List<dynamic>.from(conditionSets.map((x) => x.toJson())),
-        "TargetActions": List<dynamic>.from(targetActions.map((x) => x.toJson())),
+        "ConditionSets":
+            List<dynamic>.from(conditionSets.map((x) => x.toJson())),
+        "TargetActions":
+            List<dynamic>.from(targetActions.map((x) => x.toJson())),
       };
 }
 
@@ -108,7 +110,7 @@ class TargetAction {
   TargetAction({
     required this.targetType,
     this.type = '3',
-    this.value = '1',
+    this.value = '0',
   });
 
   int targetType;

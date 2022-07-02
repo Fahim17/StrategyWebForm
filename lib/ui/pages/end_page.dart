@@ -46,7 +46,25 @@ class EndPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    ElevatedButton(
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(
+                      flex: 2,
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          Navigator.pop(context);
+                        },
+                        child: const Text('Back'),
+                      ),
+                    ),
+                    const Expanded(
+                      flex: 1,
+                      child: SizedBox.shrink(),
+                    ),
+                    Expanded(
+                      flex: 2,
+                      child: ElevatedButton(
                         onPressed: () async {
                           FeatureNav.clearNavigation();
                           Navigator.pushAndRemoveUntil(
@@ -60,8 +78,16 @@ class EndPage extends StatelessWidget {
                               MainDataModelInstance.mainData.toJson()));
                           MainDataModelInstance.newMainData();
                         },
-                        child: const Text('Do It Again')),
-                    ElevatedButton(
+                        child: const Text('Do It Again'),
+                      ),
+                    ),
+                    const Expanded(
+                      flex: 1,
+                      child: SizedBox.shrink(),
+                    ),
+                    Expanded(
+                      flex: 2,
+                      child: ElevatedButton(
                         onPressed: () async {
                           var res = await ApiCall().submitForm();
                           if (res.statusCode == 200) {
@@ -79,7 +105,12 @@ class EndPage extends StatelessWidget {
                             ));
                           }
                         },
-                        child: const Text('Submit & Download')),
+                        child: const Text('Submit & Download'),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
                   ],
                 )
               ],
