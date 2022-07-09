@@ -26,8 +26,15 @@ class MainDataModel {
   exsConditionDataModel exsC = exsConditionDataModel();
   List conditionSets = [];
 
+  // **Clear All Conditions and Target Actions**
+  void clearCondiAndTarAct() {
+    targetActions.clear();
+    conditionSets.clear();
+  }
+
   // **run this before calling toJson()**
   void prepareFinalData() {
+    clearCondiAndTarAct();
     targetActions.add(ta_profit_margin);
     targetActions.add(ta_stop_loss);
 
