@@ -18,7 +18,7 @@ class ZigZagdatamodel {
     this.valuePlot = '0',
     this.deviationType = '0',
     this.deviationValue = '0',
-    this.useHighLow = '0',
+    this.useHighLow = 'false',
     this.offsetType = '0',
     this.datamodelOperator = '0',
     this.offset = '0',
