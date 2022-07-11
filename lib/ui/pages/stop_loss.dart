@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ninjastrategy2/datamodel/main_datamodel_instance.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/featurenav.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class StopLoss extends StatefulWidget {
   StopLoss({Key? key}) : super(key: key);
@@ -44,6 +45,8 @@ class _StopLossState extends State<StopLoss> {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                const SizedBox(height: 10),
+                FeatureNav.getProgress(),
                 SizedBox(height: screensize.height * 0.05),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
@@ -187,6 +190,7 @@ class _StopLossState extends State<StopLoss> {
                   children: [
                     ElevatedButton(
                       onPressed: () {
+                        FeatureNav.decreaseFinishedSteps();
                         FeatureNav.finishedStopLoss = false;
                         Navigator.pop(context);
                       },
@@ -214,6 +218,8 @@ class _StopLossState extends State<StopLoss> {
                           }
                           MainDataModelInstance.mainData.ta_stop_loss.value =
                               ptController.text;
+
+                          FeatureNav.increaseFinishedSteps();
                           FeatureNav.finishedStopLoss = true;
                           FeatureNav.runPageRouting(context);
                         } else {

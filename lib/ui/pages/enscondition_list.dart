@@ -6,6 +6,7 @@ import 'package:ninjastrategy2/ui/featurenav.dart';
 import 'package:ninjastrategy2/ui/pages/condition_form.dart';
 import 'package:ninjastrategy2/ui/pages/condition_form_edit.dart';
 import 'package:ninjastrategy2/ui/pages/exscondition_list.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class EnSConditionListPage extends StatefulWidget {
   EnSConditionListPage({Key? key}) : super(key: key);
@@ -46,6 +47,8 @@ class _EnSConditionListPageState extends State<EnSConditionListPage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                const SizedBox(height: 10),
+                FeatureNav.getProgress(),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
                   child: Text(
@@ -252,7 +255,7 @@ class _EnSConditionListPageState extends State<EnSConditionListPage> {
                 // ),
                 SizedBox(
                   width: double.infinity,
-                  height: screensize.height * 0.45,
+                  height: screensize.height * 0.42,
                   child: SingleChildScrollView(
                     child: Column(
                         children: MainDataModelInstance.mainData.ensC.compares
@@ -392,6 +395,8 @@ class _EnSConditionListPageState extends State<EnSConditionListPage> {
                   children: [
                     ElevatedButton(
                       onPressed: () {
+                        FeatureNav.decreaseFinishedSteps();
+
                         FeatureNav.finishedShortTrade = false;
                         Navigator.pop(context);
                       },
@@ -402,6 +407,8 @@ class _EnSConditionListPageState extends State<EnSConditionListPage> {
                     ),
                     ElevatedButton(
                       onPressed: () {
+                        FeatureNav.increaseFinishedSteps();
+
                         Navigator.push(
                             context,
                             MaterialPageRoute(

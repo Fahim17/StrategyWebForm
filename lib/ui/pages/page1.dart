@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ninjastrategy2/datamodel/indicators/adl_datamodel.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
+import 'package:ninjastrategy2/ui/featurenav.dart';
 import 'package:ninjastrategy2/ui/pages/page2.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class Page1 extends StatelessWidget {
   Page1({Key? key}) : super(key: key);
@@ -23,6 +24,8 @@ class Page1 extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                const SizedBox(height: 10),
+                FeatureNav.getProgress(),
                 SizedBox(
                   height: screensize.height * 0.05,
                 ),
@@ -55,6 +58,7 @@ class Page1 extends StatelessWidget {
                 ),
                 ElevatedButton(
                     onPressed: () {
+                      FeatureNav.increaseFinishedSteps();
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Page2()));
                     },

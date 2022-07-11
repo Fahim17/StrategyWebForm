@@ -3,6 +3,7 @@ import 'package:ninjastrategy2/datamodel/main_datamodel_instance.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/featurenav.dart';
 import 'package:ninjastrategy2/ui/pages/stop_loss.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class ProfitTarget extends StatefulWidget {
   ProfitTarget({Key? key}) : super(key: key);
@@ -45,6 +46,8 @@ class _ProfitTargetState extends State<ProfitTarget> {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                const SizedBox(height: 10),
+                FeatureNav.getProgress(),
                 SizedBox(height: screensize.height * 0.05),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
@@ -189,6 +192,7 @@ class _ProfitTargetState extends State<ProfitTarget> {
                   children: [
                     ElevatedButton(
                       onPressed: () {
+                        FeatureNav.decreaseFinishedSteps();
                         FeatureNav.finishedProfitTarget = false;
                         Navigator.pop(context);
                       },
@@ -222,6 +226,7 @@ class _ProfitTargetState extends State<ProfitTarget> {
                           }
                           MainDataModelInstance.mainData.ta_profit_margin
                               .value = ptController.text;
+                          FeatureNav.increaseFinishedSteps();
                           FeatureNav.finishedProfitTarget = true;
                           FeatureNav.runPageRouting(context);
                         } else {

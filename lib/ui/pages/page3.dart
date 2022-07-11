@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/featurenav.dart';
 import 'package:ninjastrategy2/ui/pages/profit_target.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class Page3 extends StatefulWidget {
   Page3({Key? key}) : super(key: key);
@@ -40,6 +41,8 @@ class _Page3State extends State<Page3> {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                const SizedBox(height: 10),
+                FeatureNav.getProgress(),
                 SizedBox(height: screensize.height * 0.05),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
@@ -179,6 +182,7 @@ class _Page3State extends State<Page3> {
                   children: [
                     ElevatedButton(
                       onPressed: () {
+                        FeatureNav.decreaseFinishedSteps();
                         Navigator.pop(context);
                       },
                       child: const Padding(
@@ -192,6 +196,9 @@ class _Page3State extends State<Page3> {
                         FeatureNav.stopLoss = features[1];
                         FeatureNav.longTrade = features[2];
                         FeatureNav.shortTrade = features[3];
+
+                        FeatureNav.calcSteps();
+                        FeatureNav.increaseFinishedSteps();
 
                         FeatureNav.runPageRouting(context);
                       },

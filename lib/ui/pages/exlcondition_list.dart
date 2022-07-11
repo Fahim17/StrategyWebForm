@@ -5,6 +5,7 @@ import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/featurenav.dart';
 import 'package:ninjastrategy2/ui/pages/condition_form.dart';
 import 'package:ninjastrategy2/ui/pages/condition_form_edit.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class ExLConditionListPage extends StatefulWidget {
   ExLConditionListPage({Key? key}) : super(key: key);
@@ -45,6 +46,8 @@ class _ExLConditionListPageState extends State<ExLConditionListPage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                const SizedBox(height: 10),
+                FeatureNav.getProgress(),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
                   child: Text(
@@ -138,7 +141,7 @@ class _ExLConditionListPageState extends State<ExLConditionListPage> {
                     children: [
                       Text(
                         'Condition List',
-                        style: _textTheme.subtitle1,
+                        style: _textTheme.headline6,
                       ),
                       IconButton(
                         onPressed: () async {
@@ -251,7 +254,7 @@ class _ExLConditionListPageState extends State<ExLConditionListPage> {
                 // ),
                 SizedBox(
                   width: double.infinity,
-                  height: screensize.height * 0.45,
+                  height: screensize.height * 0.42,
                   child: SingleChildScrollView(
                     child: Column(
                         children: MainDataModelInstance.mainData.exlC.compares
@@ -391,6 +394,8 @@ class _ExLConditionListPageState extends State<ExLConditionListPage> {
                   children: [
                     ElevatedButton(
                       onPressed: () {
+                        FeatureNav.decreaseFinishedSteps();
+
                         Navigator.pop(context);
                       },
                       child: const Padding(
@@ -400,6 +405,8 @@ class _ExLConditionListPageState extends State<ExLConditionListPage> {
                     ),
                     ElevatedButton(
                       onPressed: () {
+                        FeatureNav.increaseFinishedSteps();
+
                         FeatureNav.finishedLongTrade = true;
                         FeatureNav.runPageRouting(context);
                       },

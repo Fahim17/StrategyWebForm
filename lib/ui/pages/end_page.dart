@@ -27,6 +27,8 @@ class EndPage extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                const SizedBox(height: 10),
+                FeatureNav.getProgress(),
                 SizedBox(
                   height: screensize.height * 0.05,
                 ),
@@ -53,6 +55,8 @@ class EndPage extends StatelessWidget {
                       flex: 2,
                       child: ElevatedButton(
                         onPressed: () async {
+                          FeatureNav.decreaseFinishedSteps();
+
                           Navigator.pop(context);
                         },
                         child: const Text('Back'),

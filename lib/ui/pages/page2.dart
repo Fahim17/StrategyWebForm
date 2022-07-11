@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ninjastrategy2/datamodel/main_datamodel_instance.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
+import 'package:ninjastrategy2/ui/featurenav.dart';
 import 'package:ninjastrategy2/ui/pages/page3.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 
 class Page2 extends StatefulWidget {
@@ -40,6 +42,8 @@ class _Page2State extends State<Page2> {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                const SizedBox(height: 10),
+                FeatureNav.getProgress(),
                 SizedBox(
                   height: screensize.height * 0.05,
                 ),
@@ -184,6 +188,7 @@ class _Page2State extends State<Page2> {
                         //     backgroundColor: Colors.green,
                         //     textColor: Colors.white,
                         //     fontSize: 16.0);
+                        FeatureNav.increaseFinishedSteps();
                       } else {
                         ScaffoldMessenger.of(context)
                             .showSnackBar(const SnackBar(
