@@ -47,4 +47,4 @@ app.*.map.json
 /android/app/release
 
 #ignore main.dart
-lib/main.dart
+#lib/main.dart
