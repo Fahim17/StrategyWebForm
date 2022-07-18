@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 const double bxHeightRatio = 0.97;
-const double bxWidthRatio = 0.5;
+const double bxWidthRatio = 0.85;
 const double bxWidth = 650;
 const double bxHeight = 637;
 const double bxBorderRadius = 20;
