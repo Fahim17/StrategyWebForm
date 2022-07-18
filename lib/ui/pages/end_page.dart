@@ -48,8 +48,9 @@ class EndPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    const SizedBox(
-                      width: 20,
+                    const Expanded(
+                      flex: 1,
+                      child: SizedBox.shrink(),
                     ),
                     Expanded(
                       flex: 2,
@@ -63,7 +64,7 @@ class EndPage extends StatelessWidget {
                       ),
                     ),
                     const Expanded(
-                      flex: 1,
+                      flex: 2,
                       child: SizedBox.shrink(),
                     ),
                     Expanded(
@@ -86,14 +87,35 @@ class EndPage extends StatelessWidget {
                       ),
                     ),
                     const Expanded(
-                      flex: 1,
+                      flex: 2,
                       child: SizedBox.shrink(),
                     ),
                     Expanded(
                       flex: 2,
                       child: ElevatedButton(
                         onPressed: () async {
-                          var res = await ApiCall().submitForm();
+                          var api = ApiCall();
+                          var result = await api.checkDownload();
+                          if (!result) {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
+                              content: Text(
+                                  "Sorry you don't have any downloads left."),
+                              backgroundColor: Colors.red,
+                            ));
+                            return;
+                          }
+                          result = await api.useDownload();
+                          if (!result) {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
+                              content: Text(
+                                  "Sorry something went wrong. Please try again later."),
+                              backgroundColor: Colors.red,
+                            ));
+                            return;
+                          }
+                          var res = await api.submitForm();
                           if (res.statusCode == 200) {
                             print('Success');
                             ScaffoldMessenger.of(context)
@@ -109,11 +131,12 @@ class EndPage extends StatelessWidget {
                             ));
                           }
                         },
-                        child: const Text('Submit & Download'),
+                        child: const Text('Submit'),
                       ),
                     ),
-                    const SizedBox(
-                      width: 20,
+                    const Expanded(
+                      flex: 1,
+                      child: SizedBox.shrink(),
                     ),
                   ],
                 )
