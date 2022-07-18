@@ -5,8 +5,6 @@ import 'package:ninjastrategy2/ui/featurenav.dart';
 import 'package:ninjastrategy2/ui/pages/page2.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
-import '../../services/apiCall.dart';
-
 class Page1 extends StatelessWidget {
   Page1({Key? key}) : super(key: key);
 
@@ -60,7 +58,7 @@ class Page1 extends StatelessWidget {
                   height: screensize.height * 0.15,
                 ),
                 ElevatedButton(
-                    onPressed: () async {
+                    onPressed: () {
                       FeatureNav.increaseFinishedSteps();
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Page2()));
