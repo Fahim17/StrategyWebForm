@@ -6,11 +6,10 @@ import 'dart:js' as js;
 import 'dart:html' show AnchorElement;
 
 class ApiCall {
-  void downloadFile(String res, String fileName) {
+  void downloadFile(var res, String fileName) {
     AnchorElement()
-      ..href =
-          '${Uri.dataFromString(res, mimeType: 'text/plain', encoding: utf8)}'
-      ..download = '$fileName.cs'
+      ..href = '${Uri.dataFromBytes(res, mimeType: 'application/octet-stream')}'
+      ..download = '$fileName.zip'
       ..style.display = 'none'
       ..click();
   }
@@ -29,8 +28,7 @@ class ApiCall {
       );
       print(response.statusCode);
       if (response.statusCode == 200) {
-        downloadFile(
-            response.body.toString(), MainDataModelInstance.mainData.name);
+        downloadFile(response.bodyBytes, MainDataModelInstance.mainData.name);
       }
       return response;
     } on Exception catch (e) {
