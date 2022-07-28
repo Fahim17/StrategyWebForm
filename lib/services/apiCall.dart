@@ -6,11 +6,10 @@ import 'dart:js' as js;
 import 'dart:html' show AnchorElement;
 
 class ApiCall {
-  void downloadFile(String res, String fileName) {
+  void downloadFile(var res, String fileName) {
     AnchorElement()
-      ..href =
-          '${Uri.dataFromString(res, mimeType: 'text/plain', encoding: utf8)}'
-      ..download = '$fileName.cs'
+      ..href = '${Uri.dataFromBytes(res, mimeType: "application/octet-stream")}'
+      ..download = '$fileName.zip'
       ..style.display = 'none'
       ..click();
   }
@@ -29,8 +28,7 @@ class ApiCall {
       );
       print(response.statusCode);
       if (response.statusCode == 200) {
-        downloadFile(
-            response.body.toString(), MainDataModelInstance.mainData.name);
+        downloadFile(response.body, MainDataModelInstance.mainData.name);
       }
       return response;
     } on Exception catch (e) {
@@ -44,8 +42,7 @@ class ApiCall {
     if (response.statusCode != 200) return false;
     final data = jsonDecode(response.body.toString());
     for (int i = 1; i < data['values'].length; i++) {
-      if (data['values'][i][0].trim() ==
-          MainDataModelInstance.currentAccount.trim()) {
+      if (data['values'][i][0].trim() == MainDataModelInstance.currentAccount.trim()) {
         var n = int.tryParse(data['values'][i][2]);
         if (n == null) return false;
         if (n > 0) {
@@ -74,9 +71,7 @@ class ApiList {
   static String formPost = '/web/php/handle-json.php';
   static String checkDls =
       'https://sheets.googleapis.com/v4/spreadsheets/1nFuyl0sTQCdwuIcUm_GbFM9FacWUt9AdEG-w0yneZ1U/values/Payments?&key=AIzaSyCIEvidnExfggQT9QSKUAULrx2qfSXjXNk';
-  static String useDl =
-      'https://hooks.zapier.com/hooks/catch/12930658/bg82sgx/?email=' +
-          MainDataModelInstance.currentAccount;
+  static String useDl = 'https://hooks.zapier.com/hooks/catch/12930658/bg82sgx/?email=' + MainDataModelInstance.currentAccount;
 
   // static String formPost = 'http://127.0.0.1/web/php/handle-json.php';
 }
