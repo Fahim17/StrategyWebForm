@@ -8,7 +8,11 @@ import 'dart:html' show AnchorElement;
 class ApiCall {
   void downloadFile(var res, String fileName) {
     AnchorElement()
+<<<<<<< HEAD
       ..href = '${Uri.dataFromBytes(res, mimeType: "application/octet-stream")}'
+=======
+      ..href = '${Uri.dataFromBytes(res, mimeType: 'application/octet-stream')}'
+>>>>>>> d8b377184e9556b4a2e09ae4b95ff6d7b32fc2d6
       ..download = '$fileName.zip'
       ..style.display = 'none'
       ..click();
@@ -28,7 +32,11 @@ class ApiCall {
       );
       print(response.statusCode);
       if (response.statusCode == 200) {
+<<<<<<< HEAD
         downloadFile(response.body, MainDataModelInstance.mainData.name);
+=======
+        downloadFile(response.bodyBytes, MainDataModelInstance.mainData.name);
+>>>>>>> d8b377184e9556b4a2e09ae4b95ff6d7b32fc2d6
       }
       return response;
     } on Exception catch (e) {
