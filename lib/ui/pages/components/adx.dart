@@ -74,7 +74,9 @@ class _ADXState extends State<ADX> {
                   SizedBox(
                     width: screensize.width * 0.1,
                     child: TextField(
-                      onChanged: (val) {},
+                      onChanged: (val) {
+                        widget.dataModel.period = val;
+                      },
                       decoration: const InputDecoration(isDense: true, hintText: 'Enter Period'),
                       controller: prd,
                       style: _textTheme.subtitle1,

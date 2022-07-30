@@ -6,9 +6,9 @@ class ComponentsInputCounts {
 }
 
 class ComponentInputCountsInstance {
-  static ComponentsInputCounts component = ComponentsInputCounts();
+  static ComponentsInputCounts components = ComponentsInputCounts();
 
   static void clearInputCountsInstance() {
-    component = ComponentsInputCounts();
+    components = ComponentsInputCounts();
   }
 }

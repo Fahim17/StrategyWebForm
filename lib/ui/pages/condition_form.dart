@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ninjastrategy2/datamodel/compare_data_model.dart';
 import 'package:ninjastrategy2/datamodel/main_datamodel_instance.dart';
+import 'package:ninjastrategy2/datamodel/value/input_data_model.dart';
+import 'package:ninjastrategy2/services/components_input_tracking.dart';
 import 'package:ninjastrategy2/themes/app_theme_data.dart';
 import 'package:ninjastrategy2/ui/pages/components/adl.dart';
 import 'package:ninjastrategy2/ui/pages/components/adx.dart';
@@ -360,6 +362,9 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
   }
 
   void finalizeDataModels() {
+    componentsInputInsert(e1.dataModel);
+    componentsInputInsert(e2.dataModel);
+
     Compare x = Compare();
     x.firstObject = e1.dataModel;
     x.secondObject = e2.dataModel;
@@ -384,27 +389,162 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
     }
     if (e1.dataModel.elementName == 'Variable') {
       // e1.dataModel.name = 'MyVariable${MainDataModelInstance.mainData.variablesCount}';
-      e1.dataModel.name =
-          '${e1.dataModel.name}${MainDataModelInstance.mainData.variablesCount}';
+      e1.dataModel.name = '${e1.dataModel.name}${MainDataModelInstance.mainData.variablesCount}';
       MainDataModelInstance.mainData.variablesCount++;
       MainDataModelInstance.mainData.variables.add(e1.dataModel);
     } else if (e1.dataModel.elementName == 'Input') {
-      e1.dataModel.name =
-          '${e1.dataModel.name}${MainDataModelInstance.mainData.inputsCount}';
+      e1.dataModel.name = '${e1.dataModel.name}${MainDataModelInstance.mainData.inputsCount}';
       MainDataModelInstance.mainData.inputsCount++;
       MainDataModelInstance.mainData.inputs.add(e1.dataModel);
     }
 
     if (e2.dataModel.elementName == 'Variable') {
-      e2.dataModel.name =
-          '${e2.dataModel.name}${MainDataModelInstance.mainData.variablesCount}';
+      e2.dataModel.name = '${e2.dataModel.name}${MainDataModelInstance.mainData.variablesCount}';
       MainDataModelInstance.mainData.variablesCount++;
       MainDataModelInstance.mainData.variables.add(e2.dataModel);
     } else if (e2.dataModel.elementName == 'Input') {
-      e2.dataModel.name =
-          '${e2.dataModel.name}${MainDataModelInstance.mainData.inputsCount}';
+      e2.dataModel.name = '${e2.dataModel.name}${MainDataModelInstance.mainData.inputsCount}';
       MainDataModelInstance.mainData.inputsCount++;
       MainDataModelInstance.mainData.inputs.add(e2.dataModel);
+    }
+  }
+
+  void componentsInputInsert(dynamic comp) {
+    try {
+      switch (comp.elementName) {
+        case 'ADL':
+          // e2 = ADL();
+          break;
+        case 'ADX':
+          Inputdatamodel compInputPeriod = Inputdatamodel();
+          compInputPeriod.name = "${comp.elementName}${ComponentInputCountsInstance.components.adx}_Period";
+          compInputPeriod.value = comp.period;
+          ComponentInputCountsInstance.components.adx++;
+          comp.period = compInputPeriod.name;
+          MainDataModelInstance.mainData.inputs.add(compInputPeriod);
+          break;
+        case 'Bollinger':
+          // e2 = Bollinger();
+          break;
+        case 'BOP':
+          // e2 = BOP();
+          break;
+        // case 'Chaikin Oscillator':
+        //   e2 = ChaikinOscillator();
+        //   break;
+        // case 'Chaikin Volatility':
+        //   e2 = ChaikinVolatility();
+        //   break;
+        // case 'Current Day OHL':
+        //   e2 = CurrentDayOHL();
+        //   break;
+        // case 'DEMA':
+        //   e2 = DEMA();
+        //   break;
+        // case 'Double Stochastics':
+        //   e2 = DoubleStochastics();
+        //   break;
+        // case 'EMA':
+        //   e2 = EMA();
+        //   break;
+        // case 'Fibonacci Pivots':
+        //   e2 = FibbonacciPivots();
+        //   break;
+        // case 'Keltner Channel':
+        //   e2 = KeltnerChannel();
+        //   break;
+        // case 'MACD':
+        //   e2 = MACD();
+        //   break;
+        // case 'MAX':
+        //   e2 = MAX();
+        //   break;
+        // case 'MIN':
+        //   e2 = MIN();
+        //   break;
+        // case 'Pivots':
+        //   e2 = Pivots();
+        //   break;
+        // case 'Prior Day OHLC':
+        //   e2 = PriorDayOHLC();
+        //   break;
+        // case 'RSI':
+        //   e2 = RSI();
+        //   break;
+        // case 'SMA':
+        //   e2 = SMA();
+        //   break;
+        // case 'Standard Deviation':
+        //   e2 = StandardDeviation();
+        //   break;
+        // case 'Stochastics':
+        //   e2 = Stochastics();
+        //   break;
+        // case 'Stochastics Fast':
+        //   e2 = StochasticsFast();
+        //   break;
+        // case 'Swing':
+        //   e2 = Swing();
+        //   break;
+        // case 'Ultimate Oscillator':
+        //   e2 = UltimateOscillator();
+        //   break;
+        // case 'VOL':
+        //   e2 = VOL();
+        //   break;
+        // case 'ZigZag':
+        //   e2 = ZigZag();
+        //   break;
+        // case 'Ask':
+        //   e2 = Ask();
+        //   break;
+        // case 'Bid':
+        //   e2 = Bid();
+        //   break;
+        // case 'Close':
+        //   e2 = Close();
+        //   break;
+        // case 'High':
+        //   e2 = High();
+        //   break;
+        // case 'Median':
+        //   e2 = Median();
+        //   break;
+        // case 'Open':
+        //   e2 = Open();
+        //   break;
+        // case 'Low':
+        //   e2 = Low();
+        //   break;
+        // case 'Ask(Volume)':
+        //   e2 = AskVolumn();
+        //   break;
+        // case 'Bid(Volume)':
+        //   e2 = BidVolume();
+        //   break;
+        // case 'Volume':
+        //   e2 = Volume();
+        //   break;
+        // case 'Date Value':
+        //   e2 = DateValue();
+        //   break;
+        // case 'Time Value':
+        //   e2 = TimeValue();
+        //   break;
+        // case 'Day of Week':
+        //   e2 = DayofWeek();
+        //   break;
+        // case 'Variable':
+        //   e2 = Variable1();
+        //   break;
+        case 'Input':
+          // e2 = Input1();
+          break;
+        default:
+        // e2 = const Center(child: Text('Select an Element'));
+      }
+    } catch (e) {
+      print("componentsInputInsert  ERROR: $e");
     }
   }
 
@@ -489,15 +629,11 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                           child: ElevatedButton(
                             onPressed: () async {
                               await showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      ComponentsPopUp(
-                                          selection: selectElement1));
+                                  context: context, builder: (BuildContext context) => ComponentsPopUp(selection: selectElement1));
                               setState(() {});
                             },
                             child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
+                              padding: const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(e1Title),
                             ),
                           ),
@@ -510,9 +646,7 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                           onPressed: () async {
                             await showDialog(
                                 context: context,
-                                builder: (BuildContext context) =>
-                                    CompareOperationPopUp(
-                                        selection: selectCompareOperation));
+                                builder: (BuildContext context) => CompareOperationPopUp(selection: selectCompareOperation));
                             setState(() {});
                           },
                           child: Padding(
@@ -527,15 +661,11 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                           child: ElevatedButton(
                             onPressed: () async {
                               await showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      ComponentsPopUp(
-                                          selection: selectElement2));
+                                  context: context, builder: (BuildContext context) => ComponentsPopUp(selection: selectElement2));
                               setState(() {});
                             },
                             child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
+                              padding: const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(e2Title),
                             ),
                           ),
@@ -582,14 +712,11 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
                         child: Center(
                           child: ElevatedButton(
                             onPressed: () {
-                              if (e1Title != 'Select' &&
-                                  e2Title != 'Select' &&
-                                  operationTitle != 'Select') {
+                              if (e1Title != 'Select' && e2Title != 'Select' && operationTitle != 'Select') {
                                 finalizeDataModels();
                                 Navigator.pop(context);
                               } else {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(const SnackBar(
+                                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                                   content: Text('Provide All Conditions'),
                                   backgroundColor: COLOR_PRIMARY,
                                 ));

@@ -78,9 +78,8 @@ class EndPage extends StatelessWidget {
                                 builder: (context) => Page1(),
                               ),
                               (route) => false);
-                          // MainDataModelInstance.mainData.prepareFinalData();
-                          print(jsonEncode(
-                              MainDataModelInstance.mainData.toJson()));
+                          MainDataModelInstance.mainData.prepareFinalData();
+                          print(jsonEncode(MainDataModelInstance.mainData.toJson()));
                           MainDataModelInstance.newMainData();
                         },
                         child: const Text('Do It Again'),
@@ -97,20 +96,16 @@ class EndPage extends StatelessWidget {
                           var api = ApiCall();
                           var result = await api.checkDownload();
                           if (!result) {
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(const SnackBar(
-                              content: Text(
-                                  "Sorry you don't have any downloads left."),
+                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                              content: Text("Sorry you don't have any downloads left."),
                               backgroundColor: Colors.red,
                             ));
                             return;
                           }
                           result = await api.useDownload();
                           if (!result) {
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(const SnackBar(
-                              content: Text(
-                                  "Sorry something went wrong. Please try again later."),
+                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                              content: Text("Sorry something went wrong. Please try again later."),
                               backgroundColor: Colors.red,
                             ));
                             return;
@@ -118,8 +113,7 @@ class EndPage extends StatelessWidget {
                           var res = await api.submitForm();
                           if (res.statusCode == 200) {
                             print('Success');
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(const SnackBar(
+                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                               content: Text('Success'),
                               backgroundColor: COLOR_PRIMARY,
                             ));
@@ -152,8 +146,7 @@ class EndPage extends StatelessWidget {
 class SummarizedInfo extends StatelessWidget {
   SummarizedInfo({Key? key}) : super(key: key) {
     MainDataModelInstance.mainData.name = 'Bishal naam  ';
-    MainDataModelInstance.mainData.desc =
-        '''But it’s often appropriate to summarize a whole article or chapter 
+    MainDataModelInstance.mainData.desc = '''But it’s often appropriate to summarize a whole article or chapter 
         if it is especially relevant to your own research, or to provide an 
         overview of a source before you analyze or critique it. In any case, 
         the goal of summarizing is to give your reader a clear understanding of 
