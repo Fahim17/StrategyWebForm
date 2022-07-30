@@ -413,7 +413,6 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
     try {
       switch (comp.elementName) {
         case 'ADL':
-          // e2 = ADL();
           break;
         case 'ADX':
           Inputdatamodel compInputPeriod = Inputdatamodel();
@@ -424,7 +423,19 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
           MainDataModelInstance.mainData.inputs.add(compInputPeriod);
           break;
         case 'Bollinger':
-          // e2 = Bollinger();
+          Inputdatamodel compInputPeriod = Inputdatamodel();
+          compInputPeriod.name = "${comp.elementName}${ComponentInputCountsInstance.components.bollinger}_numStdDev";
+          compInputPeriod.value = comp.numStdDev;
+          ComponentInputCountsInstance.components.bollinger++;
+          comp.numStdDev = compInputPeriod.name;
+          MainDataModelInstance.mainData.inputs.add(compInputPeriod);
+
+          compInputPeriod = Inputdatamodel();
+          compInputPeriod.name = "${comp.elementName}${ComponentInputCountsInstance.components.bollinger}_Period";
+          compInputPeriod.value = comp.period;
+          ComponentInputCountsInstance.components.bollinger++;
+          comp.period = compInputPeriod.name;
+          MainDataModelInstance.mainData.inputs.add(compInputPeriod);
           break;
         case 'BOP':
           // e2 = BOP();
