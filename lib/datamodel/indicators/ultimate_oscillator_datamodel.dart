@@ -7,8 +7,7 @@ import 'dart:convert';
 // UltimateOscillatordatamodel datamodelFromJson(String str) =>
 //     UltimateOscillatordatamodel.fromJson(json.decode(str));
 
-String datamodelToJson(UltimateOscillatordatamodel data) =>
-    json.encode(data.toJson());
+String datamodelToJson(UltimateOscillatordatamodel data) => json.encode(data.toJson());
 
 class UltimateOscillatordatamodel {
   UltimateOscillatordatamodel({
@@ -24,7 +23,7 @@ class UltimateOscillatordatamodel {
     this.datamodelOperator = '0',
     this.offset = '0',
   });
-  String elementName = 'UltimateOscillator';
+  String elementName = 'Ultimate Oscillator';
   String type;
   String price;
   String barsAgo;

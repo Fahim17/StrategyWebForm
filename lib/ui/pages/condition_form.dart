@@ -415,97 +415,261 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
         case 'ADL':
           break;
         case 'ADX':
-          Inputdatamodel compInputPeriod = Inputdatamodel();
-          compInputPeriod.name = "${comp.elementName}${ComponentInputCountsInstance.components.adx}_Period";
-          compInputPeriod.value = comp.period;
+          Inputdatamodel compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.adx}_Period";
+          compInput.value = comp.period;
           ComponentInputCountsInstance.components.adx++;
-          comp.period = compInputPeriod.name;
-          MainDataModelInstance.mainData.inputs.add(compInputPeriod);
+          comp.period = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
           break;
         case 'Bollinger':
-          Inputdatamodel compInputPeriod = Inputdatamodel();
-          compInputPeriod.name = "${comp.elementName}${ComponentInputCountsInstance.components.bollinger}_numStdDev";
-          compInputPeriod.value = comp.numStdDev;
+          Inputdatamodel compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.bollinger}_numStdDev";
+          compInput.value = comp.numStdDev;
           ComponentInputCountsInstance.components.bollinger++;
-          comp.numStdDev = compInputPeriod.name;
-          MainDataModelInstance.mainData.inputs.add(compInputPeriod);
+          comp.numStdDev = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
 
-          compInputPeriod = Inputdatamodel();
-          compInputPeriod.name = "${comp.elementName}${ComponentInputCountsInstance.components.bollinger}_Period";
-          compInputPeriod.value = comp.period;
+          compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.bollinger}_Period";
+          compInput.value = comp.period;
           ComponentInputCountsInstance.components.bollinger++;
-          comp.period = compInputPeriod.name;
-          MainDataModelInstance.mainData.inputs.add(compInputPeriod);
+          comp.period = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
           break;
         case 'BOP':
-          // e2 = BOP();
+          Inputdatamodel compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.bop}_Smooth";
+          compInput.value = comp.smooth;
+          ComponentInputCountsInstance.components.bop++;
+          comp.smooth = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
           break;
-        // case 'Chaikin Oscillator':
-        //   e2 = ChaikinOscillator();
-        //   break;
-        // case 'Chaikin Volatility':
-        //   e2 = ChaikinVolatility();
-        //   break;
-        // case 'Current Day OHL':
-        //   e2 = CurrentDayOHL();
-        //   break;
-        // case 'DEMA':
-        //   e2 = DEMA();
-        //   break;
-        // case 'Double Stochastics':
-        //   e2 = DoubleStochastics();
-        //   break;
-        // case 'EMA':
-        //   e2 = EMA();
-        //   break;
-        // case 'Fibonacci Pivots':
-        //   e2 = FibbonacciPivots();
-        //   break;
-        // case 'Keltner Channel':
-        //   e2 = KeltnerChannel();
-        //   break;
-        // case 'MACD':
-        //   e2 = MACD();
-        //   break;
-        // case 'MAX':
-        //   e2 = MAX();
-        //   break;
-        // case 'MIN':
-        //   e2 = MIN();
-        //   break;
-        // case 'Pivots':
-        //   e2 = Pivots();
-        //   break;
-        // case 'Prior Day OHLC':
-        //   e2 = PriorDayOHLC();
-        //   break;
-        // case 'RSI':
-        //   e2 = RSI();
-        //   break;
-        // case 'SMA':
-        //   e2 = SMA();
-        //   break;
-        // case 'Standard Deviation':
-        //   e2 = StandardDeviation();
-        //   break;
-        // case 'Stochastics':
-        //   e2 = Stochastics();
-        //   break;
-        // case 'Stochastics Fast':
-        //   e2 = StochasticsFast();
-        //   break;
-        // case 'Swing':
-        //   e2 = Swing();
-        //   break;
-        // case 'Ultimate Oscillator':
-        //   e2 = UltimateOscillator();
-        //   break;
-        // case 'VOL':
-        //   e2 = VOL();
-        //   break;
-        // case 'ZigZag':
-        //   e2 = ZigZag();
-        //   break;
+        case 'Chaikin Oscillator':
+          Inputdatamodel compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.chaikinOscillator}_Fast";
+          compInput.value = comp.fast;
+          ComponentInputCountsInstance.components.chaikinOscillator++;
+          comp.fast = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+
+          compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.chaikinOscillator}_Slow";
+          compInput.value = comp.slow;
+          ComponentInputCountsInstance.components.chaikinOscillator++;
+          comp.slow = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+          break;
+        case 'Chaikin Volatility':
+          Inputdatamodel compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.chaikinVolatility}_MovingAvgPeriod";
+          compInput.value = comp.movingAvgPeriod;
+          ComponentInputCountsInstance.components.chaikinVolatility++;
+          comp.movingAvgPeriod = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+
+          compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.chaikinVolatility}_RateOfChangePeriod";
+          compInput.value = comp.rateOfChangePeriod;
+          ComponentInputCountsInstance.components.chaikinVolatility++;
+          comp.rateOfChangePeriod = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+          break;
+        case 'Current Day OHL':
+          break;
+        case 'DEMA':
+          Inputdatamodel compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.dema}_Period";
+          compInput.value = comp.period;
+          ComponentInputCountsInstance.components.dema++;
+          comp.period = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+          break;
+        case 'Double Stochastics':
+          Inputdatamodel compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.doubleStochastics}_Period";
+          compInput.value = comp.period;
+          ComponentInputCountsInstance.components.doubleStochastics++;
+          comp.period = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+          break;
+        case 'EMA':
+          Inputdatamodel compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.ema}_Period";
+          compInput.value = comp.period;
+          ComponentInputCountsInstance.components.ema++;
+          comp.period = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+          break;
+        case 'Fibonacci Pivots':
+          break;
+        case 'Keltner Channel':
+          Inputdatamodel compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.keltnerChannel}_OffsetMultiplier";
+          compInput.value = comp.offsetMultiplier;
+          ComponentInputCountsInstance.components.keltnerChannel++;
+          comp.offsetMultiplier = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+
+          compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.keltnerChannel}_Period";
+          compInput.value = comp.period;
+          ComponentInputCountsInstance.components.keltnerChannel++;
+          comp.period = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+          break;
+        case 'MACD':
+          Inputdatamodel compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.macd}_Fast";
+          compInput.value = comp.fast;
+          ComponentInputCountsInstance.components.macd++;
+          comp.fast = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+
+          compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.macd}_Slow";
+          compInput.value = comp.slow;
+          ComponentInputCountsInstance.components.macd++;
+          comp.slow = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+
+          compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.macd}_Smooth";
+          compInput.value = comp.smooth;
+          ComponentInputCountsInstance.components.macd++;
+          comp.smooth = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+          break;
+        case 'MAX':
+          Inputdatamodel compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.max}_Period";
+          compInput.value = comp.period;
+          ComponentInputCountsInstance.components.max++;
+          comp.period = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+          break;
+        case 'MIN':
+          Inputdatamodel compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.min}_Period";
+          compInput.value = comp.period;
+          ComponentInputCountsInstance.components.min++;
+          comp.period = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+          break;
+        case 'Pivots':
+          break;
+        case 'Prior Day OHLC':
+          break;
+        case 'RSI':
+          Inputdatamodel compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.rsi}_Smooth";
+          compInput.value = comp.smooth;
+          ComponentInputCountsInstance.components.rsi++;
+          comp.smooth = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+
+          compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.rsi}_Period";
+          compInput.value = comp.period;
+          ComponentInputCountsInstance.components.rsi++;
+          comp.period = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+          break;
+        case 'SMA':
+          Inputdatamodel compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.sma}_Period";
+          compInput.value = comp.period;
+          ComponentInputCountsInstance.components.sma++;
+          comp.period = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+          break;
+        case 'Standard Deviation':
+          Inputdatamodel compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.standardDeviation}_Period";
+          compInput.value = comp.period;
+          ComponentInputCountsInstance.components.standardDeviation++;
+          comp.period = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+          break;
+        case 'Stochastics':
+          Inputdatamodel compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.stochastics}_PeriodD";
+          compInput.value = comp.periodD;
+          ComponentInputCountsInstance.components.stochastics++;
+          comp.periodD = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+
+          compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.stochastics}_PeriodK";
+          compInput.value = comp.periodK;
+          ComponentInputCountsInstance.components.stochastics++;
+          comp.periodK = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+
+          compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.stochastics}_Smooth";
+          compInput.value = comp.smooth;
+          ComponentInputCountsInstance.components.stochastics++;
+          comp.smooth = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+          break;
+
+        case 'Stochastics Fast':
+          Inputdatamodel compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.stochasticsFast}_PeriodD";
+          compInput.value = comp.periodD;
+          ComponentInputCountsInstance.components.stochasticsFast++;
+          comp.periodD = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+
+          compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.stochasticsFast}_PeriodK";
+          compInput.value = comp.periodK;
+          ComponentInputCountsInstance.components.stochasticsFast++;
+          comp.periodK = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+          break;
+        case 'Swing':
+          Inputdatamodel compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.swing}_Strength";
+          compInput.value = comp.strength;
+          ComponentInputCountsInstance.components.swing++;
+          comp.strength = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+          break;
+        case 'Ultimate Oscillator':
+          Inputdatamodel compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.ultimateOscillator}_Fast";
+          compInput.value = comp.fast;
+          ComponentInputCountsInstance.components.ultimateOscillator++;
+          comp.fast = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+
+          compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.ultimateOscillator}_Intermediate";
+          compInput.value = comp.intermediate;
+          ComponentInputCountsInstance.components.ultimateOscillator++;
+          comp.intermediate = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+
+          compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.ultimateOscillator}_Slow";
+          compInput.value = comp.slow;
+          ComponentInputCountsInstance.components.ultimateOscillator++;
+          comp.slow = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+          break;
+
+        case 'VOL':
+          break;
+        case 'ZigZag':
+          Inputdatamodel compInput = Inputdatamodel();
+          compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.zigzag}_DeviationValue";
+          compInput.value = comp.deviationValue;
+          ComponentInputCountsInstance.components.zigzag++;
+          comp.deviationValue = compInput.name;
+          MainDataModelInstance.mainData.inputs.add(compInput);
+          break;
         // case 'Ask':
         //   e2 = Ask();
         //   break;

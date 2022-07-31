@@ -78,16 +78,34 @@ class EndPage extends StatelessWidget {
                                 builder: (context) => Page1(),
                               ),
                               (route) => false);
-                          MainDataModelInstance.mainData.prepareFinalData();
+                          // MainDataModelInstance.mainData.prepareFinalData();
                           print(jsonEncode(MainDataModelInstance.mainData.toJson()));
                           MainDataModelInstance.newMainData();
                         },
                         child: const Text('Do It Again'),
                       ),
                     ),
-                    const Expanded(
+                    // const Expanded(
+                    //   flex: 2,
+                    //   child: SizedBox.shrink(),
+                    // ),
+                    Expanded(
                       flex: 2,
-                      child: SizedBox.shrink(),
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          // FeatureNav.clearNavigation();
+                          // Navigator.pushAndRemoveUntil(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //       builder: (context) => Page1(),
+                          //     ),
+                          //     (route) => false);
+                          MainDataModelInstance.mainData.prepareFinalData();
+                          print(jsonEncode(MainDataModelInstance.mainData.toJson()));
+                          // MainDataModelInstance.newMainData();
+                        },
+                        child: const Text('Testting button'),
+                      ),
                     ),
                     Expanded(
                       flex: 2,
