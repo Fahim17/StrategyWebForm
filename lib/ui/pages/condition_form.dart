@@ -426,7 +426,7 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
           Inputdatamodel compInput = Inputdatamodel();
           compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.bollinger}_numStdDev";
           compInput.value = comp.numStdDev;
-          ComponentInputCountsInstance.components.bollinger++;
+          // ComponentInputCountsInstance.components.bollinger++;
           comp.numStdDev = compInput.name;
           MainDataModelInstance.mainData.inputs.add(compInput);
 
@@ -449,7 +449,7 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
           Inputdatamodel compInput = Inputdatamodel();
           compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.chaikinOscillator}_Fast";
           compInput.value = comp.fast;
-          ComponentInputCountsInstance.components.chaikinOscillator++;
+          // ComponentInputCountsInstance.components.chaikinOscillator++;
           comp.fast = compInput.name;
           MainDataModelInstance.mainData.inputs.add(compInput);
 
@@ -464,7 +464,7 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
           Inputdatamodel compInput = Inputdatamodel();
           compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.chaikinVolatility}_MovingAvgPeriod";
           compInput.value = comp.movingAvgPeriod;
-          ComponentInputCountsInstance.components.chaikinVolatility++;
+          // ComponentInputCountsInstance.components.chaikinVolatility++;
           comp.movingAvgPeriod = compInput.name;
           MainDataModelInstance.mainData.inputs.add(compInput);
 
@@ -507,7 +507,7 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
           Inputdatamodel compInput = Inputdatamodel();
           compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.keltnerChannel}_OffsetMultiplier";
           compInput.value = comp.offsetMultiplier;
-          ComponentInputCountsInstance.components.keltnerChannel++;
+          // ComponentInputCountsInstance.components.keltnerChannel++;
           comp.offsetMultiplier = compInput.name;
           MainDataModelInstance.mainData.inputs.add(compInput);
 
@@ -522,14 +522,14 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
           Inputdatamodel compInput = Inputdatamodel();
           compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.macd}_Fast";
           compInput.value = comp.fast;
-          ComponentInputCountsInstance.components.macd++;
+          // ComponentInputCountsInstance.components.macd++;
           comp.fast = compInput.name;
           MainDataModelInstance.mainData.inputs.add(compInput);
 
           compInput = Inputdatamodel();
           compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.macd}_Slow";
           compInput.value = comp.slow;
-          ComponentInputCountsInstance.components.macd++;
+          // ComponentInputCountsInstance.components.macd++;
           comp.slow = compInput.name;
           MainDataModelInstance.mainData.inputs.add(compInput);
 
@@ -564,7 +564,7 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
           Inputdatamodel compInput = Inputdatamodel();
           compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.rsi}_Smooth";
           compInput.value = comp.smooth;
-          ComponentInputCountsInstance.components.rsi++;
+          // ComponentInputCountsInstance.components.rsi++;
           comp.smooth = compInput.name;
           MainDataModelInstance.mainData.inputs.add(compInput);
 
@@ -595,14 +595,14 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
           Inputdatamodel compInput = Inputdatamodel();
           compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.stochastics}_PeriodD";
           compInput.value = comp.periodD;
-          ComponentInputCountsInstance.components.stochastics++;
+          // ComponentInputCountsInstance.components.stochastics++;
           comp.periodD = compInput.name;
           MainDataModelInstance.mainData.inputs.add(compInput);
 
           compInput = Inputdatamodel();
           compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.stochastics}_PeriodK";
           compInput.value = comp.periodK;
-          ComponentInputCountsInstance.components.stochastics++;
+          // ComponentInputCountsInstance.components.stochastics++;
           comp.periodK = compInput.name;
           MainDataModelInstance.mainData.inputs.add(compInput);
 
@@ -618,7 +618,7 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
           Inputdatamodel compInput = Inputdatamodel();
           compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.stochasticsFast}_PeriodD";
           compInput.value = comp.periodD;
-          ComponentInputCountsInstance.components.stochasticsFast++;
+          // ComponentInputCountsInstance.components.stochasticsFast++;
           comp.periodD = compInput.name;
           MainDataModelInstance.mainData.inputs.add(compInput);
 
@@ -641,14 +641,14 @@ class _ConditionFormPageState extends State<ConditionFormPage> {
           Inputdatamodel compInput = Inputdatamodel();
           compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.ultimateOscillator}_Fast";
           compInput.value = comp.fast;
-          ComponentInputCountsInstance.components.ultimateOscillator++;
+          // ComponentInputCountsInstance.components.ultimateOscillator++;
           comp.fast = compInput.name;
           MainDataModelInstance.mainData.inputs.add(compInput);
 
           compInput = Inputdatamodel();
           compInput.name = "${comp.elementName}${ComponentInputCountsInstance.components.ultimateOscillator}_Intermediate";
           compInput.value = comp.intermediate;
-          ComponentInputCountsInstance.components.ultimateOscillator++;
+          // ComponentInputCountsInstance.components.ultimateOscillator++;
           comp.intermediate = compInput.name;
           MainDataModelInstance.mainData.inputs.add(compInput);
 
